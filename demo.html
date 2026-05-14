@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demonstração do GovBR Classless — framework CSS sem classes baseado no Padrão Digital de Governo 3.7.0">
+  <title>GovBR Classless — Demo</title>
+  <link rel="stylesheet" href="govbr-classless.css">
+</head>
+<body>
+
+  <!-- Acessibilidade: pular para o conteúdo principal -->
+  <a href="#main">Pular para o conteúdo principal</a>
+
+  <header>
+    <h1><a href="index.html">GovBR Classless</a></h1>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="index.html">← Docs</a></li>
+        <li><a href="kitchen-sink.html">Kitchen Sink</a></li>
+        <li><a href="#tipografia">Tipografia</a></li>
+        <li><a href="#formularios">Formulários</a></li>
+        <li><a href="#tabelas">Tabelas</a></li>
+        <li><a href="#componentes">Componentes</a></li>
+        <li><a href="#layout">Layout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================================
+         INTRO
+    ============================================================ -->
+    <section>
+      <h2>Padrão Digital de Governo — sem classes</h2>
+      <p>
+        <strong>GovBR Classless</strong> é um framework CSS baseado inteiramente nos
+        tokens de design e guias de estilo do
+        <a href="https://www.gov.br/ds/" target="_blank" rel="noopener">Padrão Digital de Governo 3.7.0</a>.
+        Inclua um único arquivo <code>&lt;link&gt;</code> e escreva HTML semântico puro —
+        sem classes, sem build, sem JavaScript.
+      </p>
+      <p>
+        Basta adicionar ao <code>&lt;head&gt;</code>:
+      </p>
+      <pre><code>&lt;link rel="stylesheet" href="govbr-classless.css"&gt;</code></pre>
+    </section>
+
+
+    <!-- ============================================================
+         TIPOGRAFIA
+    ============================================================ -->
+    <section id="tipografia">
+      <h2>Tipografia</h2>
+
+      <h1>Heading 1 — 42px (3rem)</h1>
+      <h2>Heading 2 — 35px (2.5rem)</h2>
+      <h3>Heading 3 — 28px (2rem)</h3>
+      <h4>Heading 4 — 21px (1.5rem)</h4>
+      <h5>Heading 5 — 17.5px (1.25rem)</h5>
+      <h6>Heading 6 — 14px (1rem)</h6>
+
+      <hr>
+
+      <h3>Parágrafo e texto em linha</h3>
+      <p>
+        A fonte <strong>Rawline</strong> (com fallback para Raleway) é a tipografia oficial do
+        padrão gov.br. O tamanho de base é <strong>14px</strong>, garantindo boa legibilidade
+        em todos os dispositivos. A linha de base usa <em>line-height</em> médio de 1,45.
+      </p>
+      <p>
+        Você pode usar <strong>negrito</strong>, <em>itálico</em>, <small>texto pequeno</small>,
+        <mark>destaque amarelo</mark>, <del>texto excluído</del>, <ins>texto inserido</ins>,
+        <abbr title="Padrão Digital de Governo">PdG</abbr> com tooltip,
+        e índices como H<sub>2</sub>O ou E=mc<sup>2</sup>.
+      </p>
+
+      <h3>Links</h3>
+      <p>
+        Links aparecem em <a href="#tipografia">azul gov.br</a>, mudam de cor ao passar o mouse
+        e usam a cor padrão de visitado <a href="#visitado">quando já visitados</a>.
+        O anel de foco é o <strong>pontilhado vermelho</strong> oficial do PdG (tecle Tab para ver).
+      </p>
+
+      <h3>Citação</h3>
+      <blockquote>
+        <p>
+          O governo digital deve ser acessível, inclusivo e centrado no cidadão,
+          garantindo que todos possam exercer seus direitos e deveres de forma simples e eficiente.
+        </p>
+        <cite>Padrão Digital de Governo — Princípios</cite>
+      </blockquote>
+
+      <h3>Código</h3>
+      <p>
+        Use <code>&lt;code&gt;</code> para trechos em linha,
+        <kbd>Ctrl</kbd> + <kbd>C</kbd> para atalhos de teclado,
+        e <samp>saída de terminal</samp> para resultados de programas.
+      </p>
+      <pre><code>/* Exemplo de token GovBR-DS */
+:root {
+  --color-primary-default: #1351b4;
+  --font-family-base: Rawline, Raleway, sans-serif;
+  --spacing-scale-base: 8px;
+}</code></pre>
+
+      <h3>Listas</h3>
+      <ul>
+        <li>Serviços digitais centrados no cidadão</li>
+        <li>Acessibilidade (eMAG e WCAG 2.1 AA)
+          <ul>
+            <li>Contraste mínimo de 4,5:1</li>
+            <li>Navegação por teclado completa</li>
+            <li>Suporte a leitores de tela</li>
+          </ul>
+        </li>
+        <li>Identidade visual padronizada</li>
+        <li>Performance e simplicidade</li>
+      </ul>
+
+      <ol>
+        <li>Instale o arquivo CSS no seu projeto</li>
+        <li>Adicione a tag <code>&lt;link&gt;</code> no <code>&lt;head&gt;</code></li>
+        <li>Escreva HTML semântico puro</li>
+        <li>Pronto — sem compiladores, sem npm, sem frameworks JS</li>
+      </ol>
+
+      <h3>Lista de definições</h3>
+      <dl>
+        <dt>PdG</dt>
+        <dd>Padrão Digital de Governo — guia de design oficial dos serviços digitais federais brasileiros.</dd>
+        <dt>eMAG</dt>
+        <dd>Modelo de Acessibilidade em Governo Eletrônico — recomendações de acessibilidade digital do governo federal.</dd>
+        <dt>WCAG</dt>
+        <dd>Web Content Accessibility Guidelines — diretrizes internacionais de acessibilidade para conteúdo web.</dd>
+      </dl>
+    </section>
+
+
+    <!-- ============================================================
+         FORMULÁRIOS
+    ============================================================ -->
+    <section id="formularios">
+      <h2>Formulários</h2>
+      <p>Todos os controles de formulário são estilizados automaticamente. Nenhuma classe adicional necessária.</p>
+
+      <form>
+        <fieldset>
+          <legend>Dados pessoais</legend>
+
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="nome" placeholder="Ex.: João da Silva" autocomplete="name">
+
+          <label for="email">E-mail institucional</label>
+          <input type="email" id="email" name="email" placeholder="joao.silva@orgao.gov.br" autocomplete="email" required>
+
+          <label for="cpf">CPF</label>
+          <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" inputmode="numeric">
+
+          <label for="nascimento">Data de nascimento</label>
+          <input type="date" id="nascimento" name="nascimento" autocomplete="bday">
+
+          <label for="telefone">Telefone</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="(61) 9 0000-0000" autocomplete="tel">
+
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" autocomplete="new-password" minlength="8">
+
+          <label for="busca">Pesquisar</label>
+          <input type="search" id="busca" name="q" placeholder="Pesquisar serviços...">
+
+          <label for="url">Site</label>
+          <input type="url" id="url" name="url" placeholder="https://www.exemplo.gov.br" autocomplete="url">
+
+          <label for="numero">Quantidade</label>
+          <input type="number" id="numero" name="numero" min="1" max="100" value="1">
+        </fieldset>
+
+        <fieldset>
+          <legend>Perfil e preferências</legend>
+
+          <label for="orgao">Órgão</label>
+          <select id="orgao" name="orgao">
+            <option value="">Selecione seu órgão...</option>
+            <option value="mec">Ministério da Educação</option>
+            <option value="ms">Ministério da Saúde</option>
+            <option value="mj">Ministério da Justiça</option>
+            <option value="mf">Ministério da Fazenda</option>
+            <option value="mp">Ministério do Planejamento</option>
+          </select>
+
+          <label for="cargo">Cargo</label>
+          <select id="cargo" name="cargo">
+            <optgroup label="Nível Médio">
+              <option>Técnico Administrativo</option>
+              <option>Técnico em Informática</option>
+            </optgroup>
+            <optgroup label="Nível Superior">
+              <option>Analista Técnico de Políticas Sociais</option>
+              <option>Especialista em Políticas Públicas</option>
+              <option>Auditor Federal</option>
+            </optgroup>
+          </select>
+
+          <label for="bio">Apresentação</label>
+          <textarea id="bio" name="bio" rows="4" placeholder="Descreva brevemente seu papel no órgão..."></textarea>
+
+          <p><strong>Tipos de notificação preferidos:</strong></p>
+
+          <label>
+            <input type="checkbox" name="notif" value="email" checked>
+            Por e-mail
+          </label>
+          <label>
+            <input type="checkbox" name="notif" value="sms">
+            Por SMS
+          </label>
+          <label>
+            <input type="checkbox" name="notif" value="app">
+            Pelo aplicativo gov.br
+          </label>
+
+          <p><strong>Perfil de acesso:</strong></p>
+
+          <label>
+            <input type="radio" name="perfil" value="consulta" checked>
+            Consulta (somente leitura)
+          </label>
+          <label>
+            <input type="radio" name="perfil" value="gestor">
+            Gestor
+          </label>
+          <label>
+            <input type="radio" name="perfil" value="admin">
+            Administrador
+          </label>
+
+          <label for="prioridade">Prioridade de atendimento (1–10): <output for="prioridade" id="out-prioridade">5</output></label>
+          <input type="range" id="prioridade" name="prioridade" min="1" max="10" value="5"
+                 oninput="document.getElementById('out-prioridade').textContent = this.value">
+
+          <label for="cor">Cor de destaque da interface</label>
+          <input type="color" id="cor" name="cor" value="#1351b4">
+
+          <label for="avatar">Foto do perfil</label>
+          <input type="file" id="avatar" name="avatar" accept="image/*">
+        </fieldset>
+
+        <fieldset>
+          <legend>Campo desabilitado</legend>
+          <label for="sistema">Sistema (atribuído automaticamente)</label>
+          <input type="text" id="sistema" name="sistema" value="SISGOV v2.4" disabled>
+        </fieldset>
+
+        <button type="submit">Salvar dados</button>
+        <input type="reset" value="Limpar formulário">
+      </form>
+    </section>
+
+
+    <!-- ============================================================
+         TABELAS
+    ============================================================ -->
+    <section id="tabelas">
+      <h2>Tabelas</h2>
+      <p>Tabelas são responsivas (rolar horizontalmente em telas pequenas), com cabeçalho azul e linhas alternadas.</p>
+
+      <table>
+        <caption>Índice de satisfação por serviço digital — 2025</caption>
+        <thead>
+          <tr>
+            <th scope="col">Serviço</th>
+            <th scope="col">Órgão</th>
+            <th scope="col">Acessos/mês</th>
+            <th scope="col">Satisfação</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Carteira de Trabalho Digital</td>
+            <td>MTE</td>
+            <td>12.400.000</td>
+            <td>94%</td>
+            <td>Ativo</td>
+          </tr>
+          <tr>
+            <td>MEI — Portal do Empreendedor</td>
+            <td>MDIC</td>
+            <td>8.700.000</td>
+            <td>91%</td>
+            <td>Ativo</td>
+          </tr>
+          <tr>
+            <td>Meu INSS</td>
+            <td>MPS</td>
+            <td>22.100.000</td>
+            <td>87%</td>
+            <td>Ativo</td>
+          </tr>
+          <tr>
+            <td>SISAB — Saúde da Família</td>
+            <td>MS</td>
+            <td>3.200.000</td>
+            <td>82%</td>
+            <td>Ativo</td>
+          </tr>
+          <tr>
+            <td>e-Título</td>
+            <td>TSE</td>
+            <td>5.900.000</td>
+            <td>96%</td>
+            <td>Ativo</td>
+          </tr>
+          <tr>
+            <td>SISU — Sistema de Seleção</td>
+            <td>MEC</td>
+            <td>4.100.000</td>
+            <td>88%</td>
+            <td>Ativo</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"><strong>Total / Média</strong></td>
+            <td><strong>56.400.000</strong></td>
+            <td><strong>89,7%</strong></td>
+            <td>—</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+
+    <!-- ============================================================
+         COMPONENTES
+    ============================================================ -->
+    <section id="componentes">
+      <h2>Componentes interativos</h2>
+
+      <!-- Botões -->
+      <h3>Botões</h3>
+      <p>
+        Botões primários usam <code>&lt;button&gt;</code>. Variantes são declaradas com
+        <code>data-variant</code>. Links podem ser botões com <code>role="button"</code>.
+      </p>
+      <p>
+        <button type="button">Primário</button>
+        <button type="button" data-variant="secondary">Secundário</button>
+        <button type="button" data-variant="tertiary">Terciário</button>
+        <button type="button" data-variant="success">Sucesso</button>
+        <button type="button" data-variant="warning">Aviso</button>
+        <button type="button" data-variant="danger">Perigo</button>
+        <button type="button" disabled>Desabilitado</button>
+      </p>
+      <p>
+        <a href="#" role="button">Link como botão</a>
+        <a href="#" role="button" data-variant="secondary">Link secundário</a>
+        <input type="reset" value="Reset (outline)">
+      </p>
+
+      <!-- Accordion -->
+      <h3>Acordeão (details / summary)</h3>
+      <details>
+        <summary>O que é o Padrão Digital de Governo?</summary>
+        <p>
+          O Padrão Digital de Governo (PdG) é o conjunto de diretrizes e componentes visuais
+          definidos pelo Ministério da Gestão e da Inovação em Serviços Públicos para garantir
+          consistência, acessibilidade e qualidade nos serviços digitais federais.
+        </p>
+      </details>
+      <details>
+        <summary>Como contribuir com o design system?</summary>
+        <p>
+          O GovBR-DS é open source. Você pode contribuir abrindo issues ou pull requests
+          no repositório oficial no GitLab da CTIC/SERPRO, ou participando das discussões
+          na comunidade de prática de design de serviços públicos.
+        </p>
+      </details>
+      <details>
+        <summary>Quais são os princípios de acessibilidade?</summary>
+        <ul>
+          <li>Perceptível — informação e interface percebida por todos</li>
+          <li>Operável — navegação possível sem mouse</li>
+          <li>Compreensível — conteúdo claro e previsível</li>
+          <li>Robusto — compatível com tecnologias assistivas</li>
+        </ul>
+      </details>
+
+      <!-- Dialog -->
+      <h3>Dialog / Modal</h3>
+      <p>
+        <button type="button" onclick="document.getElementById('modal-demo').showModal()">
+          Abrir modal
+        </button>
+      </p>
+      <dialog id="modal-demo">
+        <h2>Confirmação necessária</h2>
+        <p>
+          Você está prestes a enviar os dados para análise. Esta ação não poderá ser
+          desfeita. Deseja continuar?
+        </p>
+        <p>
+          <button type="button" onclick="document.getElementById('modal-demo').close()">
+            Confirmar envio
+          </button>
+          <input type="reset" value="Cancelar"
+                 onclick="document.getElementById('modal-demo').close()">
+        </p>
+      </dialog>
+
+      <!-- Progress -->
+      <h3>Barra de progresso</h3>
+
+      <label for="prog-geral">Progresso geral do processo</label>
+      <progress id="prog-geral" value="65" max="100">65%</progress>
+
+      <label for="prog-docs">Documentos analisados</label>
+      <progress id="prog-docs" value="90" max="100">90%</progress>
+
+      <label for="prog-pendente">Etapa pendente</label>
+      <progress id="prog-pendente" value="20" max="100">20%</progress>
+
+      <!-- Meter -->
+      <h3>Medidor (meter)</h3>
+      <label for="meter-uso">Uso de cota de armazenamento</label>
+      <meter id="meter-uso" value="0.7" min="0" max="1" low="0.3" high="0.8" optimum="0.5">70%</meter>
+
+      <!-- Imagem / figura -->
+      <h3>Figura com legenda</h3>
+      <figure>
+        <img
+          src="https://www.gov.br/assets/images/brasil.png"
+          alt="Logotipo do portal gov.br"
+          width="240"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+        >
+        <!-- Fallback se a imagem não carregar -->
+        <div style="display:none;width:240px;height:80px;background:var(--color-primary-default);color:#fff;display:none;align-items:center;justify-content:center;border-radius:var(--radius-md)">
+          [imagem gov.br]
+        </div>
+        <figcaption>Logotipo oficial do portal gov.br — ponto central de acesso aos serviços federais.</figcaption>
+      </figure>
+    </section>
+
+
+    <!-- ============================================================
+         LAYOUT
+    ============================================================ -->
+    <section id="layout">
+      <h2>Layout responsivo</h2>
+      <p>
+        O <code>&lt;main&gt;</code> tem largura máxima de <strong>1200px</strong> e fica
+        centralizado automaticamente. Quando contém um <code>&lt;article&gt;</code> e um
+        <code>&lt;aside&gt;</code> como filhos diretos, o CSS usa
+        <code>grid-template-columns: 1fr 280px</code> automaticamente via <code>:has()</code>.
+      </p>
+    </section>
+
+  </main><!-- /main -->
+
+
+  <!--
+    LAYOUT COM SIDEBAR — demonstração de uma página separada.
+    Crie um arquivo separado (ex.: page-with-sidebar.html) com esta estrutura:
+
+    <main>
+      <article>…conteúdo principal…</article>
+      <aside>…sidebar…</aside>
+    </main>
+
+    O CSS detecta <article> + <aside> dentro de <main> via :has() e
+    aplica automaticamente o grid de 2 colunas (1fr 280px).
+    Nenhuma classe, nenhum atributo extra necessário.
+  -->
+
+  <footer>
+    <nav aria-label="Links do rodapé">
+      <ul>
+        <li><a href="https://www.gov.br/ds/">Padrão Digital de Governo</a></li>
+        <li><a href="https://gitlab.com/govbr-ds/">GovBR-DS no GitLab</a></li>
+        <li><a href="https://www.npmjs.com/package/@govbr-ds/core">@govbr-ds/core no npm</a></li>
+        <li><a href="https://emag.governoeletronico.gov.br/">eMAG</a></li>
+        <li><a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1</a></li>
+      </ul>
+    </nav>
+    <p>
+      GovBR Classless v0.1.0 — Baseado no
+      <a href="https://www.gov.br/ds/">Padrão Digital de Governo</a> v3.7.0 ·
+      Fonte <a href="https://fonts.cdnfonts.com/css/rawline">Rawline</a> via CDNFonts.
+    </p>
+  </footer>
+
+</body>
+</html>

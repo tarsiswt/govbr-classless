@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulários — GovBR Classless Docs</title>
+  <link rel="stylesheet" href="../govbr-classless.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <a href="#main">Pular para o conteúdo</a>
+  <header>
+    <h1><a href="../index.html">GovBR Classless</a></h1>
+    <nav aria-label="Componentes">
+      <ul>
+        <li><a href="typography.html">Tipografia</a></li>
+        <li><a href="code.html">Código</a></li>
+        <li><a href="lists.html">Listas</a></li>
+        <li><a href="tables.html">Tabelas</a></li>
+        <li><a href="forms.html">Formulários</a></li>
+        <li><a href="buttons.html">Botões</a></li>
+        <li><a href="accordion.html">Acordeão</a></li>
+        <li><a href="dialog.html">Dialog</a></li>
+        <li><a href="progress.html">Progresso</a></li>
+        <li><a href="media.html">Mídia</a></li>
+        <li><a href="layout.html">Layout</a></li>
+        <li><a href="tokens.html">Tokens</a></li>
+        <li><a href="../tests/index.html">▶ Testes</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h2>Formulários</h2>
+    <p>
+      Todos os controles de formulário são estilizados automaticamente —
+      <code>label</code>, <code>input</code>, <code>select</code>,
+      <code>textarea</code>, <code>fieldset</code>.
+      Foco usa o anel vermelho pontilhado padrão do GovBR-DS.
+    </p>
+
+    <!-- ---- Text inputs ---- -->
+    <section>
+      <h3>Entradas de texto</h3>
+      <template>
+        <label for="f-text">Texto simples</label>
+        <input type="text" id="f-text" placeholder="Texto livre...">
+
+        <label for="f-email">E-mail</label>
+        <input type="email" id="f-email" placeholder="usuario@orgao.gov.br">
+
+        <label for="f-password">Senha</label>
+        <input type="password" id="f-password" placeholder="••••••••">
+
+        <label for="f-number">Número</label>
+        <input type="number" id="f-number" min="0" max="100" value="1">
+
+        <label for="f-tel">Telefone</label>
+        <input type="tel" id="f-tel" placeholder="(61) 9 0000-0000">
+
+        <label for="f-url">URL</label>
+        <input type="url" id="f-url" placeholder="https://www.exemplo.gov.br">
+      </template>
+    </section>
+
+    <!-- ---- Search ---- -->
+    <section>
+      <h3>Pesquisa — <code>type="search"</code></h3>
+      <p>Recebe borda-raio pill e ícone de lupa automaticamente.</p>
+      <template>
+        <label for="f-search">Pesquisar serviços</label>
+        <input type="search" id="f-search" placeholder="Digite o nome do serviço...">
+      </template>
+    </section>
+
+    <!-- ---- Date/time ---- -->
+    <section>
+      <h3>Data e hora</h3>
+      <template>
+        <label for="f-date">Data</label>
+        <input type="date" id="f-date">
+
+        <label for="f-time">Hora</label>
+        <input type="time" id="f-time">
+
+        <label for="f-datetime">Data e hora</label>
+        <input type="datetime-local" id="f-datetime">
+
+        <label for="f-month">Mês</label>
+        <input type="month" id="f-month">
+      </template>
+    </section>
+
+    <!-- ---- Select ---- -->
+    <section>
+      <h3>Seleção — <code>&lt;select&gt;</code></h3>
+      <p>Seta personalizada em SVG azul. Suporte a <code>&lt;optgroup&gt;</code>.</p>
+      <template>
+        <label for="f-select">Órgão</label>
+        <select id="f-select">
+          <option value="">Selecione...</option>
+          <option>Ministério da Educação</option>
+          <option>Ministério da Saúde</option>
+          <option>Ministério da Fazenda</option>
+        </select>
+
+        <label for="f-select-group">Cargo (com optgroup)</label>
+        <select id="f-select-group">
+          <option value="">Selecione...</option>
+          <optgroup label="Nível Médio">
+            <option>Técnico Administrativo</option>
+            <option>Técnico em Informática</option>
+          </optgroup>
+          <optgroup label="Nível Superior">
+            <option>Analista Técnico de Políticas Sociais</option>
+            <option>Especialista em Políticas Públicas</option>
+          </optgroup>
+        </select>
+      </template>
+    </section>
+
+    <!-- ---- Textarea ---- -->
+    <section>
+      <h3>Área de texto — <code>&lt;textarea&gt;</code></h3>
+      <template>
+        <label for="f-textarea">Descrição da solicitação</label>
+        <textarea id="f-textarea" rows="4"
+          placeholder="Descreva detalhadamente sua solicitação..."></textarea>
+      </template>
+    </section>
+
+    <!-- ---- Checkbox ---- -->
+    <section>
+      <h3>Caixa de seleção — <code>type="checkbox"</code></h3>
+      <template>
+        <label>
+          <input type="checkbox" name="termos" value="aceito">
+          Aceito os termos de uso e política de privacidade
+        </label>
+        <label>
+          <input type="checkbox" name="notif" value="email" checked>
+          Receber notificações por e-mail
+        </label>
+        <label>
+          <input type="checkbox" name="notif" value="sms">
+          Receber notificações por SMS
+        </label>
+        <label>
+          <input type="checkbox" name="notif" value="app" disabled>
+          Notificações pelo app (indisponível)
+        </label>
+      </template>
+    </section>
+
+    <!-- ---- Radio ---- -->
+    <section>
+      <h3>Botão de opção — <code>type="radio"</code></h3>
+      <template>
+        <fieldset>
+          <legend>Perfil de acesso</legend>
+          <label>
+            <input type="radio" name="perfil" value="consulta" checked>
+            Consulta — somente leitura
+          </label>
+          <label>
+            <input type="radio" name="perfil" value="gestor">
+            Gestor — leitura e edição
+          </label>
+          <label>
+            <input type="radio" name="perfil" value="admin">
+            Administrador — acesso total
+          </label>
+          <label>
+            <input type="radio" name="perfil" value="inativo" disabled>
+            Inativo (desabilitado)
+          </label>
+        </fieldset>
+      </template>
+    </section>
+
+    <!-- ---- Range ---- -->
+    <section>
+      <h3>Controle deslizante — <code>type="range"</code></h3>
+      <template>
+        <label for="f-range">
+          Prioridade: <output id="out-range">5</output>
+        </label>
+        <input type="range" id="f-range" min="1" max="10" value="5"
+               oninput="document.getElementById('out-range').textContent = this.value">
+      </template>
+    </section>
+
+    <!-- ---- Special types ---- -->
+    <section>
+      <h3>Tipos especiais</h3>
+      <template>
+        <label for="f-color">Cor de destaque</label>
+        <input type="color" id="f-color" value="#1351b4">
+
+        <label for="f-file">Arquivo</label>
+        <input type="file" id="f-file" accept=".pdf,.docx,.png,.jpg">
+      </template>
+    </section>
+
+    <!-- ---- Fieldset ---- -->
+    <section>
+      <h3>Fieldset e legend</h3>
+      <template>
+        <fieldset>
+          <legend>Dados do requerente</legend>
+
+          <label for="f-nome">Nome completo</label>
+          <input type="text" id="f-nome" placeholder="Ex.: João da Silva" autocomplete="name">
+
+          <label for="f-cpf">CPF</label>
+          <input type="text" id="f-cpf" placeholder="000.000.000-00" inputmode="numeric">
+
+          <label for="f-org">Órgão de lotação</label>
+          <select id="f-org">
+            <option value="">Selecione...</option>
+            <option>Ministério da Gestão</option>
+            <option>Receita Federal</option>
+            <option>INSS</option>
+          </select>
+
+          <button type="submit">Enviar</button>
+          <input type="reset" value="Limpar">
+        </fieldset>
+      </template>
+    </section>
+
+    <!-- ---- Disabled state ---- -->
+    <section>
+      <h3>Estado desabilitado</h3>
+      <p>O atributo <code>disabled</code> aplica opacidade 0,6 e cursor de bloqueio.</p>
+      <template>
+        <label for="f-disabled">Campo somente leitura</label>
+        <input type="text" id="f-disabled" value="Atribuído pelo sistema" disabled>
+
+        <label for="f-disabled-sel">Seleção bloqueada</label>
+        <select id="f-disabled-sel" disabled>
+          <option>Nível Bronze (atribuído)</option>
+        </select>
+
+        <label for="f-disabled-ta">Observações (bloqueado)</label>
+        <textarea id="f-disabled-ta" disabled>Sem observações.</textarea>
+      </template>
+    </section>
+
+    <!-- ---- Validation ---- -->
+    <section>
+      <h3>Validação nativa do navegador</h3>
+      <p>
+        Os pseudo-seletores <code>:valid</code> e <code>:invalid</code> são estilizados
+        automaticamente — borda verde para válido, vermelha + ícone para inválido.
+        A validação ativa somente após interação (via <code>:not(:placeholder-shown)</code>).
+      </p>
+      <template>
+        <label for="f-val-email">E-mail (tente digitar algo inválido)</label>
+        <input type="email" id="f-val-email" placeholder="usuario@dominio.com.br">
+
+        <label for="f-val-num">Número entre 1 e 10</label>
+        <input type="number" id="f-val-num" min="1" max="10" placeholder="1–10">
+      </template>
+    </section>
+  </main>
+
+  <footer>
+    <p>GovBR Classless — Padrão Digital de Governo 3.7.0</p>
+  </footer>
+  <script src="shared.js"></script>
+</body>
+</html>

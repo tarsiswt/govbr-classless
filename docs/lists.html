@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listas — GovBR Classless Docs</title>
+  <link rel="stylesheet" href="../govbr-classless.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <a href="#main">Pular para o conteúdo</a>
+  <header>
+    <h1><a href="../index.html">GovBR Classless</a></h1>
+    <nav aria-label="Componentes">
+      <ul>
+        <li><a href="typography.html">Tipografia</a></li>
+        <li><a href="code.html">Código</a></li>
+        <li><a href="lists.html">Listas</a></li>
+        <li><a href="tables.html">Tabelas</a></li>
+        <li><a href="forms.html">Formulários</a></li>
+        <li><a href="buttons.html">Botões</a></li>
+        <li><a href="accordion.html">Acordeão</a></li>
+        <li><a href="dialog.html">Dialog</a></li>
+        <li><a href="progress.html">Progresso</a></li>
+        <li><a href="media.html">Mídia</a></li>
+        <li><a href="layout.html">Layout</a></li>
+        <li><a href="tokens.html">Tokens</a></li>
+        <li><a href="../tests/index.html">▶ Testes</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h2>Listas</h2>
+    <p>
+      Listas não ordenadas, ordenadas, aninhadas e de definição, todas estilizadas
+      automaticamente com o espaçamento e a tipografia do Padrão Digital de Governo.
+    </p>
+
+    <!-- ---- Unordered ---- -->
+    <section>
+      <h3>Lista não ordenada — <code>&lt;ul&gt;</code></h3>
+      <template>
+        <ul>
+          <li>Serviços digitais centrados no cidadão</li>
+          <li>Acessibilidade conforme eMAG e WCAG 2.1</li>
+          <li>Identidade visual padronizada</li>
+          <li>Dados abertos e transparência</li>
+          <li>Interoperabilidade entre sistemas</li>
+        </ul>
+      </template>
+    </section>
+
+    <!-- ---- Ordered ---- -->
+    <section>
+      <h3>Lista ordenada — <code>&lt;ol&gt;</code></h3>
+      <template>
+        <ol>
+          <li>Acesse o portal com sua conta gov.br</li>
+          <li>Selecione o serviço desejado</li>
+          <li>Preencha o formulário com seus dados</li>
+          <li>Anexe os documentos digitalizados</li>
+          <li>Assine digitalmente e envie</li>
+          <li>Acompanhe o status pelo aplicativo ou e-mail</li>
+        </ol>
+      </template>
+    </section>
+
+    <!-- ---- Nested ---- -->
+    <section>
+      <h3>Listas aninhadas</h3>
+      <p>
+        Até 3 níveis de aninhamento com marcadores distintos:
+        disco, círculo e quadrado.
+      </p>
+      <template>
+        <ul>
+          <li>Princípios de design de serviços
+            <ul>
+              <li>Centrado no usuário
+                <ul>
+                  <li>Pesquisa com usuários reais</li>
+                  <li>Testes de usabilidade</li>
+                </ul>
+              </li>
+              <li>Simples e intuitivo</li>
+              <li>Acessível a todos</li>
+            </ul>
+          </li>
+          <li>Implementação técnica
+            <ul>
+              <li>HTML semântico</li>
+              <li>CSS progressivo</li>
+              <li>JavaScript mínimo</li>
+            </ul>
+          </li>
+          <li>Governança</li>
+        </ul>
+      </template>
+    </section>
+
+    <!-- ---- Ordered nested ---- -->
+    <section>
+      <h3>Lista ordenada aninhada</h3>
+      <template>
+        <ol>
+          <li>Planejamento
+            <ol>
+              <li>Definição de requisitos</li>
+              <li>Pesquisa com usuários</li>
+            </ol>
+          </li>
+          <li>Design
+            <ol>
+              <li>Prototipagem</li>
+              <li>Testes de usabilidade</li>
+              <li>Aprovação do layout</li>
+            </ol>
+          </li>
+          <li>Desenvolvimento</li>
+          <li>Lançamento e monitoramento</li>
+        </ol>
+      </template>
+    </section>
+
+    <!-- ---- Definition list ---- -->
+    <section>
+      <h3>Lista de definições — <code>&lt;dl&gt;</code></h3>
+      <p>Use para glossários, metadados e pares chave-valor.</p>
+      <template>
+        <dl>
+          <dt>eMAG</dt>
+          <dd>
+            Modelo de Acessibilidade em Governo Eletrônico — recomendações de
+            acessibilidade digital para sítios e portais do governo brasileiro.
+          </dd>
+
+          <dt>WCAG</dt>
+          <dd>
+            Web Content Accessibility Guidelines — diretrizes internacionais
+            para acessibilidade de conteúdo web, publicadas pela W3C.
+          </dd>
+
+          <dt>PdG</dt>
+          <dd>
+            Padrão Digital de Governo — conjunto de diretrizes, componentes e
+            boas práticas para os serviços digitais federais.
+          </dd>
+
+          <dt>gov.br</dt>
+          <dd>
+            Portal único do governo federal brasileiro, ponto de acesso integrado
+            a serviços e informações públicas.
+          </dd>
+        </dl>
+      </template>
+    </section>
+
+    <!-- ---- Metadata use case ---- -->
+    <section>
+      <h3>Metadados com dl</h3>
+      <p>Um uso comum: exibir detalhes de um processo ou serviço.</p>
+      <template>
+        <dl>
+          <dt>Número do protocolo</dt>
+          <dd>2026.00012345-7</dd>
+
+          <dt>Situação</dt>
+          <dd>Em análise</dd>
+
+          <dt>Data de abertura</dt>
+          <dd><time datetime="2026-05-01">01 de maio de 2026</time></dd>
+
+          <dt>Prazo de resposta</dt>
+          <dd><time datetime="2026-05-20">20 de maio de 2026</time></dd>
+
+          <dt>Órgão responsável</dt>
+          <dd>Ministério da Gestão e da Inovação</dd>
+        </dl>
+      </template>
+    </section>
+  </main>
+
+  <footer>
+    <p>GovBR Classless — Padrão Digital de Governo 3.7.0</p>
+  </footer>
+  <script src="shared.js"></script>
+</body>
+</html>

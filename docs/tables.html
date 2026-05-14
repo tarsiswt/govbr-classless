@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabelas — GovBR Classless Docs</title>
+  <link rel="stylesheet" href="../govbr-classless.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <a href="#main">Pular para o conteúdo</a>
+  <header>
+    <h1><a href="../index.html">GovBR Classless</a></h1>
+    <nav aria-label="Componentes">
+      <ul>
+        <li><a href="typography.html">Tipografia</a></li>
+        <li><a href="code.html">Código</a></li>
+        <li><a href="lists.html">Listas</a></li>
+        <li><a href="tables.html">Tabelas</a></li>
+        <li><a href="forms.html">Formulários</a></li>
+        <li><a href="buttons.html">Botões</a></li>
+        <li><a href="accordion.html">Acordeão</a></li>
+        <li><a href="dialog.html">Dialog</a></li>
+        <li><a href="progress.html">Progresso</a></li>
+        <li><a href="media.html">Mídia</a></li>
+        <li><a href="layout.html">Layout</a></li>
+        <li><a href="tokens.html">Tokens</a></li>
+        <li><a href="../tests/index.html">▶ Testes</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h2>Tabelas</h2>
+    <p>
+      Tabelas com cabeçalho azul gov.br, linhas alternadas e hover. Em telas pequenas,
+      a tabela recebe scroll horizontal automático sem quebrar o layout.
+    </p>
+
+    <!-- ---- Minimal ---- -->
+    <section>
+      <h3>Tabela mínima</h3>
+      <p>Com <code>&lt;thead&gt;</code> e <code>&lt;tbody&gt;</code> básicos.</p>
+      <template>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">CPF</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Maria das Graças</td>
+              <td>123.456.789-00</td>
+              <td>Ativo</td>
+            </tr>
+            <tr>
+              <td>José Pereira</td>
+              <td>987.654.321-00</td>
+              <td>Inativo</td>
+            </tr>
+            <tr>
+              <td>Ana Lúcia Moraes</td>
+              <td>456.789.123-00</td>
+              <td>Pendente</td>
+            </tr>
+          </tbody>
+        </table>
+      </template>
+    </section>
+
+    <!-- ---- Full ---- -->
+    <section>
+      <h3>Tabela completa — caption + thead + tbody + tfoot</h3>
+      <template>
+        <table>
+          <caption>Execução orçamentária — exercício 2025 (valores em R$ mil)</caption>
+          <thead>
+            <tr>
+              <th scope="col">Ação</th>
+              <th scope="col">Órgão</th>
+              <th scope="col">Dotação</th>
+              <th scope="col">Empenhado</th>
+              <th scope="col">Pago</th>
+              <th scope="col">% Exec.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Digitalização de serviços</td>
+              <td>MGI</td>
+              <td>R$ 42.000</td>
+              <td>R$ 38.500</td>
+              <td>R$ 35.200</td>
+              <td>83,8%</td>
+            </tr>
+            <tr>
+              <td>Infraestrutura de TIC</td>
+              <td>STN</td>
+              <td>R$ 28.700</td>
+              <td>R$ 27.100</td>
+              <td>R$ 24.800</td>
+              <td>86,4%</td>
+            </tr>
+            <tr>
+              <td>Capacitação em gov.br</td>
+              <td>ENAP</td>
+              <td>R$ 8.200</td>
+              <td>R$ 7.900</td>
+              <td>R$ 7.600</td>
+              <td>92,7%</td>
+            </tr>
+            <tr>
+              <td>Segurança cibernética</td>
+              <td>CTIR Gov</td>
+              <td>R$ 15.400</td>
+              <td>R$ 14.100</td>
+              <td>R$ 12.900</td>
+              <td>83,8%</td>
+            </tr>
+            <tr>
+              <td>Open data / transparência</td>
+              <td>CGU</td>
+              <td>R$ 6.500</td>
+              <td>R$ 6.100</td>
+              <td>R$ 5.800</td>
+              <td>89,2%</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2"><strong>Total</strong></td>
+              <td><strong>R$ 100.800</strong></td>
+              <td><strong>R$ 93.700</strong></td>
+              <td><strong>R$ 86.300</strong></td>
+              <td><strong>85,6%</strong></td>
+            </tr>
+          </tfoot>
+        </table>
+      </template>
+    </section>
+
+    <!-- ---- Without thead (no blue header) ---- -->
+    <section>
+      <h3>Tabela sem cabeçalho</h3>
+      <p>Quando não há <code>&lt;thead&gt;</code>, a tabela mostra apenas o corpo de dados.</p>
+      <template>
+        <table>
+          <tbody>
+            <tr>
+              <th scope="row">Protocolo</th>
+              <td>2026.00012345-7</td>
+            </tr>
+            <tr>
+              <th scope="row">Situação</th>
+              <td>Em análise</td>
+            </tr>
+            <tr>
+              <th scope="row">Abertura</th>
+              <td>01/05/2026</td>
+            </tr>
+            <tr>
+              <th scope="row">Órgão</th>
+              <td>Ministério da Gestão</td>
+            </tr>
+          </tbody>
+        </table>
+      </template>
+    </section>
+  </main>
+
+  <footer>
+    <p>GovBR Classless — Padrão Digital de Governo 3.7.0</p>
+  </footer>
+  <script src="shared.js"></script>
+</body>
+</html>

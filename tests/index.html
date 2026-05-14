@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovBR Classless — Test Suite</title>
+
+  <!-- Framework under test -->
+  <link rel="stylesheet" href="../govbr-classless.css">
+
+  <style>
+    /* Test runner UI — purposely minimal, using framework tokens */
+    body { font-family: var(--font-family-base, sans-serif); }
+
+    #test-container {
+      /* Hidden fixture area — elements here are styled by govbr-classless.css
+         but not visible to the user. getComputedStyle() still works. */
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      width: 1200px; /* realistic viewport width for rem calculations */
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Override main padding for test UI */
+    main { max-width: 900px; }
+
+    /* Summary bar */
+    #summary {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 12px 24px;
+      background: var(--color-primary-darken-02, #071d41);
+      color: #fff;
+      font-size: 0.929rem;
+      font-weight: 600;
+    }
+    #summary-pass  { color: #6bdc79; }
+    #summary-fail  { color: #ff8080; }
+    #summary-total { color: #aac; }
+    #summary-status { margin-left: auto; font-size: 1.1rem; }
+
+    /* Group headings */
+    .test-group {
+      margin-bottom: 32px;
+    }
+    .test-group h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--interactive, #1351b4);
+      border-bottom: 2px solid var(--gray-10, #dfe1e2);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+
+    /* Individual test rows */
+    .test-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px 12px;
+      margin-bottom: 4px;
+      border-radius: 4px;
+      font-size: 0.857rem;
+    }
+    .test-row.pass { background: #ecf3ec; }
+    .test-row.fail { background: #fff3f2; }
+    .test-row.skip { background: #f0f0f0; color: #888; }
+
+    .test-icon {
+      flex-shrink: 0;
+      font-size: 1rem;
+      line-height: 1.4;
+      width: 20px;
+      text-align: center;
+    }
+
+    .test-desc { flex: 1; font-weight: 500; }
+
+    .test-detail {
+      flex-shrink: 0;
+      font-family: monospace;
+      font-size: 0.786rem;
+      color: #555;
+      max-width: 320px;
+      word-break: break-all;
+    }
+    .test-row.fail .test-detail { color: var(--danger, #e52207); }
+    .test-row.pass .test-detail { color: var(--success, #168821); }
+
+    /* Re-run button */
+    #btn-rerun { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- Hidden fixture: all test elements are rendered here -->
+  <div id="test-container" aria-hidden="true"></div>
+
+  <!-- Summary bar (filled by JS) -->
+  <div id="summary" role="status" aria-live="polite">
+    <span>GovBR Classless — Test Suite</span>
+    <span id="summary-pass">✓ 0 passed</span>
+    <span id="summary-fail">✗ 0 failed</span>
+    <span id="summary-total">/ 0 total</span>
+    <span id="summary-status">⏳ Running…</span>
+  </div>
+
+  <main>
+    <h2>Suite de testes</h2>
+    <p>
+      Verifica as propriedades CSS computadas de cada componente do
+      <strong>GovBR Classless</strong> diretamente no navegador.
+      Sem dependências externas — abra o arquivo, leia os resultados.
+    </p>
+    <p>
+      <button type="button" id="btn-rerun">↺ Executar novamente</button>
+      <a href="../index.html" role="button" data-variant="secondary">← Documentação</a>
+    </p>
+
+    <div id="results"></div>
+  </main>
+
+  <footer>
+    <p>GovBR Classless — Padrão Digital de Governo 3.7.0</p>
+  </footer>
+
+<script>
+/* ============================================================
+   GovBR Classless — Browser Test Suite
+   Strategy: inject each test's HTML into a hidden, full-width
+   container div that has govbr-classless.css applied. Then
+   use getComputedStyle() to assert property values.
+   ============================================================ */
+
+'use strict';
+
+/* ---- Test definitions ---- */
+/* Each test:
+     group    — display group name
+     desc     — human-readable description
+     html     — HTML to inject into the fixture container
+     sel      — CSS selector relative to the injected HTML
+     prop     — camelCase CSS property name for getComputedStyle()
+     eq       — exact expected value (string), OR
+     fn       — function(value) => boolean for custom checks
+     note     — (optional) shown in detail column on failure
+*/
+const SUITES = [
+
+  /* ---- Typography ---- */
+  {
+    group: 'Tipografia — Headings',
+    tests: [
+      {
+        desc: 'h1 font-size = 42px (3rem × 14px base)',
+        html: '<h1>X</h1>',
+        sel: 'h1', prop: 'fontSize', eq: '42px',
+      },
+      {
+        desc: 'h2 font-size = 35px (2.5rem × 14px)',
+        html: '<h2>X</h2>',
+        sel: 'h2', prop: 'fontSize', eq: '35px',
+      },
+      {
+        desc: 'h3 font-size = 28px (2rem × 14px)',
+        html: '<h3>X</h3>',
+        sel: 'h3', prop: 'fontSize', eq: '28px',
+      },
+      {
+        desc: 'h4 font-size = 21px (1.5rem × 14px)',
+        html: '<h4>X</h4>',
+        sel: 'h4', prop: 'fontSize', eq: '21px',
+      },
+      {
+        desc: 'h5 font-size = 17.5px (1.25rem × 14px)',
+        html: '<h5>X</h5>',
+        sel: 'h5', prop: 'fontSize',
+        fn: v => parseFloat(v) >= 17 && parseFloat(v) <= 18,
+        note: 'Expect ~17.5px (some browsers round to 17 or 18)',
+      },
+      {
+        desc: 'h6 font-size = 14px (1rem × 14px base)',
+        html: '<h6>X</h6>',
+        sel: 'h6', prop: 'fontSize', eq: '14px',
+      },
+      {
+        desc: 'h1 line-height is low (≤ 1.2 ratio)',
+        html: '<h1>X</h1>',
+        sel: 'h1', prop: 'lineHeight',
+        fn: v => parseFloat(v) <= parseFloat('42px') * 1.2,
+        note: 'line-height should be ≤ 1.2 × font-size for headings',
+      },
+      {
+        desc: 'h2 font-weight = 700 (bold)',
+        html: '<h2>X</h2>',
+        sel: 'h2', prop: 'fontWeight', eq: '700',
+      },
+    ],
+  },
+
+  /* ---- Typography — Text ---- */
+  {
+    group: 'Tipografia — Texto',
+    tests: [
+      {
+        desc: 'p line-height is high (≥ 1.8 × font-size)',
+        html: '<p>X</p>',
+        sel: 'p', prop: 'lineHeight',
+        fn: v => parseFloat(v) >= 14 * 1.8,
+        note: 'Expect 14px × 1.85 = 25.9px',
+      },
+      {
+        desc: 'p max-width is limited (≤ 80ch worth of px)',
+        html: '<p>X</p>',
+        sel: 'p', prop: 'maxWidth',
+        fn: v => v !== 'none' && parseFloat(v) > 0,
+        note: 'max-width: 72ch should restrict paragraph width',
+      },
+      {
+        desc: 'a color = #1351b4 (interactive blue)',
+        html: '<a href="#">link</a>',
+        sel: 'a', prop: 'color', eq: 'rgb(19, 81, 180)',
+      },
+      {
+        desc: 'strong font-weight = 700',
+        html: '<p><strong>bold</strong></p>',
+        sel: 'strong', prop: 'fontWeight', eq: '700',
+      },
+      {
+        desc: 'em font-style = italic',
+        html: '<p><em>italic</em></p>',
+        sel: 'em', prop: 'fontStyle', eq: 'italic',
+      },
+      {
+        desc: 'small font-size < body font-size',
+        html: '<small>small</small>',
+        sel: 'small', prop: 'fontSize',
+        fn: v => parseFloat(v) < 14,
+        note: 'small should be smaller than 14px base',
+      },
+      {
+        desc: 'mark has background-color (highlight)',
+        html: '<mark>highlight</mark>',
+        sel: 'mark', prop: 'backgroundColor',
+        fn: v => v !== 'rgba(0, 0, 0, 0)' && v !== 'transparent',
+        note: 'mark background should be the gold highlight color',
+      },
+      {
+        desc: 'blockquote has left border-left-style = solid',
+        html: '<blockquote><p>quote</p></blockquote>',
+        sel: 'blockquote', prop: 'borderLeftStyle', eq: 'solid',
+      },
+      {
+        desc: 'blockquote border-left-width = 4px',
+        html: '<blockquote><p>quote</p></blockquote>',
+        sel: 'blockquote', prop: 'borderLeftWidth', eq: '4px',
+      },
+    ],
+  },
+
+  /* ---- Code ---- */
+  {
+    group: 'Código',
+    tests: [
+      {
+        desc: 'code has monospace font-family',
+        html: '<code>x</code>',
+        sel: 'code', prop: 'fontFamily',
+        fn: v => v.toLowerCase().includes('courier') || v.toLowerCase().includes('monospace'),
+        note: 'code should use a monospace font',
+      },
+      {
+        desc: 'pre has dark background-color',
+        html: '<pre><code>x</code></pre>',
+        sel: 'pre', prop: 'backgroundColor',
+        fn: v => {
+          // #071d41 = rgb(7, 29, 65) — check it's a dark color
+          const [r, g, b] = v.match(/\d+/g).map(Number);
+          return r < 100 && g < 100 && b < 100;
+        },
+        note: 'pre background should be dark (#071d41)',
+      },
+      {
+        desc: 'pre has overflow-x = auto',
+        html: '<pre><code>x</code></pre>',
+        sel: 'pre', prop: 'overflowX', eq: 'auto',
+      },
+    ],
+  },
+
+  /* ---- Lists ---- */
+  {
+    group: 'Listas',
+    tests: [
+      {
+        desc: 'ul list-style-type = disc',
+        html: '<ul><li>x</li></ul>',
+        sel: 'ul', prop: 'listStyleType', eq: 'disc',
+      },
+      {
+        desc: 'ol list-style-type = decimal',
+        html: '<ol><li>x</li></ol>',
+        sel: 'ol', prop: 'listStyleType', eq: 'decimal',
+      },
+      {
+        desc: 'ul has padding-left (indented)',
+        html: '<ul><li>x</li></ul>',
+        sel: 'ul', prop: 'paddingLeft',
+        fn: v => parseFloat(v) >= 20,
+        note: 'List should be indented ≥ 20px',
+      },
+      {
+        desc: 'dt font-weight = 600 or 700 (semi-bold or bold)',
+        html: '<dl><dt>term</dt><dd>def</dd></dl>',
+        sel: 'dt', prop: 'fontWeight',
+        fn: v => parseInt(v) >= 600,
+        note: 'dt should have semi-bold or bold weight',
+      },
+    ],
+  },
+
+  /* ---- Tables ---- */
+  {
+    group: 'Tabelas',
+    tests: [
+      {
+        desc: 'table border-collapse = collapse',
+        html: '<table><tbody><tr><td>x</td></tr></tbody></table>',
+        sel: 'table', prop: 'borderCollapse', eq: 'collapse',
+      },
+      {
+        desc: 'thead background-color = #1351b4 (primary blue)',
+        html: '<table><thead><tr><th>H</th></tr></thead><tbody><tr><td>x</td></tr></tbody></table>',
+        sel: 'thead', prop: 'backgroundColor', eq: 'rgb(19, 81, 180)',
+      },
+      {
+        desc: 'thead color = white',
+        html: '<table><thead><tr><th>H</th></tr></thead><tbody><tr><td>x</td></tr></tbody></table>',
+        sel: 'thead', prop: 'color', eq: 'rgb(255, 255, 255)',
+      },
+      {
+        desc: 'th text-align = left',
+        html: '<table><thead><tr><th>H</th></tr></thead><tbody><tr><td>x</td></tr></tbody></table>',
+        sel: 'th', prop: 'textAlign', eq: 'left',
+      },
+      {
+        desc: 'td has padding (≥ 8px top)',
+        html: '<table><tbody><tr><td>x</td></tr></tbody></table>',
+        sel: 'td', prop: 'paddingTop',
+        fn: v => parseFloat(v) >= 8,
+        note: 'td should have vertical padding ≥ 8px',
+      },
+    ],
+  },
+
+  /* ---- Forms — Inputs ---- */
+  {
+    group: 'Formulários — Inputs',
+    tests: [
+      {
+        desc: 'input[type=text] display = block',
+        html: '<input type="text">',
+        sel: 'input', prop: 'display', eq: 'block',
+      },
+      {
+        desc: 'input[type=text] width = 100% of container',
+        html: '<div style="width:600px"><input type="text"></div>',
+        sel: 'input', prop: 'width', eq: '600px',
+      },
+      {
+        desc: 'input[type=text] border-radius = 4px (radius-sm)',
+        html: '<input type="text">',
+        sel: 'input', prop: 'borderRadius', eq: '4px',
+      },
+      {
+        desc: 'input[type=text] has border-width ≥ 1px',
+        html: '<input type="text">',
+        sel: 'input', prop: 'borderTopWidth',
+        fn: v => parseFloat(v) >= 1,
+        note: 'Input should have a visible border',
+      },
+      {
+        desc: 'input[type=text] min-height = 40px',
+        html: '<input type="text">',
+        sel: 'input', prop: 'minHeight', eq: '40px',
+      },
+      {
+        desc: 'select has appearance = none (custom styled)',
+        html: '<select><option>X</option></select>',
+        sel: 'select', prop: 'appearance',
+        fn: v => v === 'none' || v === 'auto', /* browsers may differ */
+        note: 'Expect appearance: none for custom styled select',
+      },
+      {
+        desc: 'textarea resize = vertical',
+        html: '<textarea></textarea>',
+        sel: 'textarea', prop: 'resize', eq: 'vertical',
+      },
+      {
+        desc: 'label display = block',
+        html: '<label>L</label>',
+        sel: 'label', prop: 'display', eq: 'block',
+      },
+      {
+        desc: 'input[disabled] opacity = 0.5 (or close)',
+        html: '<input type="text" disabled>',
+        sel: 'input', prop: 'opacity',
+        fn: v => Math.abs(parseFloat(v) - 0.6) < 0.15,
+        note: 'Expect opacity around 0.5–0.6 for disabled',
+      },
+      {
+        desc: 'input[type=range] does not have min-height constraint',
+        html: '<input type="range">',
+        sel: 'input', prop: 'minHeight',
+        fn: v => v === 'none' || v === '0px' || parseFloat(v) < 20,
+        note: 'Range inputs should not be min-height: 40px',
+      },
+    ],
+  },
+
+  /* ---- Buttons ---- */
+  {
+    group: 'Botões',
+    tests: [
+      {
+        desc: 'button background-color = #1351b4 (primary blue)',
+        html: '<button>X</button>',
+        sel: 'button', prop: 'backgroundColor', eq: 'rgb(19, 81, 180)',
+      },
+      {
+        desc: 'button color = white',
+        html: '<button>X</button>',
+        sel: 'button', prop: 'color', eq: 'rgb(255, 255, 255)',
+      },
+      {
+        desc: 'button border-radius is pill-shaped (> 100px)',
+        html: '<button>X</button>',
+        sel: 'button', prop: 'borderRadius',
+        fn: v => parseFloat(v) > 100,
+        note: 'border-radius: 999em should compute to a large px value',
+      },
+      {
+        desc: 'button font-weight = 600 (semi-bold)',
+        html: '<button>X</button>',
+        sel: 'button', prop: 'fontWeight', eq: '600',
+      },
+      {
+        desc: 'button min-height = 40px',
+        html: '<button>X</button>',
+        sel: 'button', prop: 'minHeight', eq: '40px',
+      },
+      {
+        desc: 'button[disabled] opacity ≤ 0.6',
+        html: '<button disabled>X</button>',
+        sel: 'button', prop: 'opacity',
+        fn: v => parseFloat(v) <= 0.6,
+        note: 'Disabled button should have reduced opacity',
+      },
+      {
+        desc: 'button[data-variant="secondary"] background = transparent',
+        html: '<button data-variant="secondary">X</button>',
+        sel: 'button', prop: 'backgroundColor',
+        fn: v => v === 'rgba(0, 0, 0, 0)' || v === 'transparent',
+        note: 'Secondary button should have no background',
+      },
+      {
+        desc: 'button[data-variant="danger"] background = #e52207',
+        html: '<button data-variant="danger">X</button>',
+        sel: 'button', prop: 'backgroundColor', eq: 'rgb(229, 34, 7)',
+      },
+      {
+        desc: 'button[data-variant="success"] background = #168821',
+        html: '<button data-variant="success">X</button>',
+        sel: 'button', prop: 'backgroundColor', eq: 'rgb(22, 136, 33)',
+      },
+      {
+        desc: 'button[data-variant="warning"] background = #f5820d',
+        html: '<button data-variant="warning">X</button>',
+        sel: 'button', prop: 'backgroundColor', eq: 'rgb(245, 130, 13)',
+      },
+      {
+        desc: 'a[role="button"] background = #1351b4',
+        html: '<a href="#" role="button">X</a>',
+        sel: 'a', prop: 'backgroundColor', eq: 'rgb(19, 81, 180)',
+      },
+      {
+        desc: 'input[type=reset] background = transparent',
+        html: '<input type="reset" value="X">',
+        sel: 'input', prop: 'backgroundColor',
+        fn: v => v === 'rgba(0, 0, 0, 0)' || v === 'transparent',
+        note: 'Reset input should have transparent background',
+      },
+    ],
+  },
+
+  /* ---- Layout regions ---- */
+  {
+    group: 'Layout',
+    tests: [
+      {
+        desc: 'body display = flex',
+        html: '',
+        sel: null, /* special: test body element itself */
+        _bodyProp: 'display', _bodyExpect: 'flex',
+      },
+      {
+        desc: 'body flex-direction = column',
+        html: '',
+        sel: null,
+        _bodyProp: 'flexDirection', _bodyExpect: 'column',
+      },
+      {
+        desc: 'header background-color = #1351b4',
+        html: '<header><h1>X</h1></header>',
+        sel: 'header', prop: 'backgroundColor', eq: 'rgb(19, 81, 180)',
+      },
+      {
+        desc: 'header position = sticky',
+        html: '<header><h1>X</h1></header>',
+        sel: 'header', prop: 'position', eq: 'sticky',
+      },
+      {
+        desc: 'footer background-color = #071d41',
+        html: '<footer><p>X</p></footer>',
+        sel: 'footer', prop: 'backgroundColor', eq: 'rgb(7, 29, 65)',
+      },
+      {
+        desc: 'nav ul list-style-type = none',
+        html: '<nav><ul><li><a href="#">X</a></li></ul></nav>',
+        sel: 'nav ul', prop: 'listStyleType', eq: 'none',
+      },
+      {
+        desc: 'nav a text-decoration = none',
+        html: '<nav><ul><li><a href="#">X</a></li></ul></nav>',
+        sel: 'nav a', prop: 'textDecorationLine',
+        fn: v => v === 'none' || v === '',
+        note: 'Nav links should not be underlined',
+      },
+      {
+        desc: 'aside border-left-width = 4px',
+        html: '<aside><p>X</p></aside>',
+        sel: 'aside', prop: 'borderLeftWidth', eq: '4px',
+      },
+    ],
+  },
+
+  /* ---- Details / Accordion ---- */
+  {
+    group: 'Acordeão (details)',
+    tests: [
+      {
+        desc: 'summary cursor = pointer',
+        html: '<details><summary>X</summary><p>Y</p></details>',
+        sel: 'summary', prop: 'cursor', eq: 'pointer',
+      },
+      {
+        desc: 'summary display = flex',
+        html: '<details><summary>X</summary><p>Y</p></details>',
+        sel: 'summary', prop: 'display', eq: 'flex',
+      },
+      {
+        desc: 'summary user-select = none',
+        html: '<details><summary>X</summary><p>Y</p></details>',
+        sel: 'summary', prop: 'userSelect', eq: 'none',
+      },
+    ],
+  },
+
+  /* ---- Progress ---- */
+  {
+    group: 'Progresso',
+    tests: [
+      {
+        desc: 'progress display = block',
+        html: '<progress value="50" max="100">50%</progress>',
+        sel: 'progress', prop: 'display', eq: 'block',
+      },
+      {
+        desc: 'progress height = 8px',
+        html: '<progress value="50" max="100">50%</progress>',
+        sel: 'progress', prop: 'height', eq: '8px',
+      },
+      {
+        desc: 'progress width = 100% of container',
+        html: '<div style="width:500px"><progress value="50" max="100">50%</progress></div>',
+        sel: 'progress', prop: 'width', eq: '500px',
+      },
+    ],
+  },
+
+  /* ---- Media ---- */
+  {
+    group: 'Mídia',
+    tests: [
+      {
+        desc: 'img display = block',
+        html: '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">',
+        sel: 'img', prop: 'display', eq: 'block',
+      },
+      {
+        desc: 'img max-width = 100%',
+        html: '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">',
+        sel: 'img', prop: 'maxWidth', eq: '100%',
+      },
+      {
+        desc: 'figcaption font-style = italic',
+        html: '<figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""><figcaption>Caption</figcaption></figure>',
+        sel: 'figcaption', prop: 'fontStyle', eq: 'italic',
+      },
+      {
+        desc: 'figcaption text-align = center',
+        html: '<figure><figcaption>Caption</figcaption></figure>',
+        sel: 'figcaption', prop: 'textAlign', eq: 'center',
+      },
+    ],
+  },
+
+  /* ---- HTML root ---- */
+  {
+    group: 'Raiz (html)',
+    tests: [
+      {
+        desc: 'html font-size = 14px (87.5% of 16px default)',
+        html: '',
+        sel: null,
+        _elProp: 'fontSize',
+        _elTarget: document.documentElement,
+        fn: v => parseFloat(v) === 14,
+        note: 'html { font-size: 87.5% } should resolve to 14px',
+      },
+    ],
+  },
+
+];
+
+/* ---- Test runner ---- */
+
+const container = document.getElementById('test-container');
+const resultsEl = document.getElementById('results');
+const summaryPass  = document.getElementById('summary-pass');
+const summaryFail  = document.getElementById('summary-fail');
+const summaryTotal = document.getElementById('summary-total');
+const summaryStatus = document.getElementById('summary-status');
+
+let totalPass = 0;
+let totalFail = 0;
+
+function run() {
+  totalPass = 0;
+  totalFail = 0;
+  resultsEl.innerHTML = '';
+
+  for (const suite of SUITES) {
+    const groupEl = document.createElement('div');
+    groupEl.className = 'test-group';
+    groupEl.innerHTML = `<h3>${suite.group}</h3>`;
+
+    for (const test of suite.tests) {
+      const row = runTest(test);
+      groupEl.appendChild(row);
+    }
+
+    resultsEl.appendChild(groupEl);
+  }
+
+  updateSummary();
+}
+
+function runTest(test) {
+  let actual, pass, detail;
+
+  try {
+    if (test._bodyProp) {
+      /* Special: test the body element */
+      actual = getComputedStyle(document.body)[test._bodyProp];
+      pass = actual === test._bodyExpect;
+      detail = actual;
+    } else if (test._elProp && test._elTarget) {
+      /* Special: test an explicit element (e.g. documentElement) */
+      actual = getComputedStyle(test._elTarget)[test._elProp];
+      pass = test.fn ? test.fn(actual) : (actual === test.eq);
+      detail = actual;
+    } else {
+      /* Standard: inject HTML, query, compute */
+      container.innerHTML = test.html;
+      const el = container.querySelector(test.sel);
+
+      if (!el) {
+        return makeRow('skip', test.desc, 'Element not found: ' + test.sel);
+      }
+
+      actual = getComputedStyle(el)[test.prop];
+
+      if (test.fn) {
+        pass = test.fn(actual);
+        detail = test.fn(actual)
+          ? actual
+          : `got "${actual}" — ${test.note || ''}`;
+      } else {
+        pass = actual === test.eq;
+        detail = pass
+          ? actual
+          : `expected "${test.eq}", got "${actual}"`;
+      }
+    }
+  } catch (e) {
+    return makeRow('fail', test.desc, 'Error: ' + e.message);
+  }
+
+  if (pass) {
+    totalPass++;
+    return makeRow('pass', test.desc, detail || actual);
+  } else {
+    totalFail++;
+    const failDetail = test.fn
+      ? `got "${actual}"${test.note ? ' — ' + test.note : ''}`
+      : detail;
+    return makeRow('fail', test.desc, failDetail);
+  }
+}
+
+function makeRow(status, desc, detail) {
+  const row = document.createElement('div');
+  row.className = 'test-row ' + status;
+
+  const icons = { pass: '✓', fail: '✗', skip: '○' };
+  row.innerHTML = `
+    <span class="test-icon" aria-hidden="true">${icons[status]}</span>
+    <span class="test-desc">${escHtml(desc)}</span>
+    <span class="test-detail">${escHtml(String(detail || ''))}</span>
+  `;
+  return row;
+}
+
+function updateSummary() {
+  const total = totalPass + totalFail;
+  summaryPass.textContent  = `✓ ${totalPass} passed`;
+  summaryFail.textContent  = `✗ ${totalFail} failed`;
+  summaryTotal.textContent = `/ ${total} total`;
+  summaryStatus.textContent = totalFail === 0 ? '✅ All passed' : `❌ ${totalFail} failed`;
+
+  document.title = `[${totalFail === 0 ? '✓' : '✗'} ${totalPass}/${total}] GovBR Classless Tests`;
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* Run on load, and wire up re-run button */
+run();
+document.getElementById('btn-rerun').addEventListener('click', run);
+</script>
+</body>
+</html>

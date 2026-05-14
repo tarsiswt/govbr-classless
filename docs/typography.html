@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tipografia — GovBR Classless Docs</title>
+  <link rel="stylesheet" href="../govbr-classless.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <a href="#main">Pular para o conteúdo</a>
+  <header>
+    <h1><a href="../index.html">GovBR Classless</a></h1>
+    <nav aria-label="Componentes">
+      <ul>
+        <li><a href="typography.html">Tipografia</a></li>
+        <li><a href="code.html">Código</a></li>
+        <li><a href="lists.html">Listas</a></li>
+        <li><a href="tables.html">Tabelas</a></li>
+        <li><a href="forms.html">Formulários</a></li>
+        <li><a href="buttons.html">Botões</a></li>
+        <li><a href="accordion.html">Acordeão</a></li>
+        <li><a href="dialog.html">Dialog</a></li>
+        <li><a href="progress.html">Progresso</a></li>
+        <li><a href="media.html">Mídia</a></li>
+        <li><a href="layout.html">Layout</a></li>
+        <li><a href="tokens.html">Tokens</a></li>
+        <li><a href="../tests/index.html">▶ Testes</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h2>Tipografia</h2>
+    <p>
+      A escala tipográfica é ancorada em <strong>14px</strong> (87,5% do padrão de 16px do navegador).
+      A fonte principal é <strong>Rawline</strong> com fallback para <strong>Raleway</strong>.
+      Todas as unidades são <code>rem</code>, relativas à raiz de 14px.
+    </p>
+
+    <!-- ---- Headings ---- -->
+    <section>
+      <h3>Títulos (h1–h6)</h3>
+      <p>Escala de 3rem (42px) a 1rem (14px). Nenhuma classe necessária.</p>
+      <template>
+        <h1>Heading 1 — 3rem (42px)</h1>
+        <h2>Heading 2 — 2,5rem (35px)</h2>
+        <h3>Heading 3 — 2rem (28px)</h3>
+        <h4>Heading 4 — 1,5rem (21px)</h4>
+        <h5>Heading 5 — 1,25rem (17,5px)</h5>
+        <h6>Heading 6 — 1rem (14px)</h6>
+      </template>
+    </section>
+
+    <!-- ---- Paragraph ---- -->
+    <section>
+      <h3>Parágrafo</h3>
+      <p>
+        Line-height alto (1,85) para máxima legibilidade.
+        Largura máxima de 72 caracteres automaticamente.
+      </p>
+      <template>
+        <p>
+          O Padrão Digital de Governo reúne diretrizes, componentes e padrões de
+          experiência do usuário para os serviços digitais do governo federal brasileiro.
+          Seu objetivo é garantir consistência, acessibilidade e qualidade em todos os
+          pontos de contato digital do cidadão com o Estado.
+        </p>
+        <p>
+          A tipografia é um dos pilares fundamentais: ela comunica hierarquia,
+          estabelece ritmo visual e garante a legibilidade em diferentes dispositivos
+          e condições de uso.
+        </p>
+      </template>
+    </section>
+
+    <!-- ---- Links ---- -->
+    <section>
+      <h3>Links</h3>
+      <p>
+        Cor padrão: azul <code>#1351b4</code>. Visitado: roxo. Foco: anel pontilhado
+        vermelho (padrão GovBR-DS). Hover: azul mais escuro + espessura da linha.
+      </p>
+      <template>
+        <p>
+          Visite o <a href="https://www.gov.br/ds/">Padrão Digital de Governo</a>
+          para a documentação completa. Veja também o
+          <a href="https://gitlab.com/govbr-ds/">repositório no GitLab</a>.
+        </p>
+      </template>
+    </section>
+
+    <!-- ---- Inline elements ---- -->
+    <section>
+      <h3>Elementos em linha</h3>
+      <template>
+        <p>
+          Use <strong>negrito</strong> para ênfase forte,
+          <em>itálico</em> para ênfase leve,
+          <small>texto menor</small> para notas secundárias,
+          <mark>destaque</mark> para realce visual,
+          <del>excluído</del> para remoções,
+          <ins>inserido</ins> para adições,
+          <abbr title="Padrão Digital de Governo">PdG</abbr> para siglas,
+          <sup>sobrescrito</sup> e <sub>subscrito</sub> para índices,
+          e <code>código</code> para valores técnicos.
+        </p>
+      </template>
+    </section>
+
+    <!-- ---- Blockquote ---- -->
+    <section>
+      <h3>Citação (blockquote)</h3>
+      <template>
+        <blockquote>
+          <p>
+            Os serviços digitais do governo devem ser simples, acessíveis e
+            centrados nas necessidades reais do cidadão, não na estrutura interna
+            do Estado.
+          </p>
+          <cite>Princípios de Design de Serviços Públicos — ENAP</cite>
+        </blockquote>
+      </template>
+    </section>
+
+    <!-- ---- Address ---- -->
+    <section>
+      <h3>Endereço (address)</h3>
+      <template>
+        <address>
+          Ministério da Gestão e da Inovação em Serviços Públicos<br>
+          Esplanada dos Ministérios, Bloco C<br>
+          Brasília – DF, CEP 70046-900<br>
+          <a href="tel:+556132xxxxxx">(61) 3211-xxxx</a>
+        </address>
+      </template>
+    </section>
+
+    <!-- ---- HR ---- -->
+    <section>
+      <h3>Divisor horizontal (hr)</h3>
+      <template>
+        <p>Conteúdo antes do divisor.</p>
+        <hr>
+        <p>Conteúdo após o divisor.</p>
+      </template>
+    </section>
+  </main>
+
+  <footer>
+    <p>GovBR Classless — Padrão Digital de Governo 3.7.0</p>
+  </footer>
+  <script src="shared.js"></script>
+</body>
+</html>

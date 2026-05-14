@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Exemplos de uso dos Web Components do GovBR-DS v1.21.3">
+  <title>Web Components — GovBR Classless</title>
+
+  <!-- Font Awesome (icons used internally by web components) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- GovBR Classless (page layout and native elements) -->
+  <link rel="stylesheet" href="govbr-classless.css">
+</head>
+<body>
+  <a href="#main">Pular para o conteúdo</a>
+
+  <header>
+    <h1><a href="index.html">GovBR Classless</a></h1>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="index.html">← Docs</a></li>
+        <li><a href="kitchen-sink.html">Kitchen Sink</a></li>
+        <li><a href="demo.html">Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <h1>GovBR-DS Web Components <small>v1.21.3</small></h1>
+    <p>
+      Componentes customizados do
+      <a href="https://www.gov.br/ds/">Padrão Digital de Governo</a>
+      usados junto ao framework classless. Inclua o script UMD e escreva
+      elementos <code>&lt;br-*&gt;</code> diretamente no HTML — sem frameworks,
+      sem build tools.
+    </p>
+    <pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/@govbr-ds/webcomponents@1.21.3/dist/webcomponents.umd.min.js"&gt;&lt;/script&gt;</code></pre>
+
+    <hr>
+
+    <!-- ── COMPARAÇÃO ────────────────────────────────────────────────── -->
+    <section id="comparacao">
+      <h2>Comparação: Web Component × HTML semântico</h2>
+      <p>
+        Os Web Components encapsulam markup e estilo em Shadow DOM.
+        O classless framework estiliza elementos HTML nativos diretamente.
+        Ambas as abordagens produzem resultados visuais próximos — escolha a que
+        melhor se encaixa no seu fluxo de trabalho.
+      </p>
+
+      <h3>Botão primário</h3>
+      <p><strong>Web Component <code>&lt;br-button type="primary"&gt;</code></strong></p>
+      <br-button type="primary">Entrar</br-button>
+      <p><strong>HTML semântico <code>&lt;button&gt;</code></strong></p>
+      <button>Entrar</button>
+
+      <h3>Botão secundário</h3>
+      <p><strong>Web Component <code>&lt;br-button type="secondary"&gt;</code></strong></p>
+      <br-button type="secondary">Cancelar</br-button>
+      <p><strong>HTML semântico <code>&lt;button data-variant="secondary"&gt;</code></strong></p>
+      <button data-variant="secondary">Cancelar</button>
+
+      <h3>Botão terciário</h3>
+      <p><strong>Web Component <code>&lt;br-button&gt;</code></strong></p>
+      <br-button>Saiba mais</br-button>
+      <p><strong>HTML semântico <code>&lt;button data-variant="tertiary"&gt;</code></strong></p>
+      <button data-variant="tertiary">Saiba mais</button>
+
+      <h3>Campo de texto</h3>
+      <p><strong>Web Component <code>&lt;br-input label="..." placeholder="..."&gt;</code></strong></p>
+      <br-input label="Nome completo" placeholder="Digite seu nome"></br-input>
+      <p><strong>HTML semântico <code>&lt;label&gt; + &lt;input&gt;</code></strong></p>
+      <label>
+        Nome completo
+        <input type="text" placeholder="Digite seu nome">
+      </label>
+
+      <h3>Campo com validação</h3>
+      <p><strong>Web Component</strong></p>
+      <br-input label="CPF" type="text" placeholder="000.000.000-00" state="danger"></br-input>
+      <br-message state="danger" message="CPF inválido." feedback show-icon></br-message>
+      <p><strong>HTML semântico</strong></p>
+      <label>
+        CPF
+        <input type="text" placeholder="000.000.000-00" aria-invalid="true" aria-describedby="cpf-cmp-err">
+      </label>
+      <p id="cpf-cmp-err" role="alert" style="color:var(--danger,#e52207);font-size:.857rem">
+        <i class="fas fa-times-circle" aria-hidden="true"></i> CPF inválido.
+      </p>
+
+      <h3>Select</h3>
+      <p><strong>Web Component <code>&lt;br-select label="..." options='[...]'&gt;</code></strong></p>
+      <br-select
+        label="UF"
+        placeholder="Selecione"
+        options='[{"label":"Bahia","value":"BA"},{"label":"Minas Gerais","value":"MG"},{"label":"São Paulo","value":"SP"}]'
+      ></br-select>
+      <p><strong>HTML semântico <code>&lt;label&gt; + &lt;select&gt;</code></strong></p>
+      <label>
+        UF
+        <select>
+          <option value="">Selecione</option>
+          <option>Bahia</option>
+          <option>Minas Gerais</option>
+          <option>São Paulo</option>
+        </select>
+      </label>
+
+      <h3>Checkbox</h3>
+      <p><strong>Web Component <code>&lt;br-checkbox label="..." name="..."&gt;</code></strong></p>
+      <br-checkbox label="Li e concordo com os termos" name="cmp-terms-wc"></br-checkbox>
+      <p><strong>HTML semântico <code>&lt;label&gt; + &lt;input type="checkbox"&gt;</code></strong></p>
+      <label>
+        <input type="checkbox" name="cmp-terms-native">
+        Li e concordo com os termos
+      </label>
+
+      <h3>Switch / Toggle</h3>
+      <p><strong>Web Component <code>&lt;br-switch label="..." name="..."&gt;</code></strong></p>
+      <br-switch label="Notificações" name="cmp-sw-wc"></br-switch>
+      <p><strong>HTML semântico <code>&lt;input type="checkbox" role="switch"&gt;</code></strong></p>
+      <label>
+        <input type="checkbox" role="switch" name="cmp-sw-native">
+        Notificações
+      </label>
+
+      <h3>Mensagem de alerta</h3>
+      <p><strong>Web Component <code>&lt;br-message state="warning" message="..." show-icon&gt;</code></strong></p>
+      <br-message state="warning" message="Prazo se encerra em 3 dias." show-icon></br-message>
+      <p><strong>HTML semântico <code>&lt;aside&gt;</code></strong></p>
+      <aside>
+        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+        Prazo se encerra em 3 dias.
+      </aside>
+
+      <details>
+        <summary>Por que usar Web Components?</summary>
+        <ul>
+          <li><strong>Encapsulamento total</strong>: estilos ficam no Shadow DOM, sem vazamento para a página.</li>
+          <li><strong>Comportamento embutido</strong>: select com busca, loading states, modais e tabs sem JS extra.</li>
+          <li><strong>Consistência garantida</strong>: renderização idêntica ao Design System oficial.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Por que usar HTML semântico + classless CSS?</summary>
+        <ul>
+          <li><strong>Zero dependências em runtime</strong>: sem script extra, sem bundle de 1 MB.</li>
+          <li><strong>Acessível por padrão</strong>: elementos nativos já têm semântica e comportamento do browser.</li>
+          <li><strong>Dark mode e tokens automáticos</strong>: herdam variáveis CSS do framework sem configuração.</li>
+        </ul>
+      </details>
+    </section>
+
+    <hr>
+
+    <!-- ── BREADCRUMB ──────────────────────────────────────────────────── -->
+    <section id="breadcrumb">
+      <h2>Breadcrumb <code>br-breadcrumb</code></h2>
+      <p>Passe um JSON com <code>label</code>, <code>url</code>, e opcionalmente <code>home: true</code> (ícone casa) ou <code>active: true</code> (página atual).</p>
+
+      <br-breadcrumb
+        links='[{"label":"Início","url":"index.html","home":true},{"label":"Componentes","url":"#"},{"label":"Web Components","active":true}]'
+      ></br-breadcrumb>
+    </section>
+
+    <hr>
+
+    <!-- ── BOTÕES ──────────────────────────────────────────────────────── -->
+    <section id="buttons">
+      <h2>Botões <code>br-button</code></h2>
+
+      <h3>Ênfase</h3>
+      <br-button type="primary">Primário</br-button>
+      <br-button type="secondary">Secundário</br-button>
+      <br-button>Terciário</br-button>
+
+      <h3>Circular (com ícone)</h3>
+      <br-button type="primary" circle icon="home" aria-label="Início"></br-button>
+      <br-button type="secondary" circle icon="search" aria-label="Buscar"></br-button>
+      <br-button circle icon="times" aria-label="Fechar"></br-button>
+
+      <h3>Bloco</h3>
+      <br-button type="primary" block>Botão em bloco</br-button>
+
+      <h3>Densidade</h3>
+      <br-button type="primary" density="large">Grande</br-button>
+      <br-button type="primary">Médio (padrão)</br-button>
+      <br-button type="primary" density="small">Pequeno</br-button>
+
+      <h3>Estados</h3>
+      <br-button type="primary" loading>Carregando</br-button>
+      <br-button type="primary" disabled>Desabilitado</br-button>
+      <br-button type="secondary" disabled>Desabilitado</br-button>
+
+      <h3>Em formulário</h3>
+      <form onsubmit="return false">
+        <br-button type="primary" submit>Enviar</br-button>
+        <br-button type="secondary">Cancelar</br-button>
+      </form>
+    </section>
+
+    <hr>
+
+    <!-- ── INPUT ──────────────────────────────────────────────────────── -->
+    <section id="input">
+      <h2>Input <code>br-input</code></h2>
+
+      <br-input label="Nome completo" placeholder="Digite seu nome" type="text"></br-input>
+      <br-input label="E-mail" placeholder="seu@email.gov.br" type="email"></br-input>
+      <br-input label="Senha" type="password" placeholder="••••••••"></br-input>
+      <br-input label="Número" type="number" placeholder="0"></br-input>
+
+      <h3>Estados de validação</h3>
+      <br-input label="Campo válido" type="text" state="success" value="Valor aceito"></br-input>
+      <br-input label="Campo inválido" type="text" state="danger" placeholder="Dado incorreto"></br-input>
+      <br-input label="Campo informativo" type="text" state="info" placeholder="Preencha com atenção"></br-input>
+      <br-input label="Campo com aviso" type="text" state="warning" placeholder="Dado incompleto"></br-input>
+
+      <h3>Outros</h3>
+      <br-input label="Somente leitura" type="text" value="Valor fixo" readonly></br-input>
+      <br-input label="Desabilitado" type="text" placeholder="Não editável" disabled></br-input>
+      <br-input label="Obrigatório" type="text" required placeholder="Campo obrigatório"></br-input>
+    </section>
+
+    <hr>
+
+    <!-- ── SELECT ─────────────────────────────────────────────────────── -->
+    <section id="select">
+      <h2>Select <code>br-select</code></h2>
+      <p>O atributo <code>options</code> recebe um JSON com <code>label</code>, <code>value</code> e opcionalmente <code>selected: true</code>.</p>
+
+      <br-select
+        label="Estado brasileiro"
+        placeholder="Selecione o estado"
+        options='[{"label":"Acre","value":"AC"},{"label":"Bahia","value":"BA"},{"label":"Ceará","value":"CE"},{"label":"Distrito Federal","value":"DF"},{"label":"Goiás","value":"GO"},{"label":"Minas Gerais","value":"MG"},{"label":"Pará","value":"PA"},{"label":"São Paulo","value":"SP"}]'
+      ></br-select>
+
+      <br-select
+        label="Múltipla escolha"
+        placeholder="Selecione as opções"
+        multiple
+        options='[{"label":"Opção A","value":"a"},{"label":"Opção B","value":"b"},{"label":"Opção C","value":"c"},{"label":"Opção D","value":"d"}]'
+      ></br-select>
+
+      <br-select
+        label="Com busca"
+        placeholder="Digite para filtrar"
+        show-search-icon
+        options='[{"label":"Agricultura","value":"agr"},{"label":"Ciência e Tecnologia","value":"ct"},{"label":"Defesa","value":"def"},{"label":"Economia","value":"eco"},{"label":"Educação","value":"edu"},{"label":"Fazenda","value":"faz"},{"label":"Saúde","value":"sau"}]'
+      ></br-select>
+    </section>
+
+    <hr>
+
+    <!-- ── CHECKBOX & SWITCH ───────────────────────────────────────────── -->
+    <section id="checkbox">
+      <h2>Checkbox <code>br-checkbox</code></h2>
+
+      <br-checkbox label="Opção padrão" name="opt1"></br-checkbox>
+      <br-checkbox label="Marcado por padrão" name="opt2" checked></br-checkbox>
+      <br-checkbox label="Desabilitado" name="opt3" disabled></br-checkbox>
+      <br-checkbox label="Marcado e desabilitado" name="opt4" checked disabled></br-checkbox>
+      <br-checkbox label="Li e concordo com os termos de uso e política de privacidade" name="termos"></br-checkbox>
+
+      <h2>Switch <code>br-switch</code></h2>
+
+      <br-switch label="Notificações por e-mail" name="sw1"></br-switch>
+      <br-switch label="Modo escuro" name="sw2" checked></br-switch>
+      <br-switch label="Desabilitado" name="sw3" disabled></br-switch>
+      <br-switch label="Com rótulos personalizados" name="sw4" label-checked="Sim" label-not-checked="Não"></br-switch>
+    </section>
+
+    <hr>
+
+    <!-- ── MENSAGENS ───────────────────────────────────────────────────── -->
+    <section id="message">
+      <h2>Mensagens <code>br-message</code></h2>
+
+      <br-message state="info"    message="Informação: a solicitação está em análise." show-icon></br-message>
+      <br-message state="success" message="Sucesso: cadastro realizado com êxito." show-icon></br-message>
+      <br-message state="warning" message="Atenção: prazo de validade se aproxima." show-icon></br-message>
+      <br-message state="danger"  message="Erro: não foi possível concluir a operação." show-icon></br-message>
+
+      <h3>Fechável</h3>
+      <br-message state="info" message="Esta mensagem pode ser fechada pelo usuário." show-icon closable></br-message>
+
+      <h3>Com título</h3>
+      <br-message state="warning" title="Atenção:" message="Os dados informados serão enviados para análise." show-icon></br-message>
+
+      <h3>Feedback inline</h3>
+      <br-input label="CPF" type="text" state="danger" placeholder="000.000.000-00"></br-input>
+      <br-message state="danger" message="CPF inválido. Verifique e tente novamente." feedback show-icon></br-message>
+    </section>
+
+    <hr>
+
+    <!-- ── CARD ───────────────────────────────────────────────────────── -->
+    <section id="card">
+      <h2>Card <code>br-card</code></h2>
+      <p>Use slots nomeados <code>slot="header"</code>, <code>slot="content"</code> e <code>slot="footer"</code>.</p>
+
+      <br-card>
+        <div slot="header"><h3>Regularização Cadastral</h3></div>
+        <div slot="content"><p>Mantenha seus dados atualizados para garantir o acesso aos serviços digitais.</p></div>
+        <div slot="footer">
+          <br-button type="primary" density="small">Acessar</br-button>
+        </div>
+      </br-card>
+
+      <br-card hover>
+        <div slot="header"><h3>Declaração de Imposto de Renda</h3></div>
+        <div slot="content"><p>Prazo: 31 de maio. Declare com antecedência e evite multas e juros.</p></div>
+        <div slot="footer">
+          <br-button type="primary" density="small">Declarar</br-button>
+          <br-button type="secondary" density="small">Saiba mais</br-button>
+        </div>
+      </br-card>
+
+      <br-card>
+        <div slot="header"><h3>Carteira de Identidade Nacional</h3></div>
+        <div slot="content"><p>Novo documento unificado com chip e validade de 10 anos.</p></div>
+        <div slot="footer">
+          <br-button type="primary" density="small">Agendar</br-button>
+        </div>
+      </br-card>
+
+      <br-card disabled>
+        <div slot="header"><h3>Serviço Indisponível</h3></div>
+        <div slot="content"><p>Este serviço está temporariamente suspenso para manutenção.</p></div>
+      </br-card>
+    </section>
+
+    <hr>
+
+    <!-- ── ABAS ───────────────────────────────────────────────────────── -->
+    <section id="tab">
+      <h2>Abas <code>br-tab</code> / <code>br-tab-item</code></h2>
+      <p>O <code>br-tab-item</code> com <code>is-active</code> é exibido por padrão.</p>
+
+      <br-tab label="Tipos de solicitação">
+        <br-tab-item label="Novo pedido" id="tab-novo" is-active>
+          <p>Preencha o formulário abaixo para iniciar uma nova solicitação.</p>
+          <br-input label="Assunto" placeholder="Descreva brevemente o assunto"></br-input>
+        </br-tab-item>
+        <br-tab-item label="Acompanhar" id="tab-acomp">
+          <p>Consulte o status das suas solicitações em andamento.</p>
+          <br-input label="Número do protocolo" placeholder="Ex: 2024.001234"></br-input>
+        </br-tab-item>
+        <br-tab-item label="Histórico" id="tab-hist">
+          <p>Nenhuma solicitação concluída encontrada nos últimos 90 dias.</p>
+        </br-tab-item>
+      </br-tab>
+
+      <h3>Com ícones</h3>
+      <br-tab label="Navegação com ícones">
+        <br-tab-item label="Início" icon="home" id="tab-i-home" is-active>
+          <p>Conteúdo da aba Início.</p>
+        </br-tab-item>
+        <br-tab-item label="Perfil" icon="user" id="tab-i-profile">
+          <p>Conteúdo da aba Perfil.</p>
+        </br-tab-item>
+        <br-tab-item label="Configurações" icon="cog" id="tab-i-config">
+          <p>Conteúdo da aba Configurações.</p>
+        </br-tab-item>
+      </br-tab>
+
+      <h3>Com contadores</h3>
+      <br-tab label="Resultados" counter>
+        <br-tab-item label="Todos" id="tab-c-all" is-active results="248">
+          <p>248 resultados encontrados.</p>
+        </br-tab-item>
+        <br-tab-item label="Pendentes" id="tab-c-pend" results="12">
+          <p>12 itens pendentes de análise.</p>
+        </br-tab-item>
+        <br-tab-item label="Concluídos" id="tab-c-done" results="236">
+          <p>236 itens concluídos.</p>
+        </br-tab-item>
+      </br-tab>
+    </section>
+
+    <hr>
+
+    <!-- ── MODAL ──────────────────────────────────────────────────────── -->
+    <section id="modal">
+      <h2>Modal <code>br-modal</code></h2>
+      <p>
+        Controle a visibilidade pela propriedade <code>show</code>.
+        O slot <code>buttons</code> é exibido no rodapé.
+        Use <code>closable</code> para mostrar o botão de fechar.
+      </p>
+
+      <br-button type="primary" id="btn-open-modal">Abrir modal</br-button>
+      <br-button type="secondary" id="btn-open-confirm">Confirmação</br-button>
+      <br-button id="btn-open-form">Modal com formulário</br-button>
+
+      <br-modal id="modal-default" title="Comunicado Importante" closable>
+        <p>Esta é uma mensagem de aviso do sistema. Por favor, leia com atenção antes de prosseguir.</p>
+        <p>A manutenção programada ocorrerá no dia 20 de junho das 22h às 2h.</p>
+        <div slot="buttons">
+          <br-button type="primary" id="btn-close-modal">Entendido</br-button>
+        </div>
+      </br-modal>
+
+      <br-modal id="modal-confirm" title="Confirmar exclusão" closable>
+        <br-message state="danger" message="Esta ação não pode ser desfeita." show-icon></br-message>
+        <p>Tem certeza que deseja excluir o registro <strong>#00234</strong>?</p>
+        <div slot="buttons">
+          <br-button type="secondary" id="btn-cancel-confirm">Cancelar</br-button>
+          <br-button type="primary" id="btn-ok-confirm">Confirmar exclusão</br-button>
+        </div>
+      </br-modal>
+
+      <br-modal id="modal-form" title="Novo Requerimento" closable width="large">
+        <br-input label="Nome do requerente" placeholder="Nome completo" required></br-input>
+        <br-input label="CPF" type="text" placeholder="000.000.000-00" required></br-input>
+        <br-select
+          label="Tipo de serviço"
+          placeholder="Selecione..."
+          options='[{"label":"Certidão","value":"cert"},{"label":"Regularização","value":"reg"},{"label":"Recurso","value":"rec"}]'
+        ></br-select>
+        <br-input label="Descrição" placeholder="Descreva o requerimento"></br-input>
+        <div slot="buttons">
+          <br-button type="secondary" id="btn-cancel-form">Cancelar</br-button>
+          <br-button type="primary">Enviar</br-button>
+        </div>
+      </br-modal>
+    </section>
+
+    <hr>
+
+    <!-- ── LOADING ─────────────────────────────────────────────────────── -->
+    <section id="loading">
+      <h2>Loading <code>br-loading</code></h2>
+
+      <h3>Indeterminado</h3>
+      <br-loading label="Aguarde..."></br-loading>
+
+      <h3>Médio</h3>
+      <br-loading medium label="Processando..."></br-loading>
+
+      <h3>Progresso determinado</h3>
+      <br-loading progress percent="68" label="68%"></br-loading>
+    </section>
+
+    <hr>
+
+    <!-- ── AVATAR ──────────────────────────────────────────────────────── -->
+    <section id="avatar">
+      <h2>Avatar <code>br-avatar</code></h2>
+
+      <h3>Com iniciais</h3>
+      <br-avatar name="Ana Beatriz" density="small"></br-avatar>
+      <br-avatar name="Carlos Eduardo"></br-avatar>
+      <br-avatar name="Diana Ferreira" density="large"></br-avatar>
+
+      <h3>Com foto</h3>
+      <br-avatar name="Fulano de Tal" image="https://randomuser.me/api/portraits/men/32.jpg"></br-avatar>
+      <br-avatar name="Ciclana Silva" image="https://randomuser.me/api/portraits/women/44.jpg" density="large"></br-avatar>
+    </section>
+
+  </main>
+
+  <footer>
+    <nav aria-label="Links">
+      <ul>
+        <li><a href="index.html">← Documentação</a></li>
+        <li><a href="https://www.gov.br/ds/">Padrão Digital de Governo</a></li>
+        <li><a href="https://gitlab.com/govbr-ds/bibliotecas/wbc/govbr-ds-wbc">Web Components GitLab</a></li>
+      </ul>
+    </nav>
+    <p>GovBR-DS Web Components v1.21.3 — Padrão Digital de Governo 3.7.0</p>
+  </footer>
+
+  <!-- Web Components bundle (v1.21.3 — Vue-based, stable) -->
+  <script src="https://cdn.jsdelivr.net/npm/@govbr-ds/webcomponents@1.21.3/dist/webcomponents.umd.min.js"></script>
+
+  <!--
+    The web components bundle injects @govbr-ds/core CSS into <head> at runtime,
+    which lands after govbr-classless.css in the cascade and overwrites our dark-mode
+    custom property overrides. This <style> re-declares them so they always win.
+  -->
+  <style>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --background:             #121212;
+        --background-alternative: #1e1e1e;
+        --surface:                #242424;
+        --background-dark:        #000000;
+        --text-primary:    #e8e8e8;
+        --text-secondary:  #b8b8b8;
+        --text-muted:      #888888;
+        --text-white:      #e8e8e8;
+        --text-on-primary: #e8e8e8;
+        --pure-0:   #242424;
+        --gray-80:  #e8e8e8;
+        --gray-60:  #b8b8b8;
+        --gray-50:  #909090;
+        --gray-40:  #6e6e6e;
+        --gray-20:  #4a4a4a;
+        --gray-10:  #333333;
+        --gray-5:   #1e1e1e;
+        --interactive:              #4d9fdc;
+        --interactive-dark:         #82c4ff;
+        --interactive-light:        #2670e8;
+        --color-primary-default:    #4d9fdc;
+        --color-primary-darken-01:  #82c4ff;
+        --color-primary-darken-02:  #b3d9ff;
+        --color-primary-lighten-01: #2670e8;
+        --color-primary-pastel-01:  rgba(77, 159, 220, 0.18);
+        --color-primary-pastel-02:  rgba(77, 159, 220, 0.09);
+        --color-highlight:      #ffcd07;
+        --color-highlight-dark: #f5a623;
+        --color-highlight-light: rgba(255, 205, 7, 0.15);
+        --success:       #4caf72;
+        --success-light: rgba(76, 175, 114, 0.12);
+        --warning:       #f5a623;
+        --warning-light: rgba(245, 166, 35, 0.12);
+        --danger:        #f07070;
+        --danger-light:  rgba(240, 112, 112, 0.12);
+        --info:          #4d9fdc;
+        --info-light:    rgba(77, 159, 220, 0.12);
+        --visited:       #cf9fff;
+        --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.40);
+        --shadow-md: 0 3px 8px rgba(0, 0, 0, 0.45);
+        --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.50);
+        --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.55);
+        --focus-color: #ff7070;
+      }
+      body { background-color: var(--background); }
+    }
+  </style>
+
+  <script>
+    function wireModal(openId, modalId, closeIds) {
+      const modal = document.getElementById(modalId)
+      if (!modal) return
+      document.getElementById(openId)?.addEventListener('click', () => { modal.show = true })
+      closeIds.forEach(id => {
+        document.getElementById(id)?.addEventListener('click', () => { modal.show = false })
+      })
+      modal.addEventListener('close-modal', () => { modal.show = false })
+    }
+
+    wireModal('btn-open-modal',   'modal-default', ['btn-close-modal'])
+    wireModal('btn-open-confirm', 'modal-confirm',  ['btn-cancel-confirm', 'btn-ok-confirm'])
+    wireModal('btn-open-form',    'modal-form',     ['btn-cancel-form'])
+  </script>
+</body>
+</html>

@@ -479,9 +479,21 @@
   <!--
     The web components bundle injects @govbr-ds/core CSS into <head> at runtime,
     which lands after govbr-classless.css in the cascade and overwrites our dark-mode
-    custom property overrides. This <style> re-declares them so they always win.
+    custom property overrides AND resets button/input font-size to 100%.
+    This <style> re-declares them so they always win.
   -->
   <style>
+    /* Override UMD's "button, input, select { font-size: 100% }" reset */
+    button, input[type="submit"], input[type="button"], input[type="reset"] { font-size: 1.2rem; }
+
+    /* Override UMD's global :focus outline — use box-shadow ring instead */
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--interactive);
+      border-width: 2px;
+      box-shadow: 0 0 0 2px var(--interactive);
+    }
+
     @media (prefers-color-scheme: dark) {
       :root {
         color-scheme: dark;

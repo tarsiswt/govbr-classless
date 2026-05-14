@@ -637,11 +637,10 @@ textarea {
 input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="color"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="hidden"]):focus,
 select:focus,
 textarea:focus {
-  outline: var(--focus-width) var(--focus-style) var(--focus-color);
-  outline-offset: var(--focus-offset);
+  outline: none;
   border-color: var(--interactive);
   border-width: var(--border-width-md);
-  box-shadow: 0 0 0 4px var(--color-primary-pastel-01);
+  box-shadow: 0 0 0 2px var(--interactive);
 }
 
 input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="color"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="hidden"]):disabled,
@@ -743,9 +742,9 @@ input[type="button"] {
   justify-content: center;
   gap:             var(--space-2);
   min-height:      40px;
-  padding:         var(--space-2) var(--space-8);
+  padding:         0 var(--space-6);
   font-family:     var(--font-family-base);
-  font-size:       1rem;
+  font-size:       1.2rem;
   font-weight:     var(--font-weight-semi-bold);
   line-height:     1;
   color:           var(--text-white);
@@ -794,9 +793,9 @@ input[type="reset"] {
   align-items:     center;
   justify-content: center;
   min-height:      40px;
-  padding:         var(--space-2) var(--space-8);
+  padding:         0 var(--space-6);
   font-family:     var(--font-family-base);
-  font-size:       1rem;
+  font-size:       1.2rem;
   font-weight:     var(--font-weight-semi-bold);
   line-height:     1;
   color:           var(--interactive);
@@ -872,7 +871,7 @@ a[role="button"] {
   align-items:     center;
   justify-content: center;
   min-height:      40px;
-  padding:         var(--space-2) var(--space-8);
+  padding:         0 var(--space-6);
   font-weight:     var(--font-weight-semi-bold);
   line-height:     1;
   color:           var(--text-white);
@@ -893,7 +892,7 @@ a[role="button"]:visited { color: var(--text-white); }
 /* Validation states (use :invalid / :valid on inputs) */
 input:not(:placeholder-shown):invalid,
 textarea:not(:placeholder-shown):invalid,
-select:invalid {
+select:focus:invalid {
   border-color:   var(--danger);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23e52207' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E");
   background-repeat:   no-repeat;
@@ -904,7 +903,7 @@ select:invalid {
 
 input:not(:placeholder-shown):valid:not([type="search"]):not([type="password"]),
 textarea:not(:placeholder-shown):valid,
-select:valid {
+select:focus:valid {
   border-color: var(--success);
 }
 

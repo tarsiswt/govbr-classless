@@ -24,12 +24,10 @@ jobs:
 
       - run: npm run build
 
-      - name: Publish latest release
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Commit minified output
         run: |
-          gh release delete latest --yes 2>/dev/null || true
-          gh release create latest dist/govbr-classless.min.css \
-            --title "Latest build" \
-            --notes "Auto-built from \`main\` — $(date -u '+%Y-%m-%d %H:%M UTC')" \
-            --latest
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist/govbr-classless.min.css
+          git diff --cached --quiet || git commit -m "build: minify CSS [skip ci]"
+          git push

@@ -737,6 +737,48 @@ input[type="checkbox"]:not([role="switch"]):disabled {
 
 input[type="radio"] { border-radius: 50%; }
 
+/* ---- Switch / Toggle ---- */
+input[type="checkbox"][role="switch"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width:  52px;
+  height: 30px;
+  border-radius: 1400px;
+  background-color: var(--background);
+  border: 1px solid var(--gray-40);
+  /* Thumb via radial-gradient (::before/::after don't work on <input>) */
+  background-image: radial-gradient(circle at center, var(--gray-40) 11px, transparent 11px);
+  background-size: 22px 22px;
+  background-repeat: no-repeat;
+  background-position: 4px center;
+  cursor: pointer;
+  vertical-align: middle;
+  flex-shrink: 0;
+  min-height: unset;
+  margin-right: var(--space-2);
+  transition:
+    background-color var(--duration-fast) var(--easing-default),
+    background-position var(--duration-fast) var(--easing-default),
+    border-color var(--duration-fast) var(--easing-default);
+}
+
+input[type="checkbox"][role="switch"]:checked {
+  background-color: var(--interactive);
+  border-color:     var(--interactive);
+  background-image: radial-gradient(circle at center, white 11px, transparent 11px);
+  background-position: calc(100% - 4px) center;
+}
+
+input[type="checkbox"][role="switch"]:focus-visible {
+  outline:    none;
+  box-shadow: 0 0 0 2px var(--interactive);
+}
+
+input[type="checkbox"][role="switch"]:disabled {
+  opacity: 0.5;
+  cursor:  not-allowed;
+}
+
 /* ---- Range ---- */
 input[type="range"] {
   display: block;
@@ -934,7 +976,7 @@ a[role="button"]:hover { background-color: var(--interactive-dark); box-shadow: 
 a[role="button"]:visited { color: var(--text-white); }
 
 /* Validation states (use :invalid / :valid on inputs) */
-input:not(:placeholder-shown):invalid,
+input:not(:placeholder-shown):not([type="checkbox"]):not([type="radio"]):invalid,
 textarea:not(:placeholder-shown):invalid,
 select:focus:invalid {
   border-color:   var(--danger);
@@ -945,7 +987,7 @@ select:focus:invalid {
   padding-right:       var(--space-10);
 }
 
-input:not(:placeholder-shown):valid:not([type="search"]):not([type="password"]),
+input:not(:placeholder-shown):not([type="checkbox"]):not([type="radio"]):valid:not([type="search"]):not([type="password"]),
 textarea:not(:placeholder-shown):valid,
 select:focus:valid {
   border-color: var(--success);

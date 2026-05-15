@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovBR-DS × Pico CSS — Exploração</title>
+  <link rel="stylesheet" href="pico.classless.min.css">
+  <link rel="stylesheet" href="govbr-theme.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><strong>GovBR × Pico</strong></li>
+      </ul>
+      <ul>
+        <li><a href="../index.html">← Docs</a></li>
+        <li><a href="../demo.html">Demo</a></li>
+        <li><a href="../kitchen-sink.html">Kitchen Sink</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>GovBR-DS sobre Pico CSS</h1>
+    <p>
+      Esta página demonstra o tema GovBR-DS aplicado sobre o Pico CSS v2 classless.
+      Apenas um arquivo de variáveis (<code>govbr-theme.css</code>) sobrescreve as
+      propriedades customizadas do Pico — sem alterar o CSS do Pico em si.
+    </p>
+
+    <h2>Tipografia</h2>
+    <p>
+      Texto padrão em Rawline 14px. <strong>Negrito</strong>, <em>itálico</em>,
+      <a href="#">link azul GovBR</a>, <a href="#visited" style="color:var(--pico-color)">visitado</a>,
+      <code>código inline</code>, <mark>marcado</mark>, <del>riscado</del>.
+    </p>
+    <h3>Heading H3</h3>
+    <h4>Heading H4</h4>
+    <blockquote>
+      O Padrão Digital de Governo garante consistência e acessibilidade
+      nos serviços digitais federais.
+      <footer><cite>Ministério da Gestão e da Inovação</cite></footer>
+    </blockquote>
+
+    <h2>Formulário</h2>
+    <form>
+      <label for="nome">Nome completo</label>
+      <input type="text" id="nome" placeholder="Digite seu nome" required>
+
+      <label for="cpf">CPF</label>
+      <input type="text" id="cpf" placeholder="000.000.000-00">
+
+      <label for="servico">Serviço</label>
+      <select id="servico">
+        <option value="">Selecione um serviço</option>
+        <option>Carteira de identidade</option>
+        <option>Passaporte</option>
+        <option>Certidão negativa</option>
+      </select>
+
+      <label for="obs">Observações</label>
+      <textarea id="obs" placeholder="Descreva sua solicitação..."></textarea>
+
+      <fieldset>
+        <legend>Preferências de contato</legend>
+        <label>
+          <input type="checkbox" checked>
+          Aceito receber atualizações por e-mail
+        </label>
+        <label>
+          <input type="checkbox" role="switch">
+          Modo de alto contraste
+        </label>
+        <label>
+          <input type="radio" name="prioridade" checked>
+          Prioridade normal
+        </label>
+        <label>
+          <input type="radio" name="prioridade">
+          Prioridade urgente
+        </label>
+      </fieldset>
+
+      <button type="submit">Enviar solicitação</button>
+      <button type="reset" class="secondary">Limpar</button>
+      <button type="button" class="contrast">Contato</button>
+    </form>
+
+    <h2>Acordeão</h2>
+    <details>
+      <summary>O que é o Padrão Digital de Governo?</summary>
+      <p>
+        O PdG é o conjunto de diretrizes e componentes visuais definidos pelo
+        Ministério da Gestão para garantir consistência nos serviços digitais federais.
+      </p>
+    </details>
+    <details>
+      <summary>Como contribuir com o design system?</summary>
+      <p>
+        O GovBR-DS é open source. Contribua abrindo issues ou pull requests
+        no repositório oficial no GitLab da CTIC/SERPRO.
+      </p>
+    </details>
+
+    <h2>Tabela</h2>
+    <table>
+      <caption>Serviços disponíveis</caption>
+      <thead>
+        <tr><th>Serviço</th><th>Prazo</th><th>Situação</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Carteira de identidade</td><td>10 dias úteis</td><td>Disponível</td></tr>
+        <tr><td>Passaporte</td><td>6 semanas</td><td>Disponível</td></tr>
+        <tr><td>Certidão negativa</td><td>2 dias úteis</td><td>Indisponível</td></tr>
+        <tr><td>Título de eleitor</td><td>30 dias</td><td>Disponível</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Progresso</h2>
+    <label for="prog">Andamento da solicitação</label>
+    <progress id="prog" value="65" max="100"></progress>
+    <label for="rng">Prioridade (range)</label>
+    <input type="range" id="rng" value="3" min="1" max="5">
+
+    <h2>Dialog</h2>
+    <p>
+      <button type="button" onclick="document.getElementById('pico-modal').showModal()">
+        Abrir modal
+      </button>
+    </p>
+    <dialog id="pico-modal">
+      <article>
+        <header>
+          <button aria-label="Fechar" rel="prev"
+                  onclick="document.getElementById('pico-modal').close()"></button>
+          <h3>Confirmação necessária</h3>
+        </header>
+        <p>Você está prestes a enviar os dados para análise. Deseja continuar?</p>
+        <footer>
+          <button onclick="document.getElementById('pico-modal').close()">Confirmar</button>
+          <button class="secondary"
+                  onclick="document.getElementById('pico-modal').close()">Cancelar</button>
+        </footer>
+      </article>
+    </dialog>
+  </main>
+
+  <footer>
+    <p>GovBR-DS × Pico CSS — exploração de tema via variáveis CSS.</p>
+    <p><small>Apenas <code>govbr-theme.css</code> modifica o Pico — sem fork, sem patches.</small></p>
+  </footer>
+</body>
+</html>

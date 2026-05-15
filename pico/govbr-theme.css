@@ -1,0 +1,163 @@
+/* =============================================================================
+   GovBR-DS Theme for Pico CSS v2
+   Maps Pico custom properties to GovBR-DS design tokens.
+   Load AFTER pico.classless.min.css.
+   ============================================================================= */
+
+@import url('https://fonts.cdnfonts.com/css/rawline');
+@import url('https://cdn.jsdelivr.net/npm/@govbr-ds/core@3.7.0/dist/core-tokens.min.css');
+
+/* Light theme */
+:root,
+[data-theme="light"] {
+  /* Typography */
+  --pico-font-family:            Rawline, Raleway, sans-serif;
+  --pico-font-family-sans-serif: Rawline, Raleway, sans-serif;
+  --pico-font-size:              87.5%;   /* 14px base (GovBR-DS standard) */
+  --pico-font-weight:            400;
+
+  /* Primary colour (GovBR-DS blue) */
+  --pico-primary:                    #1351b4;
+  --pico-primary-hover:              #0c326f;
+  --pico-primary-background:         #1351b4;
+  --pico-primary-hover-background:   #0c326f;
+  --pico-primary-border:             #1351b4;
+  --pico-primary-hover-border:       #0c326f;
+  --pico-primary-inverse:            #ffffff;
+  --pico-primary-focus:              rgba(19, 81, 180, 0.25);
+  --pico-primary-underline:          rgba(19, 81, 180, 0.5);
+  --pico-primary-hover-underline:    rgba(12, 50, 111, 0.75);
+
+  /* Secondary colour (outline style) */
+  --pico-secondary:                  #1351b4;
+  --pico-secondary-hover:            #0c326f;
+  --pico-secondary-background:       transparent;
+  --pico-secondary-hover-background: #dbe8fb;
+  --pico-secondary-border:           #1351b4;
+  --pico-secondary-hover-border:     #0c326f;
+  --pico-secondary-inverse:          #1351b4;
+  --pico-secondary-focus:            rgba(19, 81, 180, 0.25);
+
+  /* Backgrounds */
+  --pico-background-color:           #ffffff;
+  --pico-card-background-color:      #ffffff;
+  --pico-card-sectioning-background-color: #f0f0f0;
+
+  /* Text */
+  --pico-color:                      #1b1b1b;
+  --pico-contrast:                   #1b1b1b;
+  --pico-contrast-inverse:           #ffffff;
+  --pico-text-selection-color:       #dbe8fb;
+
+  /* Borders */
+  --pico-border-color:               #dfe1e2;
+  --pico-border-radius:              4px;
+  --pico-border-width:               1px;
+
+  /* Spacing */
+  --pico-spacing:                    1rem;       /* 16px @ 14px base ≈ 1.14rem, rounded */
+  --pico-block-spacing-vertical:     1.5rem;
+  --pico-block-spacing-horizontal:   1.5rem;
+  --pico-typography-spacing-top:     1.25rem;
+  --pico-typography-spacing-vertical: 1rem;
+
+  /* Shadows */
+  --pico-box-shadow:                 0 3px 8px rgba(0, 0, 0, 0.12);
+  --pico-card-box-shadow:            0 3px 8px rgba(0, 0, 0, 0.12);
+
+  /* Forms */
+  --pico-form-element-background-color:        #ffffff;
+  --pico-form-element-border-color:            #71767a;
+  --pico-form-element-active-background-color: #ffffff;
+  --pico-form-element-active-border-color:     #1351b4;
+
+  /* Progress */
+  --pico-progress-background-color: #dfe1e2;
+  --pico-progress-color:            #1351b4;
+
+  /* Range */
+  --pico-range-border-color:         #dfe1e2;
+  --pico-range-active-border-color:  #1351b4;
+  --pico-range-thumb-color:          #1351b4;
+  --pico-range-thumb-active-color:   #0c326f;
+  --pico-range-thumb-border-color:   #1351b4;
+
+  /* Switch */
+  --pico-switch-background-color:         #71767a;
+  --pico-switch-checked-background-color: #1351b4;
+  --pico-switch-color:                    #ffffff;
+
+  /* Table */
+  --pico-table-border-color:                  #dfe1e2;
+  --pico-table-row-stripped-background-color: rgba(19, 81, 180, 0.04);
+
+  /* Code */
+  --pico-code-background-color:  #f0f0f0;
+  --pico-code-color:             #1b1b1b;
+
+  /* Accordion */
+  --pico-accordion-border-color:         #dfe1e2;
+  --pico-accordion-active-summary-color: #1351b4;
+  --pico-accordion-open-summary-color:   #1351b4;
+  --pico-accordion-close-summary-color:  #3d4551;
+
+  /* Blockquote */
+  --pico-blockquote-border-color:  #1351b4;
+  --pico-blockquote-footer-color:  #565c65;
+
+  /* Transitions */
+  --pico-transition: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Focus ring — GovBR-DS: dashed red, 2px, offset 2px */
+  --pico-outline-color: #c40000;
+}
+
+/* Override focus to match GovBR-DS dashed red style */
+:focus-visible {
+  outline: 2px dashed var(--pico-outline-color, #c40000) !important;
+  outline-offset: 2px !important;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --pico-primary:                    #4d9fdc;
+  --pico-primary-hover:              #82c4ff;
+  --pico-primary-background:         #4d9fdc;
+  --pico-primary-hover-background:   #82c4ff;
+  --pico-primary-border:             #4d9fdc;
+  --pico-primary-hover-border:       #82c4ff;
+  --pico-primary-inverse:            #121212;
+  --pico-primary-focus:              rgba(77, 159, 220, 0.35);
+
+  --pico-background-color:           #121212;
+  --pico-card-background-color:      #242424;
+  --pico-card-sectioning-background-color: #1e1e1e;
+
+  --pico-color:                      #e8e8e8;
+  --pico-contrast:                   #e8e8e8;
+  --pico-contrast-inverse:           #121212;
+
+  --pico-border-color:               #333333;
+  --pico-form-element-background-color:        #242424;
+  --pico-form-element-border-color:            #6e6e6e;
+  --pico-form-element-active-border-color:     #4d9fdc;
+
+  --pico-switch-background-color:         #6e6e6e;
+  --pico-switch-checked-background-color: #4d9fdc;
+
+  --pico-progress-background-color: #333333;
+  --pico-progress-color:            #4d9fdc;
+
+  --pico-code-background-color: #1e1e1e;
+  --pico-code-color:            #e8e8e8;
+
+  --pico-accordion-border-color:         #333333;
+  --pico-accordion-active-summary-color: #4d9fdc;
+  --pico-accordion-open-summary-color:   #4d9fdc;
+  --pico-accordion-close-summary-color:  #b8b8b8;
+
+  --pico-blockquote-border-color:  #4d9fdc;
+  --pico-blockquote-footer-color:  #909090;
+
+  --pico-outline-color: #ff7070;
+}

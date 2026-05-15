@@ -337,48 +337,28 @@
 
     <!-- ── ABAS ───────────────────────────────────────────────────────── -->
     <section id="tab">
-      <h2>Abas <code>br-tab</code> / <code>br-tab-item</code></h2>
-      <p>O <code>br-tab-item</code> com <code>is-active</code> é exibido por padrão.</p>
+      <h2>Abas <code>[role="tablist"]</code></h2>
+      <p>
+        HTML semântico puro — troca de painel via <code>:target</code>, sem JavaScript.
+        Marque a aba inicial com <code>aria-selected="true"</code>.
+      </p>
 
-      <br-tab label="Tipos de solicitação">
-        <br-tab-item label="Novo pedido" id="tab-novo" is-active>
-          <p>Preencha o formulário abaixo para iniciar uma nova solicitação.</p>
-          <br-input label="Assunto" placeholder="Descreva brevemente o assunto"></br-input>
-        </br-tab-item>
-        <br-tab-item label="Acompanhar" id="tab-acomp">
-          <p>Consulte o status das suas solicitações em andamento.</p>
-          <br-input label="Número do protocolo" placeholder="Ex: 2024.001234"></br-input>
-        </br-tab-item>
-        <br-tab-item label="Histórico" id="tab-hist">
-          <p>Nenhuma solicitação concluída encontrada nos últimos 90 dias.</p>
-        </br-tab-item>
-      </br-tab>
-
-      <h3>Com ícones</h3>
-      <br-tab label="Navegação com ícones">
-        <br-tab-item label="Início" icon="home" id="tab-i-home" is-active>
-          <p>Conteúdo da aba Início.</p>
-        </br-tab-item>
-        <br-tab-item label="Perfil" icon="user" id="tab-i-profile">
-          <p>Conteúdo da aba Perfil.</p>
-        </br-tab-item>
-        <br-tab-item label="Configurações" icon="cog" id="tab-i-config">
-          <p>Conteúdo da aba Configurações.</p>
-        </br-tab-item>
-      </br-tab>
-
-      <h3>Com contadores</h3>
-      <br-tab label="Resultados" counter>
-        <br-tab-item label="Todos" id="tab-c-all" is-active results="248">
-          <p>248 resultados encontrados.</p>
-        </br-tab-item>
-        <br-tab-item label="Pendentes" id="tab-c-pend" results="12">
-          <p>12 itens pendentes de análise.</p>
-        </br-tab-item>
-        <br-tab-item label="Concluídos" id="tab-c-done" results="236">
-          <p>236 itens concluídos.</p>
-        </br-tab-item>
-      </br-tab>
+      <nav role="tablist" aria-label="Tipos de solicitação">
+        <a href="#aba-novo" role="tab" aria-selected="true">Novo pedido</a>
+        <a href="#aba-acomp" role="tab">Acompanhar</a>
+        <a href="#aba-hist" role="tab">Histórico</a>
+      </nav>
+      <div role="tabpanel" id="aba-novo" tabindex="0">
+        <p>Preencha o formulário abaixo para iniciar uma nova solicitação.</p>
+        <label>Assunto <input type="text" placeholder="Descreva brevemente o assunto"></label>
+      </div>
+      <div role="tabpanel" id="aba-acomp" tabindex="0">
+        <p>Consulte o status das suas solicitações em andamento.</p>
+        <label>Número do protocolo <input type="text" placeholder="Ex: 2024.001234"></label>
+      </div>
+      <div role="tabpanel" id="aba-hist" tabindex="0">
+        <p>Nenhuma solicitação concluída encontrada nos últimos 90 dias.</p>
+      </div>
     </section>
 
     <hr>
@@ -511,6 +491,7 @@
     wireModal('btn-open-modal',   'modal-default', ['btn-close-modal'])
     wireModal('btn-open-confirm', 'modal-confirm',  ['btn-cancel-confirm', 'btn-ok-confirm'])
     wireModal('btn-open-form',    'modal-form',     ['btn-cancel-form'])
+
   </script>
 </body>
 </html>

@@ -1233,6 +1233,66 @@ details > :not(summary) {
   padding: var(--space-4) var(--space-6);
 }
 
+/* ---- Tabs ---- */
+[role="tablist"] {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--gray-10);
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+a[role="tab"],
+button[role="tab"] {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  background: none;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    color var(--duration-fast) var(--easing-default),
+    border-color var(--duration-fast) var(--easing-default);
+}
+
+a[role="tab"]:hover,
+button[role="tab"]:hover {
+  color: var(--interactive);
+  text-decoration: none;
+}
+
+a[role="tab"]:focus-visible,
+button[role="tab"]:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+a[role="tab"][aria-selected="true"],
+button[role="tab"][aria-selected="true"] {
+  color: var(--interactive);
+  border-bottom-color: var(--interactive);
+}
+
+[role="tabpanel"] {
+  padding-top: var(--space-4);
+}
+
+/* CSS-only tab switching via :target — no JS needed */
+[role="tabpanel"] + [role="tabpanel"] { display: none; }
+[role="tabpanel"]:target { display: block; }
+[role="tabpanel"]:first-of-type:has(~ [role="tabpanel"]:target) { display: none; }
+
 /* ---- Dialog / Modal ---- */
 dialog {
   background-color: var(--background);

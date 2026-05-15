@@ -385,6 +385,32 @@
         </ul>
       </details>
 
+      <!-- Abas -->
+      <h3>Abas</h3>
+      <p>
+        Troca de painel via radio inputs ocultos — sem JavaScript, sem rolagem de página.
+        Marque o <code>input</code> inicial com <code>checked</code>.
+      </p>
+      <input type="radio" name="demo-tabs" id="dt-1" hidden checked>
+      <input type="radio" name="demo-tabs" id="dt-2" hidden>
+      <input type="radio" name="demo-tabs" id="dt-3" hidden>
+      <nav role="tablist" aria-label="Exemplo de abas">
+        <label for="dt-1" role="tab">Solicitação</label>
+        <label for="dt-2" role="tab">Acompanhamento</label>
+        <label for="dt-3" role="tab">Histórico</label>
+      </nav>
+      <div role="tabpanel" tabindex="0">
+        <p>Preencha o formulário para iniciar uma nova solicitação de serviço.</p>
+        <label>Assunto <input type="text" placeholder="Descreva brevemente o assunto"></label>
+      </div>
+      <div role="tabpanel" tabindex="0">
+        <p>Consulte o status das suas solicitações em andamento.</p>
+        <label>Número do protocolo <input type="text" placeholder="Ex: 2024.001234"></label>
+      </div>
+      <div role="tabpanel" tabindex="0">
+        <p>Nenhuma solicitação concluída encontrada nos últimos 90 dias.</p>
+      </div>
+
       <!-- Dialog -->
       <h3>Dialog / Modal</h3>
       <p>

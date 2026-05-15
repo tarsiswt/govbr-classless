@@ -1,0 +1,35 @@
+name: Build CSS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - govbr-classless.css
+      - components.css
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Publish latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete latest --yes 2>/dev/null || true
+          gh release create latest dist/govbr-classless.min.css \
+            --title "Latest build" \
+            --notes "Auto-built from \`main\` — $(date -u '+%Y-%m-%d %H:%M UTC')" \
+            --latest

@@ -1244,7 +1244,8 @@ details > :not(summary) {
 }
 
 a[role="tab"],
-button[role="tab"] {
+button[role="tab"],
+label[role="tab"] {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -1266,20 +1267,23 @@ button[role="tab"] {
 }
 
 a[role="tab"]:hover,
-button[role="tab"]:hover {
+button[role="tab"]:hover,
+label[role="tab"]:hover {
   color: var(--interactive);
   text-decoration: none;
 }
 
 a[role="tab"]:focus-visible,
-button[role="tab"]:focus-visible {
+button[role="tab"]:focus-visible,
+label[role="tab"]:focus-visible {
   outline: 3px solid var(--focus-color);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
 
 a[role="tab"][aria-selected="true"],
-button[role="tab"][aria-selected="true"] {
+button[role="tab"][aria-selected="true"],
+label[role="tab"][aria-selected="true"] {
   color: var(--interactive);
   border-bottom-color: var(--interactive);
 }
@@ -1288,10 +1292,27 @@ button[role="tab"][aria-selected="true"] {
   padding-top: var(--space-4);
 }
 
-/* CSS-only tab switching via :target — no JS needed */
+/* CSS-only tab switching — no JavaScript, no page scroll.
+   Pattern: hidden radio inputs immediately before [role="tablist"],
+   then [role="tabpanel"] siblings. Labels inside the tablist trigger
+   the radios. Supports up to 4 tabs per group. */
+input[type="radio"][hidden] { display: none; }
 [role="tabpanel"] + [role="tabpanel"] { display: none; }
-[role="tabpanel"]:target { display: block; }
-[role="tabpanel"]:first-of-type:has(~ [role="tabpanel"]:target) { display: none; }
+
+input[type="radio"][hidden]:nth-of-type(1):checked ~ [role="tablist"] label:nth-child(1),
+input[type="radio"][hidden]:nth-of-type(2):checked ~ [role="tablist"] label:nth-child(2),
+input[type="radio"][hidden]:nth-of-type(3):checked ~ [role="tablist"] label:nth-child(3),
+input[type="radio"][hidden]:nth-of-type(4):checked ~ [role="tablist"] label:nth-child(4) {
+  color: var(--interactive);
+  border-bottom-color: var(--interactive);
+}
+
+input[type="radio"][hidden]:nth-of-type(2):checked ~ [role="tabpanel"]:nth-of-type(1) { display: none; }
+input[type="radio"][hidden]:nth-of-type(2):checked ~ [role="tabpanel"]:nth-of-type(2) { display: block; }
+input[type="radio"][hidden]:nth-of-type(3):checked ~ [role="tabpanel"]:nth-of-type(1) { display: none; }
+input[type="radio"][hidden]:nth-of-type(3):checked ~ [role="tabpanel"]:nth-of-type(3) { display: block; }
+input[type="radio"][hidden]:nth-of-type(4):checked ~ [role="tabpanel"]:nth-of-type(1) { display: none; }
+input[type="radio"][hidden]:nth-of-type(4):checked ~ [role="tabpanel"]:nth-of-type(4) { display: block; }
 
 /* ---- Dialog / Modal ---- */
 dialog {

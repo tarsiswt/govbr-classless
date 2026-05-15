@@ -343,20 +343,23 @@
         Marque a aba inicial com <code>aria-selected="true"</code>.
       </p>
 
+      <input type="radio" name="tab-tipos" id="r-novo" hidden checked>
+      <input type="radio" name="tab-tipos" id="r-acomp" hidden>
+      <input type="radio" name="tab-tipos" id="r-hist" hidden>
       <nav role="tablist" aria-label="Tipos de solicitação">
-        <a href="#aba-novo" role="tab" aria-selected="true">Novo pedido</a>
-        <a href="#aba-acomp" role="tab">Acompanhar</a>
-        <a href="#aba-hist" role="tab">Histórico</a>
+        <label for="r-novo" role="tab">Novo pedido</label>
+        <label for="r-acomp" role="tab">Acompanhar</label>
+        <label for="r-hist" role="tab">Histórico</label>
       </nav>
-      <div role="tabpanel" id="aba-novo" tabindex="0">
+      <div role="tabpanel" tabindex="0">
         <p>Preencha o formulário abaixo para iniciar uma nova solicitação.</p>
         <label>Assunto <input type="text" placeholder="Descreva brevemente o assunto"></label>
       </div>
-      <div role="tabpanel" id="aba-acomp" tabindex="0">
+      <div role="tabpanel" tabindex="0">
         <p>Consulte o status das suas solicitações em andamento.</p>
         <label>Número do protocolo <input type="text" placeholder="Ex: 2024.001234"></label>
       </div>
-      <div role="tabpanel" id="aba-hist" tabindex="0">
+      <div role="tabpanel" tabindex="0">
         <p>Nenhuma solicitação concluída encontrada nos últimos 90 dias.</p>
       </div>
     </section>

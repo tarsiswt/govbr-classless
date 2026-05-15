@@ -678,7 +678,7 @@ textarea {
 /* ---- Checkbox & Radio ---- */
 input[type="checkbox"],
 input[type="radio"] {
-  display: inline-flex;
+  display: inline-block;
   width:  1.15rem;
   height: 1.15rem;
   min-height: unset;
@@ -690,7 +690,52 @@ input[type="radio"] {
   flex-shrink: 0;
 }
 
-input[type="radio"]  { border-radius: 50%; }
+/* Custom checkbox — 24 px styled box matching GovBR-DS web component */
+input[type="checkbox"]:not([role="switch"]) {
+  appearance: none;
+  -webkit-appearance: none;
+  width:  24px;
+  height: 24px;
+  border: 1px solid var(--gray-40);
+  border-radius: 4px;
+  background-color: var(--background);
+  transition:
+    background-color var(--duration-fast) var(--easing-default),
+    border-color     var(--duration-fast) var(--easing-default),
+    box-shadow       var(--duration-fast) var(--easing-default);
+}
+
+input[type="checkbox"]:not([role="switch"]):checked {
+  background-color: var(--interactive);
+  border-color:     var(--interactive);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='M3 10l5 5 9-9'/%3E%3C/svg%3E");
+  background-repeat:   no-repeat;
+  background-position: center;
+  background-size:     13px 13px;
+}
+
+input[type="checkbox"]:not([role="switch"]):indeterminate {
+  background-color: var(--interactive);
+  border-color:     var(--interactive);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='white' stroke-width='3' stroke-linecap='round' d='M1 2h18'/%3E%3C/svg%3E");
+  background-repeat:   no-repeat;
+  background-position: center;
+  background-size:     13px 3px;
+}
+
+input[type="checkbox"]:not([role="switch"]):focus-visible {
+  outline:      none;
+  border-color: var(--interactive);
+  box-shadow:   0 0 0 2px var(--interactive);
+}
+
+input[type="checkbox"]:not([role="switch"]):disabled {
+  opacity: 0.5;
+  cursor:  not-allowed;
+  background-color: var(--background-alternative);
+}
+
+input[type="radio"] { border-radius: 50%; }
 
 /* ---- Range ---- */
 input[type="range"] {

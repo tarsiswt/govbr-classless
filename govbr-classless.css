@@ -1127,6 +1127,23 @@ aside {
   padding: var(--space-4) var(--space-6);
 }
 
+aside[data-state="success"] {
+  background-color: var(--success-light);
+  border-left-color: var(--success);
+}
+aside[data-state="warning"] {
+  background-color: var(--warning-light);
+  border-left-color: var(--warning);
+}
+aside[data-state="danger"], aside[role="alert"] {
+  background-color: var(--danger-light);
+  border-left-color: var(--danger);
+}
+aside[data-state="info"] {
+  background-color: var(--info-light);
+  border-left-color: var(--interactive);
+}
+
 aside h2, aside h3, aside h4 {
   font-size: 1rem;
   color: var(--interactive);

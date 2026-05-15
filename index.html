@@ -6,64 +6,17 @@
   <meta name="description" content="GovBR Classless — framework CSS sem classes baseado no Padrão Digital de Governo 3.7.0">
   <title>GovBR Classless — Documentação</title>
   <link rel="stylesheet" href="govbr-classless.css">
-  <style>
-    .component-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 16px;
-      margin: 24px 0;
-    }
-    .component-card {
-      display: block;
-      padding: 20px;
-      background: var(--surface, #fff);
-      border: 1px solid var(--gray-10, #dfe1e2);
-      border-radius: 8px;
-      border-top: 4px solid var(--interactive, #1351b4);
-      text-decoration: none;
-      color: var(--text-primary, #1b1b1b);
-      transition: box-shadow .15s, border-top-color .15s;
-    }
-    .component-card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,.18);
-      border-top-color: var(--color-primary-lighten-10, #2670e8);
-      color: var(--text-primary, #1b1b1b);
-      text-decoration: none;
-    }
-    .component-card:visited { color: var(--text-primary, #1b1b1b); }
-    .component-card h3 {
-      font-size: 1rem;
-      margin: 0 0 8px;
-      color: var(--interactive, #1351b4);
-    }
-    .component-card p {
-      font-size: 0.857rem;
-      color: var(--text-secondary, #3d4551);
-      margin: 0;
-      max-width: none;
-    }
-    .badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 999em;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    .badge-blue   { background: #dbe8fb; color: #0c326f; }
-    .badge-green  { background: #ecf3ec; color: #0e5718; }
-    .badge-yellow { background: #fff5c2; color: #664d00; }
-  </style>
+  <link rel="stylesheet" href="site.css">
 </head>
 <body>
   <a href="#main">Pular para o conteúdo</a>
 
   <header>
     <h1>GovBR Classless</h1>
-    <nav aria-label="Documentação">
+    <nav aria-label="Navegação principal">
       <ul>
         <li><a href="kitchen-sink.html">Kitchen Sink</a></li>
         <li><a href="demo.html">Demo</a></li>
-        <li><a href="page-with-sidebar.html">Sidebar</a></li>
         <li><a href="webcomponents.html">Web Components</a></li>
         <li><a href="tests/index.html">▶ Testes</a></li>
       </ul>

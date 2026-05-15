@@ -1,0 +1,55 @@
+/* =============================================================================
+   GovBR Classless — Site styles
+   Styles for the framework's own pages. Not part of the classless framework.
+   ============================================================================= */
+
+/* ── Badge chips ──────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  vertical-align: middle;
+}
+.badge-blue   { background: var(--color-primary-pastel-01); color: var(--color-primary-darken-01); }
+.badge-green  { background: var(--success-light);           color: var(--success); }
+.badge-yellow { background: var(--color-highlight-light);   color: #664d00; }
+.badge-red    { background: var(--danger-light);            color: var(--danger); }
+
+/* ── Component card grid (index.html) ────────────────────────────────────── */
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.component-card {
+  display: block;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--gray-10);
+  border-radius: 8px;
+  border-top: 4px solid var(--interactive);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: box-shadow .15s, border-top-color .15s;
+}
+.component-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .18);
+  border-top-color: var(--color-primary-lighten-01);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.component-card:visited { color: var(--text-primary); }
+.component-card h3 {
+  font-size: 1rem;
+  margin: 0 0 8px;
+  color: var(--interactive);
+}
+.component-card p {
+  font-size: 0.857rem;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: none;
+}

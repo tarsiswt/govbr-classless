@@ -988,8 +988,7 @@ select:focus:invalid {
 }
 
 input:not(:placeholder-shown):not([type="checkbox"]):not([type="radio"]):valid:not([type="search"]):not([type="password"]),
-textarea:not(:placeholder-shown):valid,
-select:focus:valid {
+textarea:not(:placeholder-shown):valid {
   border-color: var(--success);
 }
 

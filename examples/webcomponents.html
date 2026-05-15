@@ -11,6 +11,7 @@
 
   <!-- GovBR Classless (page layout and native elements) -->
   <link rel="stylesheet" href="../govbr-classless.css">
+  <link rel="stylesheet" href="../components.css">
 </head>
 <body>
   <a href="#main">Pular para o conteúdo</a>
@@ -432,16 +433,47 @@
 
     <!-- ── AVATAR ──────────────────────────────────────────────────────── -->
     <section id="avatar">
-      <h2>Avatar <code>br-avatar</code></h2>
+      <h2>Avatar</h2>
 
-      <h3>Com iniciais</h3>
-      <br-avatar name="Ana Beatriz" density="small"></br-avatar>
-      <br-avatar name="Carlos Eduardo"></br-avatar>
-      <br-avatar name="Diana Ferreira" density="large"></br-avatar>
+      <h3>Web Component <code>&lt;br-avatar&gt;</code></h3>
+      <p>Componente oficial do GovBR-DS. Requer o UMD bundle carregado acima.</p>
+      <p style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
+        <br-avatar name="Ana Beatriz" density="small"></br-avatar>
+        <br-avatar name="Carlos Eduardo"></br-avatar>
+        <br-avatar name="Diana Ferreira" density="large"></br-avatar>
+        <br-avatar name="Fulano de Tal" image="https://randomuser.me/api/portraits/men/32.jpg"></br-avatar>
+        <br-avatar name="Ciclana Silva" image="https://randomuser.me/api/portraits/women/44.jpg" density="large"></br-avatar>
+      </p>
 
-      <h3>Com foto</h3>
-      <br-avatar name="Fulano de Tal" image="https://randomuser.me/api/portraits/men/32.jpg"></br-avatar>
-      <br-avatar name="Ciclana Silva" image="https://randomuser.me/api/portraits/women/44.jpg" density="large"></br-avatar>
+      <h3>Equivalente nativo <code>.avatar</code></h3>
+      <p>
+        Mesma aparência, sem web component. Usa <code>components.css</code> e HTML semântico puro.
+        Tamanho via <code>data-size</code>; variante determinada pelo conteúdo do elemento.
+      </p>
+      <p style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
+        <span class="avatar" aria-label="Avatar de Ana Beatriz">AB</span>
+        <span class="avatar" data-size="medium" aria-label="Avatar de Carlos Eduardo">CE</span>
+        <span class="avatar" data-size="large" aria-label="Avatar de Diana Ferreira">DF</span>
+        <span class="avatar">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto de Fulano de Tal">
+        </span>
+        <span class="avatar" data-size="large">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto de Ciclana Silva">
+        </span>
+      </p>
+
+      <h3>Diferenças</h3>
+      <table>
+        <thead><tr><th></th><th><code>br-avatar</code></th><th><code>.avatar</code></th></tr></thead>
+        <tbody>
+          <tr><td>Dependência</td><td>UMD bundle (~500KB)</td><td>Nenhuma</td></tr>
+          <tr><td>Iniciais automáticas</td><td>Sim (JS, a partir do nome)</td><td>Não (HTML direto)</td></tr>
+          <tr><td>Fallback de imagem</td><td>Sim (JS, troca por iniciais)</td><td>Não (imagem quebrada visível)</td></tr>
+          <tr><td>Ícone padrão</td><td>Font Awesome via JS</td><td>SVG inline via CSS mask</td></tr>
+          <tr><td>Dark mode</td><td>Não suportado</td><td>Automático via tokens</td></tr>
+          <tr><td>Interativo</td><td>Prop <code>is-iconic</code></td><td><code>&lt;a&gt;</code> ou <code>&lt;button&gt;</code></td></tr>
+        </tbody>
+      </table>
     </section>
 
   </main>

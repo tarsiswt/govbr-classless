@@ -6,6 +6,7 @@
   <meta name="description" content="Demonstração do GovBR Classless — framework CSS sem classes baseado no Padrão Digital de Governo 3.7.0">
   <title>GovBR Classless — Demo</title>
   <link rel="stylesheet" href="../govbr-classless.css">
+  <link rel="stylesheet" href="../components.css">
 </head>
 <body>
 
@@ -451,6 +452,50 @@
       <meter id="meter-uso" value="0.7" min="0" max="1" low="0.3" high="0.8" optimum="0.5">70%</meter>
 
       <!-- Imagem / figura -->
+      <!-- Avatar -->
+      <h3>Avatar <code>.avatar</code></h3>
+      <p>
+        Círculo de identificação do usuário. Variante determinada pelo conteúdo:
+        texto → iniciais; <code>&lt;img&gt;</code> → foto; vazio → ícone padrão.
+        Tamanho via <code>data-size</code>; interativo com <code>&lt;a&gt;</code> ou <code>&lt;button&gt;</code>.
+      </p>
+
+      <p style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
+        <!-- Iniciais — três tamanhos -->
+        <span class="avatar" aria-label="Avatar de Ana Beatriz">AB</span>
+        <span class="avatar" data-size="medium" aria-label="Avatar de Carlos Eduardo">CE</span>
+        <span class="avatar" data-size="large" aria-label="Avatar de Diana Ferreira">DF</span>
+      </p>
+
+      <p style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
+        <!-- Ícone padrão (elemento vazio) -->
+        <span class="avatar" aria-label="Usuário não identificado"></span>
+        <span class="avatar" data-size="medium" aria-label="Usuário não identificado"></span>
+        <span class="avatar" data-size="large" aria-label="Usuário não identificado"></span>
+      </p>
+
+      <p style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
+        <!-- Foto -->
+        <span class="avatar">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto de Ciclana Silva">
+        </span>
+        <span class="avatar" data-size="medium">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto de Fulano de Tal">
+        </span>
+        <span class="avatar" data-size="large">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Foto de Beltrana Souza">
+        </span>
+      </p>
+
+      <p style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap">
+        <!-- Interativo -->
+        <a href="#" class="avatar" aria-label="Ver perfil de Ana Beatriz">AB</a>
+        <button type="button" class="avatar" aria-label="Ver perfil de usuário"></button>
+        <a href="#" class="avatar" data-size="medium">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto de Fulano de Tal">
+        </a>
+      </p>
+
       <h3>Figura com legenda</h3>
       <figure>
         <img

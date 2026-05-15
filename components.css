@@ -1,0 +1,137 @@
+/* =============================================================================
+   GovBR Classless — Class-based components
+   Reusable UI patterns that require CSS classes because they have no native
+   HTML equivalent. Load alongside govbr-classless.css.
+
+   <link rel="stylesheet" href="govbr-classless.css">
+   <link rel="stylesheet" href="components.css">
+   ============================================================================= */
+
+
+/* =============================================================================
+   AVATAR  .avatar
+   Circular badge: user photo, initials, or a fallback icon.
+   Faithful to GovBR-DS br-avatar — sizes, colors, and token usage match.
+
+   Sizes via data-size (default = small):
+     (none)             →  40px   [small]
+     data-size="medium" → 100px
+     data-size="large"  → 160px
+
+   Content variants — determined by element content, no extra class needed:
+     1–2 chars of text  → initials  e.g. <span class="avatar">JS</span>
+     <img> child        → photo     e.g. <span class="avatar"><img src="…" alt="…"></span>
+     Empty element      → icon      e.g. <span class="avatar" aria-label="Usuário"></span>
+
+   Interactive — <a class="avatar"> or <button class="avatar">:
+     Adds hover + focus ring; background flips to primary blue on hover.
+
+   Example:
+     <span class="avatar">JS</span>
+     <span class="avatar" data-size="medium"><img src="photo.jpg" alt="Foto de Maria"></span>
+     <span class="avatar" data-size="large" aria-label="Usuário anônimo"></span>
+     <a href="/perfil" class="avatar">JS</a>
+   ============================================================================= */
+
+.avatar {
+  /* Internal size token — overridden by data-size */
+  --avatar-size:      40px;
+  --avatar-font-size: 1.15rem;   /* ~16px @ 14px base */
+
+  display:          inline-flex;
+  align-items:      center;
+  justify-content:  center;
+  width:            var(--avatar-size);
+  height:           var(--avatar-size);
+  border-radius:    50%;
+  overflow:         hidden;
+  flex-shrink:      0;
+  vertical-align:   middle;
+  user-select:      none;
+  position:         relative;
+
+  /* Initials + icon default surface */
+  background-color: var(--color-primary-pastel-01);
+  color:            var(--interactive);
+  font-size:        var(--avatar-font-size);
+  font-weight:      var(--font-weight-bold);
+  font-family:      var(--font-family-base), sans-serif;
+  text-transform:   uppercase;
+  letter-spacing:   0.02em;
+  line-height:      1;
+
+  /* Reset link / button chrome */
+  text-decoration:  none;
+  border:           none;
+  padding:          0;
+  cursor:           default;
+  box-sizing:       border-box;
+}
+
+/* ── Size variants ────────────────────────────────────────────────────────── */
+
+.avatar[data-size="medium"] {
+  --avatar-size:      100px;
+  --avatar-font-size: 3rem;
+}
+
+.avatar[data-size="large"] {
+  --avatar-size:      160px;
+  --avatar-font-size: 4.5rem;
+}
+
+/* ── Photo variant: <img> fills the circle ────────────────────────────────── */
+
+.avatar img {
+  display:    block;
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+}
+
+/* ── Icon variant: empty element → SVG user icon via CSS mask ─────────────── */
+/* Uses mask so background-color: var(--interactive) drives the icon colour,
+   making it adapt automatically to dark mode. */
+
+.avatar:empty::before {
+  content: '';
+  display: block;
+  width:   52%;
+  height:  52%;
+  background-color:        var(--interactive);
+  -webkit-mask-image:      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
+          mask-image:      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
+  -webkit-mask-size:       contain;
+          mask-size:       contain;
+  -webkit-mask-repeat:     no-repeat;
+          mask-repeat:     no-repeat;
+  -webkit-mask-position:   center;
+          mask-position:   center;
+}
+
+/* ── Interactive avatar (a.avatar, button.avatar) ─────────────────────────── */
+
+a.avatar,
+button.avatar {
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--easing-default),
+    color            var(--duration-fast) var(--easing-default),
+    box-shadow       var(--duration-fast) var(--easing-default);
+}
+
+a.avatar:hover,
+button.avatar:hover {
+  background-color: var(--interactive);
+  color:            var(--pure-0);
+  box-shadow:       0 0 0 3px var(--color-primary-pastel-01);
+}
+
+/* Icon colour inverts on hover */
+a.avatar:hover::before,
+button.avatar:hover::before {
+  background-color: var(--pure-0);
+}
+
+a.avatar:visited { color: var(--interactive); }
+a.avatar:hover:visited { color: var(--pure-0); }

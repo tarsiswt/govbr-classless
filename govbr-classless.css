@@ -31,14 +31,11 @@
   --font-family-base:         Rawline, Raleway, sans-serif;
   --font-family-mono:         'Courier New', Courier, monospace;
   --font-size-base:           14px;            /* 87.5% of 16px browser default */
-  --font-weight-thin:         100;
-  --font-weight-light:        300;
   --font-weight-regular:      400;
   --font-weight-medium:       500;
   --font-weight-semi-bold:    600;
   --font-weight-bold:         700;
-  --font-weight-extra-bold:   800;
-  --font-weight-black:        900;
+  --font-size-sm:             0.857rem;   /* 12px @ 14px base — font-size-scale-down-01 */
   --font-line-height-low:     1.15;
   --font-line-height-medium:  1.45;
   --font-line-height-high:    1.85;
@@ -79,7 +76,6 @@
   --red-vivid-10:             #fff3f2;
   --yellow-vivid-20:          #f5820d;
   --yellow-vivid-10:          #fef0e6;
-  --cyan-vivid-40:            #009ec1;
   --cyan-vivid-10:            #e5faff;
 
   /* Purple */
@@ -155,15 +151,12 @@
   --focus-offset: 2px;
 
   /* ----- Z-index ----- */
-  --z-0:    0;
-  --z-100:  100;
-  --z-200:  200;
-  --z-1000: 1000;
-  --z-2000: 2000;
-  --z-3000: 3000;
-  --z-4000: 4000;
+  --z-1000: 1000;   /* sticky header */
+  --z-4000: 4000;   /* skip link */
 
   /* ----- Layout ----- */
+  /* Note: --breakpoint-* are documentation only; CSS custom properties cannot
+     be used inside @media query expressions, so media queries use raw values. */
   --breakpoint-sm:  576px;
   --breakpoint-md:  992px;
   --breakpoint-lg:  1280px;
@@ -735,8 +728,6 @@ input[type="checkbox"]:not([role="switch"]):disabled {
   background-color: var(--background-alternative);
 }
 
-input[type="radio"] { border-radius: 50%; }
-
 /* ---- Switch / Toggle ---- */
 input[type="checkbox"][role="switch"] {
   appearance: none;
@@ -1243,9 +1234,7 @@ details > :not(summary) {
   margin: 0;
 }
 
-a[role="tab"],
-button[role="tab"],
-label[role="tab"] {
+:is(a, button, label)[role="tab"] {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -1266,24 +1255,18 @@ label[role="tab"] {
     border-color var(--duration-fast) var(--easing-default);
 }
 
-a[role="tab"]:hover,
-button[role="tab"]:hover,
-label[role="tab"]:hover {
+:is(a, button, label)[role="tab"]:hover {
   color: var(--interactive);
   text-decoration: none;
 }
 
-a[role="tab"]:focus-visible,
-button[role="tab"]:focus-visible,
-label[role="tab"]:focus-visible {
+:is(a, button, label)[role="tab"]:focus-visible {
   outline: 3px solid var(--focus-color);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
 
-a[role="tab"][aria-selected="true"],
-button[role="tab"][aria-selected="true"],
-label[role="tab"][aria-selected="true"] {
+:is(a, button, label)[role="tab"][aria-selected="true"] {
   color: var(--interactive);
   border-bottom-color: var(--interactive);
 }
@@ -1518,9 +1501,6 @@ meter {
     --focus-color: #ff7070;
   }
 
-  /* ---- body background ---- */
-  body { background-color: var(--background); }
-
   /* ---- Inputs, select, textarea — dark surface ---- */
   input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="color"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="hidden"]),
   select,
@@ -1546,11 +1526,6 @@ meter {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234d9fdc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
   }
 
-  input[type="checkbox"],
-  input[type="radio"] {
-    accent-color: var(--interactive);
-  }
-
   /* ---- Tables ---- */
   table { background-color: var(--surface); }
 
@@ -1563,22 +1538,10 @@ meter {
   tbody tr:hover             { background-color: rgba(77,159,220,0.12); }
   tfoot                      { background-color: var(--background-alternative); }
 
-  caption {
-    background-color: var(--background-alternative);
-    color: var(--text-secondary);
-  }
-
   /* ---- Fieldset, details, dialog ---- */
-  fieldset { border-color: var(--gray-10); }
+  details  { background-color: var(--surface); }
 
-  details  { background-color: var(--surface); border-color: var(--gray-10); }
-  summary  { background-color: var(--background-alternative); }
-  details[open] > summary { background-color: var(--background-alternative); }
-
-  dialog {
-    background-color: var(--surface);
-    color: var(--text-primary);
-  }
+  dialog { background-color: var(--surface); }
   dialog::backdrop { background-color: rgba(0, 0, 0, 0.75); }
 
   /* ---- Blockquote ---- */
@@ -1612,9 +1575,6 @@ meter {
     color: var(--text-primary);
     border-bottom-color: var(--color-highlight);
   }
-
-  /* ---- HR ---- */
-  hr { border-top-color: var(--gray-10); }
 
   /* ---- Scrollbar ---- */
   ::-webkit-scrollbar-track { background-color: var(--background-alternative); }

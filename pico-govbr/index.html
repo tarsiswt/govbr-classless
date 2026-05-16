@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GovBR-DS theme for Pico CSS — exploração de customização">
+  <title>Pico CSS × GovBR-DS — Exploração de tema</title>
+
+  <!-- 1. Pico CSS v2 classless — from CDN -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
+
+  <!-- 2. GovBR-DS theme overrides — local (this file) -->
+  <link rel="stylesheet" href="govbr-pico-theme.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><strong>GovBR-DS × Pico CSS</strong></li>
+      </ul>
+      <ul>
+        <li><a href="#tipografia">Tipografia</a></li>
+        <li><a href="#formularios">Formulários</a></li>
+        <li><a href="#componentes">Componentes</a></li>
+        <li><a href="#comparacao">Comparação</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <hgroup>
+        <h1>Pico CSS × GovBR-DS</h1>
+        <p>Exploração de tema: Pico CSS v2 customizado com tokens do Padrão Digital de Governo 3.7.0</p>
+      </hgroup>
+
+      <p>
+        Esta página carrega <strong>apenas dois arquivos CSS</strong>: o Pico CSS classless (CDN) e
+        o tema GovBR-DS que sobrescreve suas variáveis <code>--pico-*</code>. Nenhum build step,
+        nenhum Sass, nenhum JavaScript.
+      </p>
+
+      <details>
+        <summary>Como usar</summary>
+        <pre><code>&lt;!-- 1. Pico CSS classless --&gt;
+&lt;link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"&gt;
+
+&lt;!-- 2. Tema GovBR-DS --&gt;
+&lt;link rel="stylesheet" href="govbr-pico-theme.css"&gt;</code></pre>
+      </details>
+    </section>
+
+    <!-- ── Tipografia ─────────────────────────────────────────────────────── -->
+    <section id="tipografia">
+      <h2>Tipografia</h2>
+
+      <h1>Heading 1 — Rawline, 14px base</h1>
+      <h2>Heading 2 — Escala tipográfica GovBR</h2>
+      <h3>Heading 3 — Padrão Digital de Governo</h3>
+      <h4>Heading 4 — Hierarquia visual</h4>
+      <h5>Heading 5 — Subtítulo</h5>
+      <h6>Heading 6 — Legenda</h6>
+
+      <p>
+        Parágrafo com <strong>negrito</strong>, <em>itálico</em>, <u>sublinhado</u>,
+        <a href="#">link</a>, <a href="#" aria-disabled="true">link visitado</a>,
+        <code>código inline</code>, <mark>destaque em dourado GovBR</mark>,
+        <del>texto riscado</del> e <small>texto pequeno</small>.
+      </p>
+
+      <blockquote>
+        <p>
+          "A administração pública direta e indireta de qualquer dos Poderes da União, dos Estados,
+          do Distrito Federal e dos Municípios obedecerá aos princípios de legalidade,
+          impessoalidade, moralidade, publicidade e eficiência."
+        </p>
+        <footer>— Art. 37, Constituição Federal</footer>
+      </blockquote>
+
+      <pre><code>/* Rawline é a tipografia oficial do Padrão Digital de Governo */
+--pico-font-family: 'Rawline', Raleway, sans-serif;
+--pico-font-size:   87.5%;  /* 14px @ 16px browser default */</code></pre>
+
+      <p>
+        <kbd>Ctrl</kbd> + <kbd>C</kbd> copia o texto selecionado.
+        <var>x</var> = <var>y</var> + 2.
+        Texto com <sup>sobrescrito</sup> e <sub>subscrito</sub>.
+        Abreviação: <abbr title="Padrão Digital de Governo">PDG</abbr>.
+      </p>
+    </section>
+
+    <!-- ── Formulários ────────────────────────────────────────────────────── -->
+    <section id="formularios">
+      <h2>Formulários</h2>
+
+      <form>
+        <div class="grid">
+          <label>
+            Nome completo
+            <input type="text" placeholder="Ex.: Maria da Silva" autocomplete="name">
+          </label>
+          <label>
+            CPF
+            <input type="text" placeholder="000.000.000-00" inputmode="numeric">
+          </label>
+        </div>
+
+        <div class="grid">
+          <label>
+            E-mail institucional
+            <input type="email" placeholder="nome@orgao.gov.br" autocomplete="email">
+          </label>
+          <label>
+            Data de nascimento
+            <input type="date">
+          </label>
+        </div>
+
+        <label>
+          Órgão / entidade
+          <select>
+            <option value="" disabled selected>Selecione o órgão</option>
+            <option>Ministério da Gestão e da Inovação em Serviços Públicos</option>
+            <option>Ministério da Fazenda</option>
+            <option>Advocacia-Geral da União</option>
+            <option>Controladoria-Geral da União</option>
+          </select>
+        </label>
+
+        <label>
+          Descrição da solicitação
+          <textarea placeholder="Descreva sua solicitação de forma clara e objetiva..." rows="4"></textarea>
+        </label>
+
+        <fieldset>
+          <legend>Tipo de acesso solicitado</legend>
+          <label>
+            <input type="radio" name="acesso" value="consulta" checked>
+            Consulta
+          </label>
+          <label>
+            <input type="radio" name="acesso" value="alteracao">
+            Alteração
+          </label>
+          <label>
+            <input type="radio" name="acesso" value="exclusao">
+            Exclusão
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Notificações</legend>
+          <label>
+            <input type="checkbox" checked>
+            Receber por e-mail
+          </label>
+          <label>
+            <input type="checkbox">
+            Receber por SMS
+          </label>
+          <label>
+            <input type="checkbox" role="switch" checked>
+            Ativar alertas em tempo real
+          </label>
+        </fieldset>
+
+        <div class="grid">
+          <label>
+            Prioridade
+            <input type="range" min="1" max="5" value="3">
+          </label>
+          <label>
+            Progresso atual
+            <progress value="65" max="100"></progress>
+          </label>
+        </div>
+
+        <!-- Validation states -->
+        <div class="grid">
+          <label>
+            CPF (válido)
+            <input type="text" value="000.000.000-00" aria-invalid="false">
+            <small>CPF verificado na base gov.br</small>
+          </label>
+          <label>
+            Matrícula (inválida)
+            <input type="text" value="12345X" aria-invalid="true">
+            <small>Matrícula não encontrada no SIAPE</small>
+          </label>
+        </div>
+
+        <div role="group">
+          <input type="search" placeholder="Buscar serviço...">
+          <button type="submit">Buscar</button>
+        </div>
+
+        <div class="grid">
+          <button type="submit">Enviar solicitação</button>
+          <button type="reset" class="secondary">Limpar</button>
+          <button type="button" class="contrast">Cancelar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ── Componentes ────────────────────────────────────────────────────── -->
+    <section id="componentes">
+      <h2>Componentes</h2>
+
+      <h3>Acordeão (details/summary)</h3>
+      <details open>
+        <summary>O que é o Padrão Digital de Governo?</summary>
+        <p>
+          É o conjunto de padrões, diretrizes e boas práticas que orientam o design de
+          interfaces e serviços digitais do Governo Federal brasileiro. Inclui guia de
+          estilo, componentes, tokens de design e acessibilidade.
+        </p>
+      </details>
+      <details>
+        <summary>Como faço para usar o GovBR-DS?</summary>
+        <p>
+          Você pode usar o framework classless (um único <code>&lt;link&gt;</code>) ou os
+          web components da biblioteca <code>@govbr-ds/webcomponents</code>. Para sistemas
+          legados, o pacote <code>@govbr-ds/core</code> fornece classes CSS.
+        </p>
+      </details>
+      <details>
+        <summary>Quais são os requisitos de acessibilidade?</summary>
+        <p>
+          O PDG segue a WCAG 2.1 nível AA, o eMAG (Modelo de Acessibilidade em Governo
+          Eletrônico) e a Lei Brasileira de Inclusão (LBI). Contraste mínimo 4.5:1 para
+          texto e foco visível em todos os elementos interativos.
+        </p>
+      </details>
+
+      <h3>Tabela</h3>
+      <figure>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Componente</th>
+              <th scope="col">Pico CSS</th>
+              <th scope="col">GovBR-DS WBC</th>
+              <th scope="col">Compatível</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Botão</td>
+              <td><code>button</code></td>
+              <td><code>br-button</code></td>
+              <td>✓ Com pill radius</td>
+            </tr>
+            <tr>
+              <td>Input</td>
+              <td><code>input</code></td>
+              <td><code>br-input</code></td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>Select</td>
+              <td><code>select</code></td>
+              <td><code>br-select</code></td>
+              <td>Parcial</td>
+            </tr>
+            <tr>
+              <td>Acordeão</td>
+              <td><code>details/summary</code></td>
+              <td><code>br-collapse</code></td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>Modal</td>
+              <td><code>dialog</code></td>
+              <td><code>br-modal</code></td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>Tabs</td>
+              <td>Não incluído</td>
+              <td><code>br-tab</code></td>
+              <td>✗</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">
+                Pico classless cobre ~70% dos componentes GovBR-DS via HTML semântico nativo.
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+        <figcaption>Cobertura de componentes Pico CSS vs. GovBR-DS Web Components</figcaption>
+      </figure>
+
+      <h3>Dialog / Modal</h3>
+      <button onclick="document.getElementById('modal-demo').showModal()">
+        Abrir modal
+      </button>
+
+      <dialog id="modal-demo">
+        <article>
+          <header>
+            <button aria-label="Fechar" rel="prev"
+              onclick="document.getElementById('modal-demo').close()"></button>
+            <h3>Confirmação de ação</h3>
+          </header>
+          <p>Tem certeza que deseja excluir este registro? Esta ação não pode ser desfeita.</p>
+          <footer>
+            <button class="secondary"
+              onclick="document.getElementById('modal-demo').close()">Cancelar</button>
+            <button>Confirmar exclusão</button>
+          </footer>
+        </article>
+      </dialog>
+
+      <h3>Tema claro / escuro</h3>
+      <div role="group">
+        <button onclick="document.documentElement.removeAttribute('data-theme')">
+          Sistema
+        </button>
+        <button onclick="document.documentElement.setAttribute('data-theme','light')">
+          Claro
+        </button>
+        <button onclick="document.documentElement.setAttribute('data-theme','dark')">
+          Escuro
+        </button>
+      </div>
+    </section>
+
+    <!-- ── Comparação ─────────────────────────────────────────────────────── -->
+    <section id="comparacao">
+      <h2>Comparação de abordagens</h2>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Pico + tema GovBR</th>
+            <th>GovBR Classless</th>
+            <th>GovBR WBC v1</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tamanho CSS</strong></td>
+            <td>~71KB + ~6KB tema</td>
+            <td>~34KB (min)</td>
+            <td>~500KB (bundle JS)</td>
+          </tr>
+          <tr>
+            <td><strong>JavaScript</strong></td>
+            <td>Nenhum</td>
+            <td>Nenhum</td>
+            <td>Obrigatório</td>
+          </tr>
+          <tr>
+            <td><strong>Build step</strong></td>
+            <td>Nenhum (CSS vars)</td>
+            <td>Nenhum</td>
+            <td>npm install</td>
+          </tr>
+          <tr>
+            <td><strong>Fidelidade GovBR</strong></td>
+            <td>Alta (tokens mapeados)</td>
+            <td>Alta (fonte primária)</td>
+            <td>Máxima</td>
+          </tr>
+          <tr>
+            <td><strong>Foco vermelho tracejado</strong></td>
+            <td>✓ (override CSS)</td>
+            <td>✓ (nativo)</td>
+            <td>✓ (componente)</td>
+          </tr>
+          <tr>
+            <td><strong>Dark mode</strong></td>
+            <td>✓ (automático Pico)</td>
+            <td>✓ (tokens)</td>
+            <td>✗</td>
+          </tr>
+          <tr>
+            <td><strong>Tabs nativas</strong></td>
+            <td>✗ (Pico não inclui)</td>
+            <td>✓ (radio/label)</td>
+            <td>✓ (br-tab)</td>
+          </tr>
+          <tr>
+            <td><strong>Manutenção</strong></td>
+            <td>Depende do Pico upstream</td>
+            <td>Controle total</td>
+            <td>Depende SERPRO</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hgroup>
+        <h3>Conclusão preliminar</h3>
+        <p>Pontos de alinhamento e divergência</p>
+      </hgroup>
+      <p>
+        O Pico CSS <strong>cobre bem</strong> tipografia, formulários, tabelas, modal e
+        acordeão — os componentes com base em HTML semântico nativo.
+        O tema GovBR consegue alinhar cores, tipografia (Rawline), foco tracejado vermelho
+        e a paleta azul navy do header.
+      </p>
+      <p>
+        <strong>Lacunas</strong>: Pico não tem tabs, avatares, breadcrumb, nem o padrão
+        de botão com <code>data-variant</code>. O dark mode do Pico é mais rico que o do
+        GovBR-DS (que não define dark mode oficialmente), o que é um bônus.
+        A dependência no upstream do Pico é o principal risco: mudanças de variáveis
+        em versões futuras podem quebrar o tema silenciosamente.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <nav>
+      <ul>
+        <li><a href="https://picocss.com">Pico CSS v2</a></li>
+        <li><a href="https://www.gov.br/ds/">Padrão Digital de Governo</a></li>
+        <li><a href="https://github.com/tarsiswt/govbr-classless">GitHub</a></li>
+      </ul>
+    </nav>
+    <small>Exploração em branch — não é parte do framework GovBR Classless</small>
+  </footer>
+
+</body>
+</html>

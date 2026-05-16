@@ -1,0 +1,430 @@
+/* =============================================================================
+   GovBR-DS theme for Pico CSS v2 (classless)
+   Maps --pico-* variables to Padrão Digital de Governo 3.7.0 tokens.
+
+   Usage:
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
+     <link rel="stylesheet" href="govbr-pico-theme.css">
+
+   How specificity works here:
+     Pico defines color tokens with [data-theme="light"], :root:not([data-theme="dark"])
+     (specificity 0,2,0), beating plain :root (0,1,0). We must use the same selectors
+     for color overrides; non-color tokens (font, spacing, radius) live in :root and
+     work fine because Pico also uses :root for those.
+   ============================================================================= */
+
+
+/* =============================================================================
+   FONTS — Rawline (official GovBR-DS typeface)
+   ============================================================================= */
+
+@import url('https://fonts.cdnfonts.com/css/rawline');
+
+
+/* =============================================================================
+   NON-COLOR TOKENS  (:root is enough — Pico uses :root here too)
+   ============================================================================= */
+
+:root {
+  /* Typography */
+  --pico-font-family:            'Rawline', Raleway, 'Segoe UI', sans-serif;
+  --pico-font-family-monospace:  'Courier New', Courier, monospace;
+  --pico-font-size:              87.5%;   /* 14px — GovBR-DS base */
+  --pico-font-weight:            400;
+  --pico-line-height:            1.45;
+  --pico-text-underline-offset:  0.125rem;
+
+  /* Spacing */
+  --pico-spacing:                           1rem;
+  --pico-block-spacing-vertical:            1rem;
+  --pico-block-spacing-horizontal:          1rem;
+  --pico-typography-spacing-vertical:       1rem;
+  --pico-form-element-spacing-vertical:     0.571rem;
+  --pico-form-element-spacing-horizontal:   0.857rem;
+
+  /* Borders */
+  --pico-border-radius:   4px;
+  --pico-border-width:    1px;
+  --pico-outline-width:   2px;
+
+  /* Transitions */
+  --pico-transition:      0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Nav spacing */
+  --pico-nav-element-spacing-vertical:    0.571rem;
+  --pico-nav-element-spacing-horizontal:  0.857rem;
+  --pico-nav-link-spacing-vertical:       0.429rem;
+  --pico-nav-link-spacing-horizontal:     0.571rem;
+}
+
+
+/* =============================================================================
+   LIGHT MODE COLORS
+   Must match Pico's selector: [data-theme="light"], :root:not([data-theme="dark"])
+   ============================================================================= */
+
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+
+  /* Page background & base text */
+  /*--pico-background-color:  #f0f0f0;  !* gray-5 — GovBR page bg *!*/
+  --pico-color:             #1b1b1b;  /* gray-80 */
+  --pico-muted-color:       #71767a;  /* gray-40 */
+  --pico-muted-border-color:#dfe1e2;  /* gray-10 */
+
+  /* Primary — GovBR blue */
+  --pico-primary:            #1351b4;  /* blue-warm-vivid-70 */
+  --pico-primary-background: #1351b4;
+  --pico-primary-hover:      #0c326f;  /* blue-warm-vivid-80 */
+  --pico-primary-focus:      rgba(19, 81, 180, 0.25);
+  --pico-primary-inverse:    #ffffff;
+
+  /* Secondary — GovBR gray (no true secondary in the DS) */
+  --pico-secondary:            #565c65;  /* gray-50 */
+  --pico-secondary-background: #565c65;
+  --pico-secondary-hover:      #3d4551;  /* gray-60 */
+  --pico-secondary-focus:      rgba(86, 92, 101, 0.25);
+  --pico-secondary-inverse:    #ffffff;
+
+  /* Contrast — dark navy */
+  --pico-contrast:            #071d41;  /* blue-warm-vivid-90 */
+  --pico-contrast-background: #071d41;
+  --pico-contrast-hover:      #000000;
+  --pico-contrast-focus:      rgba(7, 29, 65, 0.25);
+  --pico-contrast-inverse:    #ffffff;
+
+  /* Headings */
+  --pico-h1-color: #1b1b1b;
+  --pico-h2-color: #1b1b1b;
+  --pico-h3-color: #3d4551;
+  --pico-h4-color: #3d4551;
+  --pico-h5-color: #565c65;
+  --pico-h6-color: #71767a;
+
+  /* Form elements */
+  --pico-form-element-background-color:          #ffffff;
+  --pico-form-element-selected-background-color: #dbe8fb;  /* pastel-01 */
+  --pico-form-element-border-color:              #dfe1e2;
+  --pico-form-element-color:                     #1b1b1b;
+  --pico-form-element-placeholder-color:         #71767a;
+  --pico-form-element-active-background-color:   #ffffff;
+  --pico-form-element-active-border-color:       #1351b4;
+  --pico-form-element-focus-color:               #1351b4;
+  --pico-form-element-disabled-background-color: #f0f0f0;
+  --pico-form-element-disabled-border-color:     #dfe1e2;
+  --pico-form-element-disabled-color:            #a9aeb1;
+  --pico-form-element-invalid-border-color:      #e52207;
+  --pico-form-element-valid-border-color:        #168821;
+  --pico-form-element-invalid-active-border-color: #e52207;
+  --pico-form-element-valid-active-border-color:   #168821;
+
+  /* Components */
+  --pico-code-background-color: #f0f0f0;
+  --pico-code-color:            #3d4551;
+  --pico-code-kbd-background:   #071d41;
+  --pico-code-kbd-color:        #ffffff;
+  --pico-mark-background-color: #fff5c2;  /* gold-10 */
+  --pico-mark-color:            #1b1b1b;
+  --pico-table-border-color:    #dfe1e2;
+  --pico-table-row-stripped-background-color: #eff6fb;  /* blue-warm-5 */
+  --pico-switch-background-color:         #a9aeb1;
+  --pico-switch-checked-background-color: #1351b4;
+  --pico-switch-color:                    #ffffff;
+  --pico-switch-thumb-box-shadow:         none;
+  --pico-progress-background-color:       #dfe1e2;
+  --pico-progress-color:                  #1351b4;
+  --pico-tooltip-background-color:        #071d41;
+  --pico-tooltip-color:                   #ffffff;
+  --pico-box-shadow:  0 1px 4px rgba(0,0,0,0.10), 0 3px 8px rgba(0,0,0,0.06);
+
+  --pico-accordion-close-summary-color: #1351b4;
+  --pico-accordion-open-summary-color:  #0c326f;
+
+  --pico-dropdown-background-color:       #ffffff;
+  --pico-dropdown-hover-background-color: #eff6fb;
+  --pico-dropdown-color:                  #1b1b1b;
+  --pico-dropdown-border-color:           #dfe1e2;
+
+  --pico-modal-overlay-background-color: rgba(7, 29, 65, 0.5);
+}
+
+
+/* =============================================================================
+   DARK MODE COLORS — media query variant (system preference)
+   ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --pico-background-color:  #1b1b1b;
+    --pico-color:             #dfe1e2;
+    --pico-muted-color:       #a9aeb1;
+    --pico-muted-border-color:#3d4551;
+
+    --pico-primary:            #2670e8;  /* lighten-01 for dark bg legibility */
+    --pico-primary-background: #1351b4;
+    --pico-primary-hover:      #adcdff;  /* blue-warm-vivid-20 */
+    --pico-primary-focus:      rgba(38, 112, 232, 0.375);
+
+    --pico-secondary:          #a9aeb1;
+    --pico-secondary-hover:    #dfe1e2;
+    --pico-secondary-focus:    rgba(169, 174, 177, 0.25);
+
+    --pico-contrast:           #dfe1e2;
+    --pico-contrast-hover:     #ffffff;
+
+    --pico-h1-color: #dfe1e2;
+    --pico-h2-color: #dfe1e2;
+    --pico-h3-color: #a9aeb1;
+    --pico-h4-color: #a9aeb1;
+    --pico-h5-color: #71767a;
+    --pico-h6-color: #71767a;
+
+    --pico-form-element-background-color:        #23262c;
+    --pico-form-element-border-color:            #3d4551;
+    --pico-form-element-color:                   #dfe1e2;
+    --pico-form-element-placeholder-color:       #71767a;
+    --pico-form-element-active-background-color: #2d3138;
+    --pico-form-element-active-border-color:     #2670e8;
+    --pico-form-element-disabled-background-color: #1b1b1b;
+    --pico-form-element-disabled-border-color:     #3d4551;
+    --pico-form-element-disabled-color:            #71767a;
+    --pico-form-element-invalid-border-color:    #ff6b57;
+    --pico-form-element-valid-border-color:      #2da44e;
+
+    --pico-code-background-color: #23262c;
+    --pico-code-color:            #a9aeb1;
+    --pico-mark-background-color: #664d00;
+    --pico-mark-color:            #fff5c2;
+    --pico-table-border-color:    #3d4551;
+    --pico-table-row-stripped-background-color: rgba(38,112,232,0.08);
+    --pico-switch-background-color:         #3d4551;
+    --pico-switch-checked-background-color: #2670e8;
+    --pico-progress-background-color:       #3d4551;
+    --pico-progress-color:                  #2670e8;
+    --pico-tooltip-background-color:        #dbe8fb;
+    --pico-tooltip-color:                   #071d41;
+    --pico-box-shadow: 0 1px 4px rgba(0,0,0,0.30), 0 3px 8px rgba(0,0,0,0.20);
+
+    --pico-accordion-close-summary-color: #2670e8;
+    --pico-accordion-open-summary-color:  #adcdff;
+    --pico-dropdown-background-color:       #23262c;
+    --pico-dropdown-hover-background-color: rgba(38,112,232,0.10);
+    --pico-dropdown-color:                  #dfe1e2;
+    --pico-dropdown-border-color:           #3d4551;
+    --pico-modal-overlay-background-color:  rgba(0,0,0,0.75);
+  }
+}
+
+
+/* =============================================================================
+   DARK MODE COLORS — explicit [data-theme="dark"]
+   ============================================================================= */
+
+[data-theme="dark"] {
+  --pico-background-color:  #1b1b1b;
+  --pico-color:             #dfe1e2;
+  --pico-muted-color:       #a9aeb1;
+  --pico-muted-border-color:#3d4551;
+
+  --pico-primary:            #2670e8;
+  --pico-primary-background: #1351b4;
+  --pico-primary-hover:      #adcdff;
+  --pico-primary-focus:      rgba(38, 112, 232, 0.375);
+
+  --pico-secondary:          #a9aeb1;
+  --pico-secondary-hover:    #dfe1e2;
+
+  --pico-h1-color: #dfe1e2;
+  --pico-h2-color: #dfe1e2;
+  --pico-h3-color: #a9aeb1;
+  --pico-h4-color: #a9aeb1;
+  --pico-h5-color: #71767a;
+  --pico-h6-color: #71767a;
+
+  --pico-form-element-background-color:        #23262c;
+  --pico-form-element-border-color:            #3d4551;
+  --pico-form-element-color:                   #dfe1e2;
+  --pico-form-element-active-border-color:     #2670e8;
+  --pico-form-element-invalid-border-color:    #ff6b57;
+  --pico-form-element-valid-border-color:      #2da44e;
+
+  --pico-code-background-color: #23262c;
+  --pico-code-color:            #a9aeb1;
+  --pico-mark-background-color: #664d00;
+  --pico-mark-color:            #fff5c2;
+  --pico-table-border-color:    #3d4551;
+  --pico-switch-checked-background-color: #2670e8;
+  --pico-progress-color:                  #2670e8;
+  --pico-dropdown-background-color: #23262c;
+  --pico-dropdown-border-color:     #3d4551;
+}
+
+
+/* =============================================================================
+   GovBR-DS STRUCTURAL OVERRIDES
+   Things Pico can't do via variables alone.
+   ============================================================================= */
+
+/*!* ── 1. Focus ring — the most distinctive GovBR-DS trait ─────────────────── *!*/
+/*!* GovBR mandates a red dashed 2px outline with 2px offset on all focusable elements *!*/
+
+/*:focus-visible {*/
+/*  outline:        2px dashed #c40000 !important;*/
+/*  outline-offset: 2px !important;*/
+/*  box-shadow:     none !important;*/
+/*}*/
+
+/*!* ── 2. Header — dark navy background, white text ─────────────────────────── *!*/
+
+/*body > header {*/
+/*  background-color: #071d41;*/
+/*  color:            #ffffff;*/
+/*  border-bottom:    none;*/
+/*}*/
+
+/*body > header a,*/
+/*body > header nav a {*/
+/*  color:   #ffffff;*/
+/*  opacity: 1;*/
+/*}*/
+
+/*body > header nav a:hover {*/
+/*  color:           #ffcd07;  !* gold-vivid-20 — GovBR highlight on dark bg *!*/
+/*  text-decoration: none;*/
+/*}*/
+
+/*body > header h1,*/
+/*body > header h1 a {*/
+/*  color:           #ffffff;*/
+/*  text-decoration: none;*/
+/*}*/
+
+/*!* ── 3. Footer — dark navy, scoped to body > footer only ─────────────────── *!*/
+/*!* Scope tightly so blockquote > footer and article > footer are not affected *!*/
+
+/*body > footer {*/
+/*  background-color: #071d41;*/
+/*  color:            #a9aeb1;*/
+/*  border-top:       none;*/
+/*  margin-top:       auto;*/
+/*}*/
+
+/*body > footer a      { color: #adcdff; }*/
+/*body > footer a:hover { color: #ffcd07; }*/
+
+/*!* ── 4. Main — white content card on gray page ────────────────────────────── *!*/
+
+/*body > main {*/
+/*  background-color: #ffffff;*/
+/*  box-shadow:       0 1px 4px rgba(0,0,0,0.08);*/
+/*}*/
+
+/* ── 5. Pill buttons — GovBR-DS br-button uses 999em radius ──────────────── */
+
+button,
+[type="submit"],
+[type="reset"],
+[type="button"],
+[role="button"] {
+  border-radius: 999em;
+  font-weight:   600;
+  letter-spacing: 0.02em;
+}
+
+/* Restore sensible radius for buttons inside role=group (search bars, etc.) */
+[role="group"] button,
+[role="group"] [type="submit"] {
+  border-radius: 0 999em 999em 0;
+}
+
+/* ── 6. Blockquote — blue left accent on light bg ─────────────────────────── */
+
+blockquote {
+  border-left-color: #1351b4;
+  border-left-width: 4px;
+  background-color:  #eff6fb;
+  padding:           1rem 1.25rem;
+  border-radius:     0 4px 4px 0;
+  font-style:        normal;
+}
+
+/* ── 7. Table — blue thead ────────────────────────────────────────────────── */
+
+table thead th,
+table thead td {
+  background-color: #1351b4;
+  color:            #ffffff;
+  font-weight:      600;
+}
+
+/* ── 7b. Button color variants — explicit overrides for cases where Pico's
+   internal theme CSS wins over variable-based cascade ─────────────────────── */
+
+/* .contrast — dark navy, regardless of context (including dialog footer) */
+button.contrast,
+[type="submit"].contrast,
+[type="button"].contrast,
+[role="button"].contrast {
+  background-color: #071d41;
+  border-color:     #071d41;
+  color:            #ffffff;
+}
+button.contrast:hover,
+[type="button"].contrast:hover {
+  background-color: #000000;
+  border-color:     #000000;
+}
+
+/* .secondary — gray, restored in dialog footer where Pico hardcodes primary */
+dialog footer button.secondary,
+dialog footer [role="button"].secondary,
+article footer button.secondary {
+  background-color: #565c65;
+  border-color:     #565c65;
+  color:            #ffffff;
+}
+dialog footer button.secondary:hover,
+article footer button.secondary:hover {
+  background-color: #3d4551;
+  border-color:     #3d4551;
+}
+
+/* ── 8. Details/accordion — blue left border, matching GovBR accordion ─────── */
+
+details {
+  border-left:   4px solid #1351b4;
+  border-radius: 4px;
+}
+
+details[open] > summary {
+  color:       #0c326f;
+  font-weight: 600;
+}
+
+/* ── 9. Dark mode structural overrides ───────────────────────────────────────── */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body > main {
+    background-color: #23262c;
+    box-shadow:       none;
+  }
+  :root:not([data-theme="light"]) blockquote {
+    background-color: rgba(38, 112, 232, 0.08);
+  }
+  :root:not([data-theme="light"]) table thead th,
+  :root:not([data-theme="light"]) table thead td {
+    background-color: #0c326f;
+  }
+}
+
+[data-theme="dark"] body > main {
+  background-color: #23262c;
+  box-shadow:       none;
+}
+[data-theme="dark"] blockquote {
+  background-color: rgba(38, 112, 232, 0.08);
+}
+[data-theme="dark"] table thead th,
+[data-theme="dark"] table thead td {
+  background-color: #0c326f;
+}

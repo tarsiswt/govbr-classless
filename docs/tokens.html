@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tokens — GovBR Classless Docs</title>
+  <link rel="stylesheet" href="../govbr-classless.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <a href="#main">Pular para o conteúdo</a>
+  <header>
+    <h1><a href="../index.html">GovBR Classless</a></h1>
+    <nav aria-label="Componentes">
+      <ul>
+        <li><a href="typography.html">Tipografia</a></li>
+        <li><a href="code.html">Código</a></li>
+        <li><a href="lists.html">Listas</a></li>
+        <li><a href="tables.html">Tabelas</a></li>
+        <li><a href="forms.html">Formulários</a></li>
+        <li><a href="buttons.html">Botões</a></li>
+        <li><a href="accordion.html">Acordeão</a></li>
+        <li><a href="dialog.html">Dialog</a></li>
+        <li><a href="progress.html">Progresso</a></li>
+        <li><a href="media.html">Mídia</a></li>
+        <li><a href="layout.html">Layout</a></li>
+        <li><a href="tokens.html">Tokens</a></li>      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h2>Design Tokens</h2>
+    <p>
+      Todos os tokens são CSS custom properties (<code>--nome-do-token</code>)
+      definidas no <code>:root</code>. Os tokens de paleta vêm do
+      <code>@govbr-ds/core@3.7.0</code> via CDN e os tokens semânticos
+      (que mapeiam a paleta a significados) são definidos no próprio
+      <code>govbr-classless.css</code>.
+    </p>
+
+    <!-- ---- Primary colors ---- -->
+    <section>
+      <h3>Cores primárias</h3>
+      <div class="token-grid" id="grid-primary"></div>
+    </section>
+
+    <!-- ---- Semantic colors ---- -->
+    <section>
+      <h3>Cores semânticas (feedback)</h3>
+      <div class="token-grid" id="grid-semantic"></div>
+    </section>
+
+    <!-- ---- Neutrals ---- -->
+    <section>
+      <h3>Neutros e superfícies</h3>
+      <div class="token-grid" id="grid-neutral"></div>
+    </section>
+
+    <!-- ---- Typography scale ---- -->
+    <section>
+      <h3>Escala tipográfica</h3>
+      <p>Base: <code>14px</code> (87,5% do padrão de 16px). Unidade: <code>rem</code>.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Elemento</th>
+            <th>Token / valor</th>
+            <th>Tamanho</th>
+            <th>Peso</th>
+            <th>Exemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>h1</code></td>
+            <td><code>3rem</code></td>
+            <td>42px</td>
+            <td>600</td>
+            <td style="font-size:2rem;font-weight:600;line-height:1.15">Heading 1</td>
+          </tr>
+          <tr>
+            <td><code>h2</code></td>
+            <td><code>2.5rem</code></td>
+            <td>35px</td>
+            <td>700</td>
+            <td style="font-size:1.75rem;font-weight:700;line-height:1.15">Heading 2</td>
+          </tr>
+          <tr>
+            <td><code>h3</code></td>
+            <td><code>2rem</code></td>
+            <td>28px</td>
+            <td>600</td>
+            <td style="font-size:1.5rem;font-weight:600;line-height:1.15">Heading 3</td>
+          </tr>
+          <tr>
+            <td><code>h4</code></td>
+            <td><code>1.5rem</code></td>
+            <td>21px</td>
+            <td>600</td>
+            <td style="font-size:1.25rem;font-weight:600;line-height:1.15">Heading 4</td>
+          </tr>
+          <tr>
+            <td><code>h5</code></td>
+            <td><code>1.25rem</code></td>
+            <td>17.5px</td>
+            <td>600</td>
+            <td style="font-size:1.1rem;font-weight:600;line-height:1.15">Heading 5</td>
+          </tr>
+          <tr>
+            <td><code>h6</code></td>
+            <td><code>1rem</code></td>
+            <td>14px</td>
+            <td>700</td>
+            <td style="font-size:1rem;font-weight:700;line-height:1.15">Heading 6</td>
+          </tr>
+          <tr>
+            <td><code>p</code></td>
+            <td><code>1rem</code> / lh 1.85</td>
+            <td>14px</td>
+            <td>400</td>
+            <td>Parágrafo normal</td>
+          </tr>
+          <tr>
+            <td><code>small</code></td>
+            <td><code>0.857rem</code></td>
+            <td>12px</td>
+            <td>400</td>
+            <td><small>Texto pequeno</small></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ---- Spacing scale ---- -->
+    <section>
+      <h3>Escala de espaçamento</h3>
+      <p>Base: <strong>4px</strong>. Todos os espaçamentos são múltiplos de 4px.</p>
+      <div id="spacing-scale"></div>
+    </section>
+
+    <!-- ---- Border radius ---- -->
+    <section>
+      <h3>Borda arredondada</h3>
+      <div class="radius-row" id="radius-row"></div>
+    </section>
+
+    <!-- ---- Shadows ---- -->
+    <section>
+      <h3>Sombras</h3>
+      <div class="shadow-row" id="shadow-row"></div>
+    </section>
+
+    <!-- ---- Focus ---- -->
+    <section>
+      <h3>Anel de foco — padrão GovBR-DS</h3>
+      <table>
+        <thead>
+          <tr><th>Token</th><th>Valor</th><th>Descrição</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>--focus-color</code></td>
+            <td><code>#c40000</code></td>
+            <td>Cor do anel de foco (vermelho)</td>
+          </tr>
+          <tr>
+            <td><code>--focus-width</code></td>
+            <td><code>2px</code></td>
+            <td>Espessura do anel</td>
+          </tr>
+          <tr>
+            <td><code>--focus-style</code></td>
+            <td><code>dashed</code></td>
+            <td>Estilo da linha (pontilhado)</td>
+          </tr>
+          <tr>
+            <td><code>--focus-offset</code></td>
+            <td><code>2px</code></td>
+            <td>Distância do elemento</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Tecle <kbd>Tab</kbd> para visualizar o anel de foco no botão abaixo:</p>
+      <button type="button">Foco aqui (Tab)</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>GovBR Classless — Padrão Digital de Governo 3.7.0</p>
+  </footer>
+
+  <script src="shared.js"></script>
+  <script>
+    /* Token display builder */
+    function swatch(name, value, textColor) {
+      return `
+        <div class="token-card">
+          <div class="token-card-swatch" style="background:${value}"></div>
+          <div class="token-card-info">
+            <div class="token-card-name">${name}</div>
+            <div class="token-card-value">${value}</div>
+          </div>
+        </div>`;
+    }
+
+    const primaryColors = [
+      ['--color-primary-darken-02', '#071d41'],
+      ['--color-primary-darken-01', '#0c326f'],
+      ['--color-primary-default',   '#1351b4'],
+      ['--interactive-light',       '#2670e8'],
+      ['--color-primary-pastel-01', '#dbe8fb'],
+      ['--color-primary-pastel-02', '#eff6fb'],
+      ['--color-highlight',         '#ffcd07'],
+    ];
+
+    const semanticColors = [
+      ['--success',       '#168821'],
+      ['--success-light', '#ecf3ec'],
+      ['--warning',       '#f5820d'],
+      ['--warning-light', '#fef0e6'],
+      ['--danger',        '#e52207'],
+      ['--danger-light',  '#fff3f2'],
+      ['--info',          '#155bcb'],
+      ['--info-light',    '#e5faff'],
+      ['--visited',       '#54278f'],
+    ];
+
+    const neutralColors = [
+      ['--background-dark',        '#071d41'],
+      ['--text-primary (gray-80)', '#1b1b1b'],
+      ['--text-secondary (gray-60)','#3d4551'],
+      ['--text-muted (gray-40)',   '#71767a'],
+      ['--gray-10',                '#dfe1e2'],
+      ['--background-alternative', '#f0f0f0'],
+      ['--background (white)',     '#ffffff'],
+    ];
+
+    document.getElementById('grid-primary').innerHTML =
+      primaryColors.map(([n,v]) => swatch(n,v)).join('');
+    document.getElementById('grid-semantic').innerHTML =
+      semanticColors.map(([n,v]) => swatch(n,v)).join('');
+    document.getElementById('grid-neutral').innerHTML =
+      neutralColors.map(([n,v]) => swatch(n,v)).join('');
+
+    /* Spacing scale */
+    const spacings = [
+      ['--space-1',  4],  ['--space-2',  8],  ['--space-3', 12],
+      ['--space-4', 16],  ['--space-5', 20],  ['--space-6', 24],
+      ['--space-8', 32],  ['--space-10',40],  ['--space-12',48],
+      ['--space-16',64],
+    ];
+    document.getElementById('spacing-scale').innerHTML = spacings.map(([name, px]) => `
+      <div class="spacing-row">
+        <div class="spacing-bar" style="width:${px}px" aria-hidden="true"></div>
+        <span class="spacing-label">${name}: ${px}px</span>
+      </div>
+    `).join('');
+
+    /* Border radius */
+    const radii = [
+      ['none',  '0',      '0px'],
+      ['sm',   '--radius-sm', '4px'],
+      ['md',   '--radius-md', '8px'],
+      ['lg',   '--radius-lg', '16px'],
+      ['pill', '--radius-pill','999em'],
+    ];
+    document.getElementById('radius-row').innerHTML = radii.map(([label, token, val]) => `
+      <div>
+        <div class="radius-box" style="border-radius:${val}" aria-label="${label}">
+          ${label}
+        </div>
+        <p style="font-size:0.7rem;font-family:monospace;margin-top:4px;color:#565c65">
+          ${val}
+        </p>
+      </div>
+    `).join('');
+
+    /* Shadows */
+    const shadows = [
+      ['sm',  '0 1px 4px rgba(0,0,0,.10)'],
+      ['md',  '0 3px 8px rgba(0,0,0,.12)'],
+      ['lg',  '0 8px 16px rgba(0,0,0,.14)'],
+      ['xl',  '0 16px 32px rgba(0,0,0,.16)'],
+    ];
+    document.getElementById('shadow-row').innerHTML = shadows.map(([label, val]) => `
+      <div class="shadow-box" style="box-shadow:${val}">--shadow-${label}</div>
+    `).join('');
+  </script>
+</body>
+</html>

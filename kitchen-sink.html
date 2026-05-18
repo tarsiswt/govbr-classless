@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal de Regularização Cadastral — todos os componentes do GovBR Classless em uma única página.">
+  <title>Kitchen Sink — GovBR Classless</title>
+  <link rel="stylesheet" href="govbr-classless.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="kitchen-sink.css">
+</head>
+<body>
+
+  <a href="#main">Pular para o conteúdo principal</a>
+
+  <!-- ════════════════════════════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════════════════════════════ -->
+  <header>
+    <h1>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"
+           style="display:inline;vertical-align:middle;margin-right:8px" aria-hidden="true">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+      Portal de Serviços
+    </h1>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="index.html">← Docs</a></li>
+        <li><a href="examples/demo.html">Demo</a></li>
+        <li><a href="examples/webcomponents.html">Web Components</a></li>
+        <li><a href="examples/page-with-sidebar.html">Página com Sidebar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb (outside main, below header) -->
+  <div style="background:var(--background-alternative);border-bottom:1px solid var(--gray-10)">
+    <div style="max-width:var(--content-max-width);margin:auto;padding:0 var(--content-padding)">
+      <ol class="breadcrumb" aria-label="Localização">
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Documentos</a></li>
+        <li aria-current="page">Regularização Cadastral</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════
+       MAIN (com sidebar automática via :has())
+  ═══════════════════════════════════════════════════════════════ -->
+  <main id="main">
+
+    <!-- ── ARTICLE — Conteúdo principal ──────────────────────── -->
+    <article>
+
+      <!-- ── Hero / Intro ─────────────────────────────────────── -->
+      <header>
+        <h2 id="intro">Regularização Cadastral Federal</h2>
+        <p>
+          <span class="badge badge-green">Serviço gratuito</span>
+          <span class="badge badge-blue">100% digital</span>
+          <span class="badge badge-yellow">Prazo: 5 dias úteis</span>
+        </p>
+      </header>
+
+      <p>
+        Regularize sua situação cadastral junto aos órgãos federais de forma simples e segura,
+        sem sair de casa. O serviço está disponível 24h, todos os dias, no portal
+        <a href="https://www.gov.br/" target="_blank" rel="noopener">gov.br</a>.
+      </p>
+
+      <div class="alert alert-info">
+        <span class="alert-icon" aria-hidden="true">ℹ</span>
+        <div class="alert-body">
+          <p>
+            <strong>Nível de acesso necessário:</strong> conta gov.br nível
+            <mark>Prata</mark> ou <mark>Ouro</mark>.
+            <a href="#">Como elevar meu nível de conta?</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- ── Etapas do processo ─────────────────────────────── -->
+      <section id="etapas">
+        <h3>Etapas do processo</h3>
+        <ol class="steps" aria-label="Fluxo do processo">
+          <li data-step="1" data-status="done">Cadastro</li>
+          <li data-step="2" data-status="done">Documentos</li>
+          <li data-step="3" data-status="active">Análise</li>
+          <li data-step="4" data-status="">Aprovação</li>
+          <li data-step="5" data-status="">Emissão</li>
+        </ol>
+
+        <label>Progresso geral da solicitação (etapa 3 de 5)</label>
+        <progress value="48" max="100">48%</progress>
+      </section>
+
+      <!-- ── Serviços disponíveis ───────────────────────────── -->
+      <section id="servicos">
+        <h3>Serviços disponíveis</h3>
+        <div class="card-grid">
+          <div class="card">
+            <h4>Regularização CPF</h4>
+            <p>Desbloqueio e atualização de dados cadastrais na Receita Federal.</p>
+          </div>
+          <div class="card">
+            <h4>Certidão Negativa</h4>
+            <p>Emissão de certidão de regularidade fiscal e previdenciária.</p>
+          </div>
+          <div class="card">
+            <h4>Atualização de Endereço</h4>
+            <p>Alteração de domicílio fiscal e residencial nos cadastros federais.</p>
+          </div>
+          <div class="card">
+            <h4>Segunda Via RG</h4>
+            <p>Emissão de segunda via do documento de identidade por perda ou roubo.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Acompanhar solicitação ─────────────────────────── -->
+      <section id="acompanhar">
+        <h3>Acompanhar solicitação existente</h3>
+
+        <table>
+          <caption>Minhas solicitações ativas</caption>
+          <thead>
+            <tr>
+              <th scope="col">Protocolo</th>
+              <th scope="col">Serviço</th>
+              <th scope="col">Abertura</th>
+              <th scope="col">Prazo</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="#">2026.00012345-7</a></td>
+              <td>Regularização CPF</td>
+              <td><time datetime="2026-05-01">01/05/2026</time></td>
+              <td><time datetime="2026-05-08">08/05/2026</time></td>
+              <td><span class="badge badge-blue">Em análise</span></td>
+            </tr>
+            <tr>
+              <td><a href="#">2026.00009821-3</a></td>
+              <td>Certidão Negativa</td>
+              <td><time datetime="2026-04-20">20/04/2026</time></td>
+              <td><time datetime="2026-04-27">27/04/2026</time></td>
+              <td><span class="badge badge-green">Concluído</span></td>
+            </tr>
+            <tr>
+              <td><a href="#">2026.00011102-8</a></td>
+              <td>Atualização de Endereço</td>
+              <td><time datetime="2026-04-28">28/04/2026</time></td>
+              <td><time datetime="2026-05-12">12/05/2026</time></td>
+              <td><span class="badge badge-yellow">Pendente documentação</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="alert alert-warning">
+          <span class="alert-icon" aria-hidden="true">⚠</span>
+          <div class="alert-body">
+            <p>
+              A solicitação <strong>2026.00011102-8</strong> requer documentação adicional.
+              <a href="#formulario">Envie os documentos</a> até <time datetime="2026-05-15">15/05/2026</time>
+              para evitar o cancelamento automático.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Dados do solicitante ──────────────────────────── -->
+      <section id="solicitante">
+        <h3>Dados do solicitante</h3>
+        <div style="display:flex;align-items:center;gap:var(--space-4);padding:var(--space-4);background:var(--color-primary-pastel-02);border-radius:var(--radius-md);border-left:4px solid var(--interactive)">
+          <a href="#" class="avatar" data-size="medium" aria-label="Ver perfil de Maria das Graças">MG</a>
+          <div>
+            <strong>Maria das Graças Oliveira</strong><br>
+            <small>CPF: 000.000.000-00 &nbsp;·&nbsp; gov.br: <mark>Verificado</mark></small><br>
+            <a href="#">Editar dados pessoais</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Formulário ─────────────────────────────────────── -->
+      <section id="formulario">
+        <h3>Nova solicitação</h3>
+
+        <form novalidate>
+          <fieldset>
+            <legend>Dados pessoais</legend>
+            <div class="form-grid">
+              <div>
+                <label for="ks-nome">Nome completo</label>
+                <input type="text" id="ks-nome" name="nome"
+                       placeholder="Como consta no documento" autocomplete="name" required>
+              </div>
+              <div>
+                <label for="ks-cpf">CPF</label>
+                <input type="text" id="ks-cpf" name="cpf"
+                       placeholder="000.000.000-00" inputmode="numeric" required
+                       pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
+              </div>
+              <div>
+                <label for="ks-email">E-mail</label>
+                <input type="email" id="ks-email" name="email"
+                       placeholder="voce@orgao.gov.br" autocomplete="email" required>
+              </div>
+              <div>
+                <label for="ks-tel">Telefone</label>
+                <input type="tel" id="ks-tel" name="tel"
+                       placeholder="(61) 9 0000-0000" autocomplete="tel">
+              </div>
+              <div>
+                <label for="ks-nasc">Data de nascimento</label>
+                <input type="date" id="ks-nasc" name="nasc" autocomplete="bday">
+              </div>
+              <div>
+                <label for="ks-uf">UF de residência</label>
+                <select id="ks-uf" name="uf">
+                  <option value="">Selecione...</option>
+                  <option>AC</option><option>AL</option><option>AP</option>
+                  <option>AM</option><option>BA</option><option>CE</option>
+                  <option>DF</option><option>ES</option><option>GO</option>
+                  <option>MA</option><option>MT</option><option>MS</option>
+                  <option>MG</option><option>PA</option><option>PB</option>
+                  <option>PR</option><option>PE</option><option>PI</option>
+                  <option>RJ</option><option>RN</option><option>RS</option>
+                  <option>RO</option><option>RR</option><option>SC</option>
+                  <option selected>SP</option><option>SE</option><option>TO</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Tipo de serviço</legend>
+
+            <label>
+              <input type="radio" name="servico" value="cpf" checked>
+              Regularização de CPF
+            </label>
+            <label>
+              <input type="radio" name="servico" value="certidao">
+              Certidão Negativa de Débitos
+            </label>
+            <label>
+              <input type="radio" name="servico" value="endereco">
+              Atualização de endereço
+            </label>
+            <label>
+              <input type="radio" name="servico" value="rg">
+              Segunda via de RG
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Documentação e detalhes</legend>
+
+            <label for="ks-motivo">Motivo da solicitação</label>
+            <select id="ks-motivo" name="motivo">
+              <option value="">Selecione o motivo...</option>
+              <optgroup label="Situação cadastral">
+                <option>CPF suspenso ou cancelado</option>
+                <option>Dados desatualizados</option>
+                <option>Pendência com a Receita Federal</option>
+              </optgroup>
+              <optgroup label="Documentos">
+                <option>Perda ou roubo de documento</option>
+                <option>Documento danificado</option>
+                <option>Primeira via (maiores de 18)</option>
+              </optgroup>
+            </select>
+
+            <label for="ks-obs">Observações adicionais</label>
+            <textarea id="ks-obs" name="obs" rows="4"
+              placeholder="Descreva detalhadamente sua solicitação, incluindo contexto e qualquer informação relevante para a análise..."></textarea>
+
+            <label for="ks-prioridade">
+              Urgência da solicitação: <output id="out-urgencia">5</output>/10
+            </label>
+            <input type="range" id="ks-prioridade" name="urgencia" min="1" max="10" value="5"
+                   oninput="document.getElementById('out-urgencia').textContent = this.value">
+
+            <label for="ks-arquivo">Documentos comprobatórios (PDF, JPG, PNG — máx. 10MB)</label>
+            <input type="file" id="ks-arquivo" name="arquivo" accept=".pdf,.jpg,.jpeg,.png" multiple>
+
+            <label>
+              <input type="checkbox" name="termos" value="1" required>
+              Declaro que as informações prestadas são verdadeiras e assumo
+              responsabilidade civil e criminal por eventual falsidade.
+              (<a href="#" target="_blank">Ver declaração completa</a>)
+            </label>
+
+            <label>
+              <input type="checkbox" name="lgpd" value="1" required>
+              Autorizo o tratamento dos meus dados pessoais conforme a
+              <abbr title="Lei Geral de Proteção de Dados Pessoais">LGPD</abbr>
+              (Lei 13.709/2018) para fins desta solicitação.
+            </label>
+          </fieldset>
+
+          <div class="alert alert-success">
+            <span class="alert-icon" aria-hidden="true">✓</span>
+            <div class="alert-body">
+              <p>
+                Todos os campos obrigatórios estão preenchidos.
+                Revise os dados antes de enviar.
+              </p>
+            </div>
+          </div>
+
+          <button type="submit">Enviar solicitação</button>
+          <button type="button" data-variant="secondary"
+                  onclick="document.getElementById('dlg-rascunho').showModal()">
+            Salvar rascunho
+          </button>
+          <input type="reset" value="Limpar tudo">
+        </form>
+      </section>
+
+      <!-- ── Tipografia completa ────────────────────────────── -->
+      <section id="tipografia">
+        <h3>Informações sobre o serviço</h3>
+
+        <h4>Documentos aceitos</h4>
+        <ul>
+          <li>RG — Registro Geral (original ou cópia autenticada)</li>
+          <li>CNH — Carteira Nacional de Habilitação</li>
+          <li>Passaporte brasileiro dentro da validade</li>
+          <li>Carteira de trabalho (CTPS) com foto
+            <ul>
+              <li>Física ou digital (via app CTPS)</li>
+              <li>Deve conter foto legível e dados completos</li>
+            </ul>
+          </li>
+          <li>Carteira funcional emitida por órgão público federal</li>
+        </ul>
+
+        <h4>Base legal</h4>
+        <ol>
+          <li>Decreto nº 9.094/2017 — simplificação do atendimento ao cidadão</li>
+          <li>Lei nº 14.129/2021 — governo digital e desburocratização</li>
+          <li>Instrução Normativa RFB nº 1.548/2015 — cadastro de pessoas físicas</li>
+        </ol>
+
+        <h4>Glossário</h4>
+        <dl>
+          <dt>CPF</dt>
+          <dd>Cadastro de Pessoas Físicas — número de identificação fiscal do cidadão.</dd>
+          <dt>CND</dt>
+          <dd>Certidão Negativa de Débitos — documento que atesta a ausência de pendências.</dd>
+          <dt>LGPD</dt>
+          <dd>Lei Geral de Proteção de Dados Pessoais — Lei nº 13.709/2018.</dd>
+        </dl>
+
+        <h4>Texto com elementos em linha</h4>
+        <p>
+          O prazo de <strong>5 dias úteis</strong> é contado a partir do
+          <em>recebimento da documentação completa</em>. Documentos incompletos
+          ou ilegíveis <del>serão recusados automaticamente</del> retornarão
+          para complementação com prazo de <ins>3 dias adicionais</ins>.
+          Utilize sempre <mark>cópias nítidas</mark> dos documentos.
+          Para dúvidas técnicas, consulte o <abbr title="Suporte Técnico de TI">STTI</abbr>
+          pelo ramal <small>(extensão interna)</small> ou pelo portal.
+          <code>HTTP 422</code> indica dados inválidos; <code>HTTP 409</code>
+          indica solicitação duplicada.
+        </p>
+
+        <blockquote>
+          <p>
+            A simplificação do acesso a serviços públicos é um direito do cidadão
+            e um dever do Estado, conforme o art. 6º do Decreto nº 9.094/2017.
+          </p>
+          <cite>Decreto nº 9.094, de 17 de julho de 2017</cite>
+        </blockquote>
+
+        <h4>Exemplo de código de integração (API REST)</h4>
+        <pre><code>POST /api/v2/solicitacoes
+Content-Type: application/json
+Authorization: Bearer {token_govbr}
+
+{
+  "tipo": "regularizacao_cpf",
+  "cpf": "000.000.000-00",
+  "motivo": "dados_desatualizados",
+  "urgencia": 5,
+  "documentos": [
+    { "tipo": "rg", "arquivo_id": "uuid-aqui" }
+  ]
+}
+
+// Resposta de sucesso
+HTTP 201 Created
+{
+  "protocolo": "2026.00012345-7",
+  "prazo_dias_uteis": 5,
+  "status": "recebido"
+}</code></pre>
+
+        <p>
+          Teclas de atalho do portal: <kbd>Alt</kbd> + <kbd>1</kbd> para o menu principal,
+          <kbd>Alt</kbd> + <kbd>2</kbd> para o conteúdo, <kbd>Alt</kbd> + <kbd>3</kbd>
+          para o rodapé.
+        </p>
+      </section>
+
+      <!-- ── Acordeão / FAQ ─────────────────────────────────── -->
+      <section id="faq">
+        <h3>Perguntas frequentes</h3>
+
+        <details open>
+          <summary>Quanto tempo leva a regularização?</summary>
+          <p>
+            O prazo padrão é de <strong>5 dias úteis</strong> após o recebimento completo
+            da documentação. Em casos de maior complexidade, o prazo pode ser estendido
+            para até 30 dias, com notificação ao solicitante por e-mail e SMS.
+          </p>
+        </details>
+
+        <details>
+          <summary>Posso acompanhar o status da solicitação?</summary>
+          <p>
+            Sim. Acesse <a href="#">gov.br → Meus Serviços → Acompanhar</a> com sua conta
+            autenticada. Você também receberá notificações automáticas nos canais que
+            cadastrou: e-mail, SMS ou push no aplicativo gov.br.
+          </p>
+        </details>
+
+        <details>
+          <summary>O serviço tem algum custo?</summary>
+          <p>
+            Não. Todos os serviços de regularização cadastral federal são
+            <strong>gratuitos</strong>, conforme o Decreto nº 9.094/2017.
+            Qualquer cobrança é indevida — denuncie pelo
+            <a href="#">Fala.BR</a>.
+          </p>
+        </details>
+
+        <details>
+          <summary>Meus dados estão protegidos?</summary>
+          <p>
+            Sim. O tratamento de dados pessoais segue a
+            <abbr title="Lei Geral de Proteção de Dados Pessoais">LGPD</abbr>
+            (Lei 13.709/2018). Os dados são utilizados exclusivamente para
+            a prestação do serviço solicitado e ficam armazenados em ambiente
+            seguro com criptografia AES-256 em repouso e TLS 1.3 em trânsito.
+          </p>
+        </details>
+
+        <details>
+          <summary>O que acontece se eu enviar documento errado?</summary>
+          <p>
+            Sua solicitação ficará com status <em>"Pendente documentação"</em> e
+            você receberá e-mail explicando o que está faltando. Terá
+            <strong>3 dias úteis</strong> para reenviar. Após esse prazo, a
+            solicitação é cancelada automaticamente, mas você pode abrir uma nova.
+          </p>
+        </details>
+      </section>
+
+      <!-- ── Progress / Meter ───────────────────────────────── -->
+      <section id="progresso">
+        <h3>Capacidade e prazos do sistema</h3>
+
+        <label for="ks-fila">Fila de análise (82% da capacidade)</label>
+        <progress id="ks-fila" value="82" max="100">82%</progress>
+
+        <label for="ks-sla">SLA mensal de atendimento</label>
+        <progress id="ks-sla" value="97" max="100">97%</progress>
+
+        <label for="ks-meter">Uso de cota de armazenamento de documentos</label>
+        <meter id="ks-meter" value="0.68" min="0" max="1" low="0.5" high="0.85" optimum="0.3">68%</meter>
+
+        <label for="ks-meter-ok">Disponibilidade do serviço (mês corrente)</label>
+        <meter id="ks-meter-ok" value="0.999" min="0" max="1" low="0.95" high="0.99" optimum="1">99,9%</meter>
+      </section>
+
+      <!-- ── Media ─────────────────────────────────────────── -->
+      <section id="media">
+        <h3>Documentação fotográfica</h3>
+        <p>
+          Certifique-se de que as imagens enviadas estão
+          <strong>nítidas, com boa iluminação</strong> e
+          sem reflexos ou partes cortadas.
+        </p>
+
+        <figure>
+          <img
+            src="https://picsum.photos/seed/doc1/700/280"
+            alt="Exemplo de digitalização correta de documento de identidade — imagem nítida com bordas completas"
+            width="700"
+            height="280"
+            loading="lazy"
+          >
+          <figcaption>
+            Figura 1 — Exemplo de digitalização aprovada: documento centralizado,
+            bordas visíveis, sem reflexos. Resolução mínima: 300 DPI.
+          </figcaption>
+        </figure>
+
+        <div class="alert alert-danger">
+          <span class="alert-icon" aria-hidden="true">✕</span>
+          <div class="alert-body">
+            <p>
+              <strong>Imagens rejeitadas</strong> — não envie fotos com reflexo,
+              partes cortadas, borradas ou com filtros de câmera aplicados.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Tipografia adicional / HR ─────────────────────── -->
+      <hr>
+
+      <section id="contato">
+        <h3>Canais de atendimento</h3>
+        <address>
+          <strong>Central de Atendimento Digital</strong><br>
+          Disponível de segunda a sexta, das 8h às 18h (horário de Brasília)<br>
+          <a href="tel:+55800000000">0800 000 0000</a> (gratuito)<br>
+          <a href="mailto:atendimento@orgao.gov.br">atendimento@orgao.gov.br</a>
+        </address>
+
+        <p>
+          <button type="button"
+                  onclick="document.getElementById('dlg-atendimento').showModal()">
+            Falar com atendente
+          </button>
+          <a href="https://www.gov.br/ouvidorias/" role="button" data-variant="secondary"
+             target="_blank" rel="noopener">
+            Ouvidoria
+          </a>
+          <button type="button" data-variant="tertiary">
+            Avaliar este serviço
+          </button>
+        </p>
+      </section>
+
+    </article>
+
+    <!-- ── ASIDE — Table of contents (sidebar automática) ────── -->
+    <aside aria-label="Nesta página">
+      <h3>Nesta página</h3>
+      <ol>
+        <li><a href="#etapas">Etapas do processo</a></li>
+        <li><a href="#servicos">Serviços disponíveis</a></li>
+        <li><a href="#acompanhar">Acompanhar</a></li>
+        <li><a href="#formulario">Nova solicitação</a></li>
+        <li><a href="#tipografia">Informações</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#progresso">Capacidade</a></li>
+        <li><a href="#media">Documentação</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ol>
+
+      <hr>
+
+      <h3>Status do sistema</h3>
+      <dl>
+        <dt>API gov.br</dt>
+        <dd><span class="badge badge-green">● Operacional</span></dd>
+        <dt>Fila de análise</dt>
+        <dd><span class="badge badge-yellow">● Alta demanda</span></dd>
+        <dt>Prazo médio atual</dt>
+        <dd>3 dias úteis</dd>
+        <dt>Última atualização</dt>
+        <dd><time datetime="2026-05-14T09:00">14/05 às 09h00</time></dd>
+      </dl>
+
+      <hr>
+
+      <h3>Links relacionados</h3>
+      <ul>
+        <li><a href="#">Consultar CPF — Receita Federal</a></li>
+        <li><a href="#">Emitir certidão online</a></li>
+        <li><a href="#">CNIS — Previdência Social</a></li>
+        <li><a href="#">Carteira de Trabalho Digital</a></li>
+        <li><a href="#">Fala.BR — Ouvidorias</a></li>
+      </ul>
+
+      <hr>
+
+      <details>
+        <summary>Precisa de ajuda presencial?</summary>
+        <p>
+          Dirija-se a qualquer CRAS ou unidade da Receita Federal
+          com os documentos originais. Atendimento gratuito.
+        </p>
+      </details>
+    </aside>
+
+  </main><!-- /main -->
+
+  <!-- ════════════════════════════════════════════════════════════
+       DIALOGS
+  ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- Salvar rascunho -->
+  <dialog id="dlg-rascunho">
+    <h2>Salvar rascunho</h2>
+    <p>
+      O rascunho ficará disponível por <strong>7 dias</strong> na sua conta gov.br.
+      Deseja salvar os dados atuais?
+    </p>
+    <p>
+      <button type="button"
+              onclick="document.getElementById('dlg-rascunho').close('save')">
+        Salvar rascunho
+      </button>
+      <button type="button" data-variant="secondary"
+              onclick="document.getElementById('dlg-rascunho').close('cancel')">
+        Cancelar
+      </button>
+    </p>
+  </dialog>
+
+  <!-- Falar com atendente -->
+  <dialog id="dlg-atendimento">
+    <h2>Atendimento humano</h2>
+    <p>
+      Você será conectado com um atendente. O tempo estimado de espera é
+      <strong>8 minutos</strong>.
+    </p>
+    <form method="dialog">
+      <label for="dlg-assunto">Assunto</label>
+      <select id="dlg-assunto">
+        <option>Dúvida sobre o processo</option>
+        <option>Problema com documento</option>
+        <option>Solicitação urgente</option>
+        <option>Outro</option>
+      </select>
+      <label for="dlg-msg">Descreva brevemente</label>
+      <textarea id="dlg-msg" rows="3" placeholder="Resumo do que precisa..."></textarea>
+      <button type="submit">Iniciar atendimento</button>
+      <button type="button" data-variant="secondary"
+              onclick="document.getElementById('dlg-atendimento').close()">
+        Cancelar
+      </button>
+    </form>
+  </dialog>
+
+  <!-- ════════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════════ -->
+  <footer>
+    <nav aria-label="Links do governo">
+      <ul>
+        <li><a href="https://www.gov.br/">gov.br</a></li>
+        <li><a href="#">Acessibilidade</a></li>
+        <li><a href="#">Mapa do site</a></li>
+        <li><a href="#">Política de privacidade</a></li>
+        <li><a href="#">Fale conosco</a></li>
+        <li><a href="index.html">← GovBR Classless Docs</a></li>
+      </ul>
+    </nav>
+    <p>
+      Ministério da Gestão e da Inovação em Serviços Públicos<br>
+      Esplanada dos Ministérios, Bloco C — Brasília–DF<br>
+      CNPJ: 00.000.000/0001-00
+    </p>
+    <p>
+      Este é um exemplo de página de demonstração do
+      <strong>GovBR Classless</strong> — framework CSS baseado no
+      <a href="https://www.gov.br/ds/">Padrão Digital de Governo 3.7.0</a>.
+    </p>
+  </footer>
+
+</body>
+</html>

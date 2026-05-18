@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dialog — GovBR Classless Docs</title>
+  <link rel="stylesheet" href="../govbr-classless.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <a href="#main">Pular para o conteúdo</a>
+  <header>
+    <h1><a href="../index.html">GovBR Classless</a></h1>
+    <nav aria-label="Componentes">
+      <ul>
+        <li><a href="typography.html">Tipografia</a></li>
+        <li><a href="code.html">Código</a></li>
+        <li><a href="lists.html">Listas</a></li>
+        <li><a href="tables.html">Tabelas</a></li>
+        <li><a href="forms.html">Formulários</a></li>
+        <li><a href="buttons.html">Botões</a></li>
+        <li><a href="accordion.html">Acordeão</a></li>
+        <li><a href="dialog.html">Dialog</a></li>
+        <li><a href="progress.html">Progresso</a></li>
+        <li><a href="media.html">Mídia</a></li>
+        <li><a href="layout.html">Layout</a></li>
+        <li><a href="tokens.html">Tokens</a></li>      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h2>Dialog / Modal</h2>
+    <p>
+      O elemento nativo <code>&lt;dialog&gt;</code> com <code>.showModal()</code>
+      cria um modal com backdrop automático. Sem JavaScript externo, sem biblioteca.
+      O CSS aplica bordas arredondadas, sombra e o backdrop azul escuro semitransparente.
+    </p>
+
+    <!-- ---- Confirmation ---- -->
+    <section>
+      <h3>Dialog de confirmação</h3>
+      <p>Abra com <code>dialogElement.showModal()</code>. Feche com <code>.close()</code>.</p>
+      <template>
+        <button type="button" onclick="document.getElementById('dlg-confirm').showModal()">
+          Excluir registro
+        </button>
+
+        <dialog id="dlg-confirm">
+          <h2>Confirmar exclusão</h2>
+          <p>
+            Esta ação é <strong>permanente e irreversível</strong>. O registro será
+            removido do sistema e não poderá ser recuperado. Deseja continuar?
+          </p>
+          <p>
+            <button type="button" data-variant="danger"
+                    onclick="document.getElementById('dlg-confirm').close('confirm')">
+              Sim, excluir
+            </button>
+            <button type="button" data-variant="secondary"
+                    onclick="document.getElementById('dlg-confirm').close('cancel')">
+              Cancelar
+            </button>
+          </p>
+        </dialog>
+      </template>
+    </section>
+
+    <!-- ---- Info dialog ---- -->
+    <section>
+      <h3>Dialog informativo</h3>
+      <template>
+        <button type="button" data-variant="secondary"
+                onclick="document.getElementById('dlg-info').showModal()">
+          Ver detalhes do prazo
+        </button>
+
+        <dialog id="dlg-info">
+          <h2>Sobre os prazos de atendimento</h2>
+          <p>
+            Os prazos são contados em <strong>dias úteis</strong> a partir da data
+            de recebimento da documentação completa. Finais de semana, feriados
+            nacionais e ponto facultativo não são contados.
+          </p>
+          <dl>
+            <dt>Análise inicial</dt>
+            <dd>2 dias úteis</dd>
+            <dt>Análise completa</dt>
+            <dd>5 dias úteis</dd>
+            <dt>Prazo máximo (com recurso)</dt>
+            <dd>30 dias úteis</dd>
+          </dl>
+          <p>
+            <button type="button"
+                    onclick="document.getElementById('dlg-info').close()">
+              Entendido
+            </button>
+          </p>
+        </dialog>
+      </template>
+    </section>
+
+    <!-- ---- Form dialog ---- -->
+    <section>
+      <h3>Dialog com formulário</h3>
+      <template>
+        <button type="button"
+                onclick="document.getElementById('dlg-form').showModal()">
+          Nova solicitação
+        </button>
+
+        <dialog id="dlg-form">
+          <h2>Nova solicitação</h2>
+          <form method="dialog">
+            <label for="dlg-nome">Nome completo</label>
+            <input type="text" id="dlg-nome" placeholder="João da Silva" required>
+
+            <label for="dlg-tipo">Tipo de solicitação</label>
+            <select id="dlg-tipo">
+              <option value="">Selecione...</option>
+              <option>Regularização cadastral</option>
+              <option>Emissão de certidão</option>
+              <option>Atualização de dados</option>
+            </select>
+
+            <label for="dlg-obs">Observações</label>
+            <textarea id="dlg-obs" rows="3"
+                      placeholder="Informe detalhes relevantes..."></textarea>
+
+            <!-- method="dialog" faz os botões submit fecharem o dialog nativamente -->
+            <button type="submit">Enviar solicitação</button>
+            <button type="button" data-variant="secondary"
+                    onclick="document.getElementById('dlg-form').close()">
+              Cancelar
+            </button>
+          </form>
+        </dialog>
+      </template>
+    </section>
+
+    <!-- ---- Close on backdrop click ---- -->
+    <section>
+      <h3>Fechar ao clicar fora</h3>
+      <p>
+        O comportamento padrão do <code>&lt;dialog&gt;</code> não fecha ao clicar no
+        backdrop. Este snippet mostra como adicionar esse comportamento com JavaScript mínimo:
+      </p>
+      <pre><code>const dialog = document.getElementById('meu-dialog');
+dialog.addEventListener('click', e => {
+  if (e.target === dialog) dialog.close();
+});</code></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>GovBR Classless — Padrão Digital de Governo 3.7.0</p>
+  </footer>
+  <script src="shared.js"></script>
+</body>
+</html>

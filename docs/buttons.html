@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botões — GovBR Classless Docs</title>
+  <link rel="stylesheet" href="../govbr-classless.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <a href="#main">Pular para o conteúdo</a>
+  <header>
+    <h1><a href="../index.html">GovBR Classless</a></h1>
+    <nav aria-label="Componentes">
+      <ul>
+        <li><a href="typography.html">Tipografia</a></li>
+        <li><a href="code.html">Código</a></li>
+        <li><a href="lists.html">Listas</a></li>
+        <li><a href="tables.html">Tabelas</a></li>
+        <li><a href="forms.html">Formulários</a></li>
+        <li><a href="buttons.html">Botões</a></li>
+        <li><a href="accordion.html">Acordeão</a></li>
+        <li><a href="dialog.html">Dialog</a></li>
+        <li><a href="progress.html">Progresso</a></li>
+        <li><a href="media.html">Mídia</a></li>
+        <li><a href="layout.html">Layout</a></li>
+        <li><a href="tokens.html">Tokens</a></li>      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h2>Botões</h2>
+    <p>
+      O elemento <code>&lt;button&gt;</code> renderiza automaticamente como botão primário
+      (azul sólido, pill shape). Variantes de cor usam o atributo <code>data-variant</code>
+      — sem nenhuma classe CSS.
+    </p>
+
+    <!-- ---- Primary ---- -->
+    <section>
+      <h3>Botão primário</h3>
+      <p>Azul <code>#1351b4</code>, borda-raio pill, peso 600. Use para a ação principal da tela.</p>
+      <template>
+        <button type="button">Enviar solicitação</button>
+        <button type="submit">Salvar dados</button>
+        <input type="submit" value="Confirmar">
+      </template>
+    </section>
+
+    <!-- ---- Secondary / outlined ---- -->
+    <section>
+      <h3>Botão secundário — <code>data-variant="secondary"</code></h3>
+      <p>Contorno azul, fundo transparente. Use para ações alternativas menos importantes.</p>
+      <template>
+        <button type="button" data-variant="secondary">Cancelar</button>
+        <button type="button" data-variant="secondary">Voltar</button>
+        <input type="reset" value="Limpar formulário">
+      </template>
+    </section>
+
+    <!-- ---- Tertiary / ghost ---- -->
+    <section>
+      <h3>Botão terciário — <code>data-variant="tertiary"</code></h3>
+      <p>Sem fundo e sem borda visível. Use para ações de baixa prioridade.</p>
+      <template>
+        <button type="button" data-variant="tertiary">Saiba mais</button>
+        <button type="button" data-variant="tertiary">Ver detalhes</button>
+        <button type="button" data-variant="tertiary">← Anterior</button>
+      </template>
+    </section>
+
+    <!-- ---- Semantic variants ---- -->
+    <section>
+      <h3>Variantes semânticas</h3>
+      <p>Use <code>data-variant</code> com <code>danger</code>, <code>success</code> ou <code>warning</code>.</p>
+      <template>
+        <button type="button" data-variant="success">Aprovar solicitação</button>
+        <button type="button" data-variant="warning">Solicitar revisão</button>
+        <button type="button" data-variant="danger">Excluir registro</button>
+      </template>
+    </section>
+
+    <!-- ---- Disabled ---- -->
+    <section>
+      <h3>Estado desabilitado</h3>
+      <p>O atributo <code>disabled</code> aplica opacidade 0,5 e remove interatividade.</p>
+      <template>
+        <button type="button" disabled>Ação indisponível</button>
+        <button type="button" data-variant="secondary" disabled>Cancelar</button>
+        <button type="button" data-variant="danger" disabled>Excluir</button>
+      </template>
+    </section>
+
+    <!-- ---- Link as button ---- -->
+    <section>
+      <h3>Link como botão — <code>role="button"</code></h3>
+      <p>
+        Use <code>&lt;a role="button"&gt;</code> quando o destino é uma URL mas
+        o visual deve ser de botão. Combine com <code>data-variant</code>.
+      </p>
+      <template>
+        <a href="#" role="button">Acessar portal</a>
+        <a href="#" role="button" data-variant="secondary">Baixar PDF</a>
+        <a href="#" role="button" data-variant="tertiary">Ver mais →</a>
+      </template>
+    </section>
+
+    <!-- ---- All variants together ---- -->
+    <section>
+      <h3>Todos os variantes lado a lado</h3>
+      <template>
+        <button type="button">Primário</button>
+        <button type="button" data-variant="secondary">Secundário</button>
+        <button type="button" data-variant="tertiary">Terciário</button>
+        <button type="button" data-variant="success">Sucesso</button>
+        <button type="button" data-variant="warning">Aviso</button>
+        <button type="button" data-variant="danger">Perigo</button>
+      </template>
+    </section>
+
+    <!-- ---- Anatomy note ---- -->
+    <section>
+      <h3>Anatomia do botão</h3>
+      <p>
+        Botão primário: <code>background-color: #1351b4</code> ·
+        <code>border-radius: 999em</code> · <code>min-height: 40px</code> ·
+        <code>font-weight: 600</code> · <code>padding: 8px 32px</code>.
+        O hover escurece para <code>#0c326f</code> e adiciona sombra md.
+        O foco ativa o anel vermelho pontilhado (2px dashed <code>#c40000</code>).
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>GovBR Classless — Padrão Digital de Governo 3.7.0</p>
+  </footer>
+  <script src="shared.js"></script>
+</body>
+</html>

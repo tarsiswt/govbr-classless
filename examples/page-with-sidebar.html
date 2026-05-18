@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página com Sidebar — GovBR Classless</title>
+  <link rel="stylesheet" href="../govbr-classless.css">
+</head>
+<body>
+
+  <a href="#main">Pular para o conteúdo principal</a>
+
+  <header>
+    <h1>Portal de Serviços</h1>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="../index.html">← Docs</a></li>
+        <li><a href="../kitchen-sink.html">Kitchen Sink</a></li>
+        <li><a href="cdn.html">Via CDN</a></li>
+        <li><a href="demo.html">Demo</a></li>
+        <li><a href="webcomponents.html">Web Components</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!--
+    Layout de duas colunas automático:
+    O CSS detecta main > article + aside e aplica
+    grid-template-columns: 1fr 280px automaticamente
+    via seletor :has() — sem nenhuma classe adicional.
+  -->
+  <main id="main">
+
+    <article>
+      <header>
+        <h2>Regularização de Documentos</h2>
+        <p>
+          <time datetime="2026-05-14">14 de maio de 2026</time> ·
+          Atualizado pela <a href="#">Secretaria de Gestão Digital</a>
+        </p>
+      </header>
+
+      <p>
+        Este serviço permite ao cidadão regularizar sua situação documental junto aos
+        órgãos federais de forma 100% digital, sem necessidade de comparecer presencialmente
+        a nenhuma repartição.
+      </p>
+
+      <h3>Documentos necessários</h3>
+      <ul>
+        <li>CPF ativo e regularizado</li>
+        <li>RG ou CNH (frente e verso)</li>
+        <li>Comprovante de residência (emitido nos últimos 90 dias)</li>
+        <li>Foto recente (formato JPG, mínimo 300×400 px)</li>
+      </ul>
+
+      <h3>Passo a passo</h3>
+      <ol>
+        <li>Acesse com sua conta gov.br (nível Prata ou Ouro)</li>
+        <li>Preencha o formulário com seus dados</li>
+        <li>Anexe os documentos digitalizados</li>
+        <li>Assine digitalmente com certificado ICP-Brasil ou biometria gov.br</li>
+        <li>Acompanhe o status pelo app ou e-mail</li>
+      </ol>
+
+      <blockquote>
+        <p>O prazo médio de análise é de <strong>5 dias úteis</strong>.</p>
+        <cite>Portaria SGD nº 4.521/2025</cite>
+      </blockquote>
+
+      <h3>Solicitar agora</h3>
+      <form>
+        <label for="cpf-req">CPF</label>
+        <input type="text" id="cpf-req" name="cpf" placeholder="000.000.000-00" inputmode="numeric" required>
+
+        <label for="email-req">E-mail para notificações</label>
+        <input type="email" id="email-req" name="email" placeholder="seu@email.gov.br" required>
+
+        <label for="motivo">Motivo da regularização</label>
+        <select id="motivo" name="motivo">
+          <option value="">Selecione...</option>
+          <option>Atualização cadastral</option>
+          <option>Emissão de nova via</option>
+          <option>Correção de dados</option>
+          <option>Bloqueio por óbito</option>
+        </select>
+
+        <label for="obs">Observações adicionais</label>
+        <textarea id="obs" name="obs" rows="3" placeholder="Informe detalhes relevantes para análise..."></textarea>
+
+        <button type="submit">Enviar solicitação</button>
+        <input type="reset" value="Limpar">
+      </form>
+    </article>
+
+    <aside aria-label="Informações relacionadas">
+      <h3>Links úteis</h3>
+      <ul>
+        <li><a href="#">Consultar status da solicitação</a></li>
+        <li><a href="#">Central de atendimento</a></li>
+        <li><a href="#">Perguntas frequentes</a></li>
+        <li><a href="#">Glossário de termos</a></li>
+      </ul>
+
+      <h3>Prazos e taxas</h3>
+      <dl>
+        <dt>Análise inicial</dt>
+        <dd>2 dias úteis</dd>
+        <dt>Análise completa</dt>
+        <dd>5 dias úteis</dd>
+        <dt>Taxa</dt>
+        <dd>Gratuito</dd>
+        <dt>Validade do documento</dt>
+        <dd>10 anos</dd>
+      </dl>
+
+      <h3>Acessibilidade</h3>
+      <p>
+        Este serviço foi desenvolvido em conformidade com o
+        <a href="https://emag.governoeletronico.gov.br/">eMAG</a> e WCAG 2.1 nível AA.
+        Em caso de dificuldades, ligue <strong>0800 000 0000</strong>.
+      </p>
+
+      <details>
+        <summary>Precisa de ajuda presencial?</summary>
+        <p>
+          Dirija-se a qualquer CRAS, CREAS ou unidade da Receita Federal munido
+          dos documentos originais. O atendimento é gratuito.
+        </p>
+      </details>
+    </aside>
+
+  </main>
+
+  <footer>
+    <nav aria-label="Links do rodapé">
+      <ul>
+        <li><a href="https://www.gov.br/ds/">Padrão Digital de Governo</a></li>
+        <li><a href="#">Política de privacidade</a></li>
+        <li><a href="#">Acessibilidade</a></li>
+        <li><a href="#">Mapa do site</a></li>
+      </ul>
+    </nav>
+    <p>Secretaria de Gestão Digital · Ministério da Gestão e da Inovação em Serviços Públicos</p>
+  </footer>
+
+</body>
+</html>

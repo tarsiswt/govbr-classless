@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GovBR Classless — framework CSS sem classes baseado no Padrão Digital de Governo 3.7.0">
+  <title>GovBR Classless — Documentação</title>
+  <link rel="stylesheet" href="govbr-classless.css">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <a href="#main">Pular para o conteúdo</a>
+
+  <header>
+    <h1>GovBR Classless</h1>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="kitchen-sink.html">Kitchen Sink</a></li>
+        <li><a href="examples/cdn.html">Via CDN</a></li>
+        <li><a href="examples/demo.html">Demo</a></li>
+        <li><a href="examples/webcomponents.html">Web Components</a></li>
+        <li><a href="examples/page-with-sidebar.html">Página com Sidebar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h2>Documentação de componentes</h2>
+    <p>
+      Framework CSS classless baseado no
+      <a href="https://www.gov.br/ds/">Padrão Digital de Governo 3.7.0</a>.
+      Inclua <strong>um único arquivo CSS</strong> e escreva HTML semântico puro.
+    </p>
+
+    <pre><code>&lt;link rel="stylesheet" href="govbr-classless.css"&gt;</code></pre>
+
+    <p>
+      <span class="badge badge-blue">v0.1.0</span>
+      <span class="badge badge-green">GovBR-DS 3.7.0</span>
+      <span class="badge badge-yellow">Zero dependências</span>
+    </p>
+
+    <h3>Componentes</h3>
+    <nav class="component-grid" aria-label="Componentes do framework">
+
+      <a href="docs/typography.html" class="component-card">
+        <h3>Tipografia</h3>
+        <p>Headings, parágrafos, links, citações, inline elements</p>
+      </a>
+
+      <a href="docs/code.html" class="component-card">
+        <h3>Código</h3>
+        <p>code, pre, kbd, samp, var — blocos e em linha</p>
+      </a>
+
+      <a href="docs/lists.html" class="component-card">
+        <h3>Listas</h3>
+        <p>ul, ol, aninhadas, dl — glossários e metadados</p>
+      </a>
+
+      <a href="docs/tables.html" class="component-card">
+        <h3>Tabelas</h3>
+        <p>thead azul, linhas alternadas, hover, caption, tfoot</p>
+      </a>
+
+      <a href="docs/forms.html" class="component-card">
+        <h3>Formulários</h3>
+        <p>Todos os tipos de input, select, textarea, fieldset, validação</p>
+      </a>
+
+      <a href="docs/buttons.html" class="component-card">
+        <h3>Botões</h3>
+        <p>Primário, secundário, terciário, danger, success — via data-variant</p>
+      </a>
+
+      <a href="docs/accordion.html" class="component-card">
+        <h3>Acordeão</h3>
+        <p>details + summary nativo — FAQ, conteúdo expansível</p>
+      </a>
+
+      <a href="docs/dialog.html" class="component-card">
+        <h3>Dialog / Modal</h3>
+        <p>dialog nativo com backdrop, confirmação, formulários</p>
+      </a>
+
+      <a href="docs/progress.html" class="component-card">
+        <h3>Progresso</h3>
+        <p>progress determinado e indeterminado, meter com níveis</p>
+      </a>
+
+      <a href="docs/media.html" class="component-card">
+        <h3>Mídia</h3>
+        <p>img responsiva, figure + figcaption, SVG</p>
+      </a>
+
+      <a href="docs/layout.html" class="component-card">
+        <h3>Layout</h3>
+        <p>header, nav, main, aside, article, footer — estrutura de página</p>
+      </a>
+
+      <a href="docs/tokens.html" class="component-card">
+        <h3>Design Tokens</h3>
+        <p>Paleta de cores, tipografia, espaçamento, sombras, foco</p>
+      </a>
+
+    </nav>
+
+    <h3>Exemplos</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Arquivo</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="govbr-classless.css"><code>govbr-classless.css</code></a></td>
+          <td>Framework principal — único arquivo necessário em produção</td>
+        </tr>
+        <tr>
+          <td><a href="components.css"><code>components.css</code></a></td>
+          <td>Componentes com classes (avatar, …) — carregue junto ao framework</td>
+        </tr>
+        <tr>
+          <td><a href="kitchen-sink.html"><code>kitchen-sink.html</code></a></td>
+          <td>Página realista com todos os componentes em contexto</td>
+        </tr>
+        <tr>
+          <td><a href="examples/demo.html"><code>examples/demo.html</code></a></td>
+          <td>Demo técnico de todos os elementos</td>
+        </tr>
+        <tr>
+          <td><a href="examples/page-with-sidebar.html"><code>examples/page-with-sidebar.html</code></a></td>
+          <td>Exemplo de página com layout de duas colunas</td>
+        </tr>
+        <tr>
+          <td><a href="examples/webcomponents.html"><code>examples/webcomponents.html</code></a></td>
+          <td>Exemplos de uso dos Web Components do GovBR-DS v1.21.3</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <nav aria-label="Links">
+      <ul>
+        <li><a href="https://www.gov.br/ds/">Padrão Digital de Governo</a></li>
+        <li><a href="https://gitlab.com/govbr-ds/">GovBR-DS GitLab</a></li>
+        <li><a href="https://fonts.cdnfonts.com/css/rawline">Fonte Rawline</a></li>
+      </ul>
+    </nav>
+    <p>GovBR Classless v0.1.0 — baseado no Padrão Digital de Governo 3.7.0</p>
+  </footer>
+</body>
+</html>

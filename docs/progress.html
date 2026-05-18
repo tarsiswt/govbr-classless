@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progresso — GovBR Classless Docs</title>
+  <link rel="stylesheet" href="../govbr-classless.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <a href="#main">Pular para o conteúdo</a>
+  <header>
+    <h1><a href="../index.html">GovBR Classless</a></h1>
+    <nav aria-label="Componentes">
+      <ul>
+        <li><a href="typography.html">Tipografia</a></li>
+        <li><a href="code.html">Código</a></li>
+        <li><a href="lists.html">Listas</a></li>
+        <li><a href="tables.html">Tabelas</a></li>
+        <li><a href="forms.html">Formulários</a></li>
+        <li><a href="buttons.html">Botões</a></li>
+        <li><a href="accordion.html">Acordeão</a></li>
+        <li><a href="dialog.html">Dialog</a></li>
+        <li><a href="progress.html">Progresso</a></li>
+        <li><a href="media.html">Mídia</a></li>
+        <li><a href="layout.html">Layout</a></li>
+        <li><a href="tokens.html">Tokens</a></li>      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h2>Progresso e Medidor</h2>
+    <p>
+      Os elementos nativos <code>&lt;progress&gt;</code> e <code>&lt;meter&gt;</code>
+      são estilizados com as cores e tokens do GovBR-DS, sem nenhuma classe ou
+      biblioteca adicional.
+    </p>
+
+    <!-- ---- Progress values ---- -->
+    <section>
+      <h3>Barra de progresso — <code>&lt;progress&gt;</code></h3>
+      <p>
+        Use <code>value</code> e <code>max</code> para definir o percentual.
+        A barra preenche em azul gov.br sobre fundo cinza.
+      </p>
+      <template>
+        <label for="prog-0">Não iniciado (0%)</label>
+        <progress id="prog-0" value="0" max="100">0%</progress>
+
+        <label for="prog-25">Em andamento (25%)</label>
+        <progress id="prog-25" value="25" max="100">25%</progress>
+
+        <label for="prog-50">Na metade (50%)</label>
+        <progress id="prog-50" value="50" max="100">50%</progress>
+
+        <label for="prog-75">Quase concluído (75%)</label>
+        <progress id="prog-75" value="75" max="100">75%</progress>
+
+        <label for="prog-100">Concluído (100%)</label>
+        <progress id="prog-100" value="100" max="100">100%</progress>
+      </template>
+    </section>
+
+    <!-- ---- Indeterminate ---- -->
+    <section>
+      <h3>Progresso indeterminado</h3>
+      <p>Omita o atributo <code>value</code> para a animação de carregamento do navegador.</p>
+      <template>
+        <label for="prog-ind">Carregando dados...</label>
+        <progress id="prog-ind">Carregando...</progress>
+      </template>
+    </section>
+
+    <!-- ---- Interactive ---- -->
+    <section>
+      <h3>Progresso interativo</h3>
+      <template>
+        <label for="prog-range">
+          Ajuste o progresso: <output id="out-prog">40%</output>
+        </label>
+        <input type="range" id="prog-range" min="0" max="100" value="40"
+               oninput="
+                 const v = this.value;
+                 document.getElementById('prog-interactive').value = v;
+                 document.getElementById('out-prog').textContent = v + '%';
+               ">
+        <progress id="prog-interactive" value="40" max="100">40%</progress>
+      </template>
+    </section>
+
+    <!-- ---- Meter ---- -->
+    <section>
+      <h3>Medidor — <code>&lt;meter&gt;</code></h3>
+      <p>
+        Use <code>min</code>, <code>max</code>, <code>low</code>, <code>high</code> e
+        <code>optimum</code> para definir o intervalo e o nível ideal.
+        O navegador aplica cores semânticas (verde, amarelo, vermelho) baseadas nesses atributos.
+      </p>
+      <template>
+        <label for="meter-ok">Uso de cota: nível aceitável</label>
+        <meter id="meter-ok" value="0.4" min="0" max="1"
+               low="0.3" high="0.8" optimum="0.5">40%</meter>
+
+        <label for="meter-warn">Uso de cota: nível de atenção</label>
+        <meter id="meter-warn" value="0.7" min="0" max="1"
+               low="0.3" high="0.8" optimum="0.5">70%</meter>
+
+        <label for="meter-crit">Uso de cota: nível crítico</label>
+        <meter id="meter-crit" value="0.95" min="0" max="1"
+               low="0.3" high="0.8" optimum="0.5">95%</meter>
+      </template>
+    </section>
+
+    <!-- ---- Process steps use case ---- -->
+    <section>
+      <h3>Caso de uso: etapas de um processo</h3>
+      <template>
+        <p><strong>Protocolo 2026.00012345-7</strong></p>
+
+        <label>Etapa 1 — Recebimento</label>
+        <progress value="100" max="100">Concluído</progress>
+
+        <label>Etapa 2 — Análise documental</label>
+        <progress value="100" max="100">Concluído</progress>
+
+        <label>Etapa 3 — Análise técnica</label>
+        <progress value="60" max="100">60%</progress>
+
+        <label>Etapa 4 — Aprovação final</label>
+        <progress value="0" max="100">Pendente</progress>
+
+        <label>Etapa 5 — Emissão do documento</label>
+        <progress value="0" max="100">Pendente</progress>
+      </template>
+    </section>
+  </main>
+
+  <footer>
+    <p>GovBR Classless — Padrão Digital de Governo 3.7.0</p>
+  </footer>
+  <script src="shared.js"></script>
+</body>
+</html>

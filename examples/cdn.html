@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GovBR Classless via CDN — como incluir o framework em qualquer projeto">
+  <title>GovBR Classless — Via CDN</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tarsiswt/govbr-classless@main/dist/govbr-classless.min.css">
+</head>
+<body>
+  <a href="#main">Pular para o conteúdo</a>
+
+  <header>
+    <h1><a href="../index.html">GovBR Classless</a></h1>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="../index.html">← Docs</a></li>
+        <li><a href="../kitchen-sink.html">Kitchen Sink</a></li>
+        <li><a href="demo.html">Demo</a></li>
+        <li><a href="webcomponents.html">Web Components</a></li>
+        <li><a href="page-with-sidebar.html">Página com Sidebar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <h2>Usar via CDN</h2>
+    <p>
+      Inclua <strong>uma única linha</strong> no <code>&lt;head&gt;</code> do seu HTML.
+      Nenhum pacote para instalar, nenhuma dependência, nenhum passo de build.
+    </p>
+
+    <pre><code>&lt;link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/tarsiswt/govbr-classless@main/dist/govbr-classless.min.css"&gt;</code></pre>
+
+    <p>
+      Servido pelo <a href="https://www.jsdelivr.com/">jsDelivr CDN</a> — gratuito,
+      sem limite de banda, com cache global. O arquivo é atualizado automaticamente
+      a cada push para a branch <code>main</code>.
+    </p>
+
+    <h3>Boilerplate mínimo</h3>
+    <p>Copie, cole, escreva HTML semântico. Já está estilizado.</p>
+
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Minha página&lt;/title&gt;
+  &lt;link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/tarsiswt/govbr-classless@main/dist/govbr-classless.min.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;header&gt;
+    &lt;h1&gt;Nome do sistema&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Início&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/sobre"&gt;Sobre&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;h2&gt;Bem-vindo&lt;/h2&gt;
+    &lt;p&gt;Conteúdo da página.&lt;/p&gt;
+
+    &lt;button&gt;Ação principal&lt;/button&gt;
+    &lt;button data-variant="secondary"&gt;Cancelar&lt;/button&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;GovBR Classless — Padrão Digital de Governo&lt;/p&gt;
+  &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h3>Resultado ao vivo</h3>
+    <p>Esta própria página é carregada exclusivamente via CDN — sem arquivos locais, sem <code>site.css</code>.</p>
+
+    <h4>Tipografia</h4>
+    <p>
+      Parágrafo normal com <strong>negrito</strong>, <em>itálico</em>, <a href="#">link</a>,
+      <code>código inline</code> e <mark>destaque</mark>.
+    </p>
+    <blockquote>
+      <p>Citação em bloco — art. 37 da Constituição Federal: administração pública direta e indireta
+      de qualquer dos Poderes obedecerá aos princípios de legalidade, impessoalidade, moralidade,
+      publicidade e eficiência.</p>
+    </blockquote>
+
+    <h4>Botões</h4>
+    <p>
+      <button>Primário</button>
+      <button data-variant="secondary">Secundário</button>
+      <button data-variant="danger">Excluir</button>
+      <button disabled>Desabilitado</button>
+    </p>
+
+    <h4>Formulário</h4>
+    <form>
+      <label for="nome">Nome completo</label>
+      <input type="text" id="nome" placeholder="Digite seu nome">
+
+      <label for="cpf">CPF</label>
+      <input type="text" id="cpf" placeholder="000.000.000-00">
+
+      <label for="situacao">Situação</label>
+      <select id="situacao">
+        <option>Ativo</option>
+        <option>Inativo</option>
+        <option>Pendente</option>
+      </select>
+
+      <fieldset>
+        <legend>Notificações</legend>
+        <label><input type="checkbox" checked> E-mail</label>
+        <label><input type="checkbox"> SMS</label>
+      </fieldset>
+
+      <button type="submit">Salvar</button>
+      <button type="reset" data-variant="secondary">Limpar</button>
+    </form>
+
+    <h4>Tabela</h4>
+    <table>
+      <thead>
+        <tr><th>Componente</th><th>Elemento HTML</th><th>Classe necessária</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Botão primário</td><td><code>button</code></td><td>Nenhuma</td></tr>
+        <tr><td>Botão variante</td><td><code>button</code></td><td><code>data-variant="…"</code></td></tr>
+        <tr><td>Acordeão</td><td><code>details / summary</code></td><td>Nenhuma</td></tr>
+        <tr><td>Dialog</td><td><code>dialog</code></td><td>Nenhuma</td></tr>
+        <tr><td>Avatar</td><td>qualquer elemento</td><td><code>.avatar</code></td></tr>
+      </tbody>
+    </table>
+
+    <h4>Acordeão</h4>
+    <details>
+      <summary>O que é o GovBR Classless?</summary>
+      <p>Um framework CSS sem classes baseado no Padrão Digital de Governo 3.7.0.
+      Escreva HTML semântico puro e obtenha o visual do gov.br automaticamente.</p>
+    </details>
+    <details>
+      <summary>Preciso instalar algo?</summary>
+      <p>Não. Um único <code>&lt;link&gt;</code> no <code>&lt;head&gt;</code> é suficiente.</p>
+    </details>
+    <details>
+      <summary>Posso usar junto com outros frameworks?</summary>
+      <p>Sim, desde que os estilos não entrem em conflito. O GovBR Classless estiliza
+      apenas elementos HTML nativos e algumas classes explícitas como <code>.avatar</code>.</p>
+    </details>
+
+  </main>
+
+  <footer>
+    <nav aria-label="Links">
+      <ul>
+        <li><a href="https://www.gov.br/ds/">Padrão Digital de Governo</a></li>
+        <li><a href="https://github.com/tarsiswt/govbr-classless">GitHub</a></li>
+        <li><a href="https://www.jsdelivr.com/package/gh/tarsiswt/govbr-classless">jsDelivr</a></li>
+      </ul>
+    </nav>
+    <p>GovBR Classless v0.1.0 — baseado no Padrão Digital de Governo 3.7.0</p>
+  </footer>
+</body>
+</html>

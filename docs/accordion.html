@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acordeão — GovBR Classless Docs</title>
+  <link rel="stylesheet" href="../govbr-classless.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <a href="#main">Pular para o conteúdo</a>
+  <header>
+    <h1><a href="../index.html">GovBR Classless</a></h1>
+    <nav aria-label="Componentes">
+      <ul>
+        <li><a href="typography.html">Tipografia</a></li>
+        <li><a href="code.html">Código</a></li>
+        <li><a href="lists.html">Listas</a></li>
+        <li><a href="tables.html">Tabelas</a></li>
+        <li><a href="forms.html">Formulários</a></li>
+        <li><a href="buttons.html">Botões</a></li>
+        <li><a href="accordion.html">Acordeão</a></li>
+        <li><a href="dialog.html">Dialog</a></li>
+        <li><a href="progress.html">Progresso</a></li>
+        <li><a href="media.html">Mídia</a></li>
+        <li><a href="layout.html">Layout</a></li>
+        <li><a href="tokens.html">Tokens</a></li>      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h2>Acordeão</h2>
+    <p>
+      O elemento nativo <code>&lt;details&gt;</code> + <code>&lt;summary&gt;</code>
+      serve como acordeão sem JavaScript. O CSS estiliza a seta, o fundo ativo e
+      o conteúdo expandido automaticamente.
+    </p>
+
+    <!-- ---- Single ---- -->
+    <section>
+      <h3>Item único</h3>
+      <template>
+        <details>
+          <summary>O que é o Padrão Digital de Governo?</summary>
+          <p>
+            O Padrão Digital de Governo (PdG) é o conjunto de diretrizes, componentes
+            visuais e boas práticas definidos pelo Ministério da Gestão e da Inovação
+            em Serviços Públicos para garantir consistência, acessibilidade e qualidade
+            nos serviços digitais federais.
+          </p>
+        </details>
+      </template>
+    </section>
+
+    <!-- ---- Multiple / FAQ ---- -->
+    <section>
+      <h3>Múltiplos itens — Perguntas frequentes</h3>
+      <p>
+        Cada <code>&lt;details&gt;</code> é independente. Múltiplos podem estar
+        abertos simultaneamente (sem JavaScript adicional).
+      </p>
+      <template>
+        <details>
+          <summary>Como criar minha conta gov.br?</summary>
+          <p>
+            Acesse <strong>gov.br/conta</strong> e siga as instruções. Você pode se
+            cadastrar com CPF, internet banking ou biometria facial pelo aplicativo.
+            O processo leva menos de 5 minutos.
+          </p>
+        </details>
+
+        <details>
+          <summary>Quais documentos são aceitos para identificação?</summary>
+          <ul>
+            <li>RG — Registro Geral</li>
+            <li>CNH — Carteira Nacional de Habilitação</li>
+            <li>Passaporte brasileiro</li>
+            <li>Carteira de trabalho (CTPS) com foto</li>
+            <li>Carteira funcional de órgão público</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>Qual o prazo para análise da solicitação?</summary>
+          <p>
+            O prazo varia conforme o tipo de serviço. Em geral, entre
+            <strong>2 e 15 dias úteis</strong> após o envio completo da documentação.
+            Você receberá notificações por e-mail e pelo aplicativo gov.br.
+          </p>
+        </details>
+
+        <details open>
+          <summary>Como acompanhar o status da solicitação?</summary>
+          <p>
+            Este item começa aberto (atributo <code>open</code>).
+            Acesse <strong>gov.br</strong> com sua conta, clique em
+            <em>Meus serviços</em> e selecione <em>Acompanhar</em>.
+            Você também pode ligar para 0800 000 0000.
+          </p>
+        </details>
+      </template>
+    </section>
+
+    <!-- ---- With rich content ---- -->
+    <section>
+      <h3>Com conteúdo rico</h3>
+      <p>O conteúdo expandido aceita qualquer HTML — tabelas, listas, formulários.</p>
+      <template>
+        <details>
+          <summary>Tabela de prazos por serviço</summary>
+          <table>
+            <thead>
+              <tr>
+                <th>Serviço</th>
+                <th>Prazo</th>
+                <th>Recurso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Regularização cadastral</td>
+                <td>5 dias úteis</td>
+                <td>10 dias</td>
+              </tr>
+              <tr>
+                <td>Emissão de certidão</td>
+                <td>2 dias úteis</td>
+                <td>5 dias</td>
+              </tr>
+              <tr>
+                <td>Atualização de dados</td>
+                <td>1 dia útil</td>
+                <td>3 dias</td>
+              </tr>
+            </tbody>
+          </table>
+        </details>
+
+        <details>
+          <summary>Formulário de contato rápido</summary>
+          <label for="acc-email">Seu e-mail</label>
+          <input type="email" id="acc-email" placeholder="voce@email.com">
+          <label for="acc-msg">Mensagem</label>
+          <textarea id="acc-msg" rows="3" placeholder="Sua dúvida..."></textarea>
+          <button type="button">Enviar mensagem</button>
+        </details>
+      </template>
+    </section>
+  </main>
+
+  <footer>
+    <p>GovBR Classless — Padrão Digital de Governo 3.7.0</p>
+  </footer>
+  <script src="shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "govbr-classless",
+  "version": "0.1.0",
+  "description": "Classless CSS framework based on Padrão Digital de Governo 3.7.0",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node --watch build.mjs"
+  },
+  "private": true,
+  "devDependencies": {
+    "lightningcss": "^1.32.0"
+  }
+}

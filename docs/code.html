@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Código — GovBR Classless Docs</title>
+  <link rel="stylesheet" href="../govbr-classless.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <a href="#main">Pular para o conteúdo</a>
+  <header>
+    <h1><a href="../index.html">GovBR Classless</a></h1>
+    <nav aria-label="Componentes">
+      <ul>
+        <li><a href="typography.html">Tipografia</a></li>
+        <li><a href="code.html">Código</a></li>
+        <li><a href="lists.html">Listas</a></li>
+        <li><a href="tables.html">Tabelas</a></li>
+        <li><a href="forms.html">Formulários</a></li>
+        <li><a href="buttons.html">Botões</a></li>
+        <li><a href="accordion.html">Acordeão</a></li>
+        <li><a href="dialog.html">Dialog</a></li>
+        <li><a href="progress.html">Progresso</a></li>
+        <li><a href="media.html">Mídia</a></li>
+        <li><a href="layout.html">Layout</a></li>
+        <li><a href="tokens.html">Tokens</a></li>      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h2>Código</h2>
+    <p>
+      Elementos semânticos para exibição de código, atalhos de teclado e saídas de sistema.
+      Todos usam fonte <code>monospace</code> com fundo discreto para destacar do texto corrido.
+    </p>
+
+    <!-- ---- Inline code ---- -->
+    <section>
+      <h3>Código em linha — <code>&lt;code&gt;</code></h3>
+      <p>Use para nomes de variáveis, propriedades CSS, comandos curtos e valores técnicos.</p>
+      <template>
+        <p>
+          A propriedade <code>font-size</code> do elemento <code>html</code> é definida
+          como <code>87.5%</code>, o que resulta em <code>14px</code> quando o navegador
+          usa o padrão de <code>16px</code>.
+        </p>
+        <p>
+          O token <code>--color-primary-default</code> tem o valor <code>#1351b4</code>.
+        </p>
+      </template>
+    </section>
+
+    <!-- ---- Keyboard ---- -->
+    <section>
+      <h3>Atalhos de teclado — <code>&lt;kbd&gt;</code></h3>
+      <p>Use para representar teclas ou combinações de teclas.</p>
+      <template>
+        <p>Pressione <kbd>Ctrl</kbd> + <kbd>C</kbd> para copiar.</p>
+        <p>Para salvar: <kbd>Ctrl</kbd> + <kbd>S</kbd> no Windows ou <kbd>⌘</kbd> + <kbd>S</kbd> no macOS.</p>
+        <p>Navegue pelos campos do formulário com <kbd>Tab</kbd> e confirme com <kbd>Enter</kbd>.</p>
+      </template>
+    </section>
+
+    <!-- ---- Sample output ---- -->
+    <section>
+      <h3>Saída de sistema — <code>&lt;samp&gt;</code></h3>
+      <p>Use para representar saída de programas ou terminais.</p>
+      <template>
+        <p>
+          Ao executar o comando, o terminal exibirá:
+          <samp>Servidor iniciado na porta 8000</samp>
+        </p>
+        <p>
+          Em caso de erro: <samp>Erro: arquivo não encontrado (código 404)</samp>
+        </p>
+      </template>
+    </section>
+
+    <!-- ---- Variable ---- -->
+    <section>
+      <h3>Variável — <code>&lt;var&gt;</code></h3>
+      <p>Use para nomes de variáveis matemáticas ou de programação em contexto de texto.</p>
+      <template>
+        <p>
+          A equação <var>E</var> = <var>m</var><var>c</var><sup>2</sup>
+          relaciona energia e massa.
+        </p>
+        <p>
+          O parâmetro <var>n</var> representa o número total de registros
+          retornados pela consulta.
+        </p>
+      </template>
+    </section>
+
+    <!-- ---- Block code ---- -->
+    <section>
+      <h3>Bloco de código — <code>&lt;pre&gt;&lt;code&gt;</code></h3>
+      <p>
+        Use para exemplos de código multilinhas. Fundo escuro para alto contraste.
+        Borda esquerda azul indica trecho de código.
+        Scroll horizontal automático para linhas longas.
+      </p>
+      <template>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Meu Sistema Gov&lt;/title&gt;
+  &lt;link rel="stylesheet" href="govbr-classless.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Portal de Serviços&lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;h2&gt;Bem-vindo&lt;/h2&gt;
+    &lt;p&gt;Conteúdo aqui.&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+    &lt;p&gt;&amp;copy; 2026 Governo Federal&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </template>
+    </section>
+
+    <!-- ---- CSS example ---- -->
+    <section>
+      <h3>Exemplo CSS</h3>
+      <template>
+        <pre><code>/* Tokens do GovBR-DS 3.7.0 */
+:root {
+  --color-primary-default:   #1351b4;
+  --color-primary-darken-01: #0c326f;
+  --font-family-base:        Rawline, Raleway, sans-serif;
+  --font-size-scale-base:    14px;
+  --spacing-scale-base:      8px;
+  --radius-pill:             999em;
+  --focus-color:             #c40000;
+}
+
+/* Foco acessível — padrão GovBR-DS */
+:focus-visible {
+  outline: 2px dashed var(--focus-color);
+  outline-offset: 2px;
+}</code></pre>
+      </template>
+    </section>
+  </main>
+
+  <footer>
+    <p>GovBR Classless — Padrão Digital de Governo 3.7.0</p>
+  </footer>
+  <script src="shared.js"></script>
+</body>
+</html>

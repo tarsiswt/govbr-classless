@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout — GovBR Classless Docs</title>
+  <link rel="stylesheet" href="../govbr-classless.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <a href="#main">Pular para o conteúdo</a>
+  <header>
+    <h1><a href="../index.html">GovBR Classless</a></h1>
+    <nav aria-label="Componentes">
+      <ul>
+        <li><a href="typography.html">Tipografia</a></li>
+        <li><a href="code.html">Código</a></li>
+        <li><a href="lists.html">Listas</a></li>
+        <li><a href="tables.html">Tabelas</a></li>
+        <li><a href="forms.html">Formulários</a></li>
+        <li><a href="buttons.html">Botões</a></li>
+        <li><a href="accordion.html">Acordeão</a></li>
+        <li><a href="dialog.html">Dialog</a></li>
+        <li><a href="progress.html">Progresso</a></li>
+        <li><a href="media.html">Mídia</a></li>
+        <li><a href="layout.html">Layout</a></li>
+        <li><a href="tokens.html">Tokens</a></li>      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h2>Layout</h2>
+    <p>
+      O GovBR Classless estiliza os elementos semânticos de layout do HTML5
+      diretamente. Uma página completa é composta por
+      <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>
+      e <code>&lt;footer&gt;</code> — sem nenhuma classe.
+    </p>
+
+    <!-- ---- Estrutura básica ---- -->
+    <section>
+      <h3>Estrutura de uma página completa</h3>
+      <pre><code>&lt;body&gt;
+
+  &lt;!-- Link de acessibilidade: pular para o conteúdo --&gt;
+  &lt;a href="#main"&gt;Pular para o conteúdo&lt;/a&gt;
+
+  &lt;!-- Cabeçalho: azul #1351b4, sticky, sombra --&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Nome do Sistema&lt;/h1&gt;
+    &lt;!-- nav dentro do header: transparente e embutido --&gt;
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Início&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/servicos"&gt;Serviços&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;!-- nav avulso: fundo azul escuro #0c326f, abaixo do header --&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Categoria A&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+
+  &lt;!-- main: flex:1, max-width 1200px, centrado, fundo branco --&gt;
+  &lt;main id="main"&gt;
+    &lt;h2&gt;Conteúdo principal&lt;/h2&gt;
+    &lt;p&gt;...&lt;/p&gt;
+  &lt;/main&gt;
+
+  &lt;!-- footer: fundo #071d41, sticky no rodapé --&gt;
+  &lt;footer&gt;
+    &lt;p&gt;&amp;copy; 2026 Governo Federal&lt;/p&gt;
+  &lt;/footer&gt;
+
+&lt;/body&gt;</code></pre>
+    </section>
+
+    <!-- ---- Sticky footer ---- -->
+    <section>
+      <h3>Rodapé fixo no fundo</h3>
+      <p>
+        O <code>&lt;body&gt;</code> usa <code>display: flex; flex-direction: column; min-height: 100vh</code>
+        e o <code>&lt;main&gt;</code> recebe <code>flex: 1</code>.
+        O rodapé fica sempre no fundo, independente do volume de conteúdo.
+      </p>
+    </section>
+
+    <!-- ---- Two-column with sidebar ---- -->
+    <section>
+      <h3>Layout de duas colunas (artigo + sidebar)</h3>
+      <p>
+        Quando <code>&lt;main&gt;</code> contém um <code>&lt;article&gt;</code>
+        e um <code>&lt;aside&gt;</code> como filhos diretos, o CSS aplica
+        <code>grid-template-columns: 1fr 280px</code> automaticamente via
+        <code>:has()</code> — sem nenhuma classe adicional.
+      </p>
+      <pre><code>&lt;main&gt;
+  &lt;article&gt;
+    &lt;!-- conteúdo principal --&gt;
+  &lt;/article&gt;
+
+  &lt;aside&gt;
+    &lt;!-- sidebar automática: fundo azul pastel, borda esquerda azul --&gt;
+  &lt;/aside&gt;
+&lt;/main&gt;</code></pre>
+      <p>
+        Veja o exemplo completo em
+        <a href="../examples/page-with-sidebar.html">examples/page-with-sidebar.html</a>.
+      </p>
+    </section>
+
+    <!-- ---- article + aside ---- -->
+    <section>
+      <h3>Article e Aside</h3>
+      <p>
+        <code>&lt;article&gt;</code>: representa conteúdo autocontido — um artigo,
+        publicação, ficha de serviço.
+        <code>&lt;aside&gt;</code>: sidebar de conteúdo relacionado — links úteis,
+        metadados, navegação secundária.
+      </p>
+      <p>
+        Um <code>&lt;header&gt;</code> dentro de <code>&lt;article&gt;</code> ou
+        <code>&lt;section&gt;</code> tem seus estilos redefinidos automaticamente:
+        fundo transparente, posição estática, cor de texto normal.
+      </p>
+    </section>
+
+    <!-- ---- Nav patterns ---- -->
+    <section>
+      <h3>Padrões de navegação</h3>
+      <p>
+        <strong>Nav dentro do header</strong> — lista horizontal alinhada ao
+        cabeçalho azul, mesclada ao header:
+      </p>
+      <pre><code>&lt;header&gt;
+  &lt;h1&gt;Portal&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Início&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+
+      <p>
+        <strong>Nav avulso</strong> — barra de navegação secundária com
+        fundo azul escuro (<code>#0c326f</code>):
+      </p>
+      <pre><code>&lt;nav aria-label="Menu secundário"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Categoria A&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Categoria B&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+    </section>
+
+    <!-- ---- Breakpoints ---- -->
+    <section>
+      <h3>Breakpoints responsivos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Largura mínima</th>
+            <th>Token</th>
+            <th>Comportamento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>xs (mobile)</td>
+            <td>0px</td>
+            <td><code>--breakpoint-sm: 576px</code></td>
+            <td>Nav vertical, fonte 82%, botões full-width</td>
+          </tr>
+          <tr>
+            <td>sm/md (tablet)</td>
+            <td>576–992px</td>
+            <td><code>--breakpoint-md: 992px</code></td>
+            <td>Sidebar 240px, headings menores</td>
+          </tr>
+          <tr>
+            <td>lg (desktop)</td>
+            <td>1280px</td>
+            <td><code>--breakpoint-lg: 1280px</code></td>
+            <td>Grid completo, sidebar 280px</td>
+          </tr>
+          <tr>
+            <td>xl (TV/wide)</td>
+            <td>1600px</td>
+            <td><code>--breakpoint-xl: 1600px</code></td>
+            <td>Max-width 1200px centrado</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>GovBR Classless — Padrão Digital de Governo 3.7.0</p>
+  </footer>
+  <script src="shared.js"></script>
+</body>
+</html>

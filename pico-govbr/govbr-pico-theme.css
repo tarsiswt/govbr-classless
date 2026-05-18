@@ -331,12 +331,6 @@ button,
   letter-spacing: 0.02em;
 }
 
-/* Restore sensible radius for buttons inside role=group (search bars, etc.) */
-[role="group"] button,
-[role="group"] [type="submit"] {
-  border-radius: 0 999em 999em 0;
-}
-
 /* ── 6. Blockquote — blue left accent on light bg ─────────────────────────── */
 
 blockquote {

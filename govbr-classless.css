@@ -198,7 +198,6 @@ body {
   font-weight:    var(--font-weight-regular);
   line-height:    var(--font-line-height-medium);
   color:          var(--text-primary);
-  background-color: var(--background-alternative);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -1086,7 +1085,6 @@ article > header,
 section > header {
   background-color: transparent;
   color: var(--text-primary);
-  padding: 0;
   position: static;
   box-shadow: none;
   margin-bottom: var(--space-4);
